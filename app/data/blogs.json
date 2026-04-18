@@ -1,0 +1,209 @@
+[
+  {
+    "slug": "liferay-dxp-mcp-ai-integration",
+    "title": "Supercharging Liferay DXP Q1 2026 with AI: A Deep Dive into MCP Integration using Antigravity",
+    "date": "April 15, 2026",
+    "dateISO": "2026-04-15",
+    "category": "Liferay DXP & AI",
+    "readTime": "4 Min Read",
+    "author": "Pyronite Tech",
+    "label": "NEW / Liferay DXP Q1 2026",
+    "excerpt": "At Pyronite Tech, we are constantly exploring ways to elevate enterprise architecture. With the release of Liferay DXP Q1 2026, the platform has introduced a game-changing capability...",
+    "metaDescription": "A definitive guide on supercharging Liferay DXP Q1 2026 with AI. Discover how to configure the Model Context Protocol (MCP) securely with Antigravity.",
+    "metaKeywords": "Liferay DXP Q1 2026, Liferay MCP, Model Context Protocol, Liferay AI Integration, Antigravity, Headless Liferay, Pyronite Tech",
+    "tags": ["Liferay DXP", "AI Integration", "MCP"],
+    "content": [
+      {
+        "type": "paragraph",
+        "html": "At <strong>Pyronite Tech</strong>, we are constantly exploring ways to elevate enterprise architecture. With the release of Liferay DXP Q1 2026, the platform has introduced a game-changing capability: native support for the Model Context Protocol (MCP). By connecting Liferay to an AI assistant like Antigravity via MCP, we can transition Liferay from a traditional portal into a dynamic, AI-driven platform."
+      },
+      {
+        "type": "paragraph",
+        "html": "This integration allows the AI to securely read your portal's context, fetch OpenAPIs, and execute headless operations directly from your prompt interface. However, because this feature is currently in beta, configuring it requires some precision."
+      },
+      {
+        "type": "paragraph",
+        "html": "Here is the definitive, step-by-step guide on how we successfully configured Antigravity with Liferay DXP Q1 2026."
+      },
+      {
+        "type": "hr"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 1: Enable the Beta Feature Flag in Liferay"
+      },
+      {
+        "type": "paragraph",
+        "html": "Out of the box, the MCP endpoint in Liferay is hidden behind a feature flag. If you skip this step, the server simply will not respond to connection requests."
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Navigate to your Liferay DXP configuration environment or Control Panel.",
+          "Locate the Feature Flags section.",
+          "Explicitly enable <strong><code>MCP Server (LPD-63311)</code></strong>.",
+          "Restart your Liferay bundle to ensure the endpoint (<code>/o/mcp</code>) is exposed."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 2: Create a Dedicated Service Account & Generate Credentials"
+      },
+      {
+        "type": "paragraph",
+        "html": "Security is paramount when giving an AI agent access to your enterprise platform. You should never use a full Administrator account for this integration."
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "<strong>Create the User:</strong> Set up a dedicated user (e.g., <code>mcp-ai@pyronite.in</code>) in Liferay.",
+          "<strong>Assign Granular Roles:</strong> Create a custom role that only has <code>View</code> or <code>Read</code> permissions for the specific APIs (like Headless Delivery or User Management) the AI needs to interact with.",
+          "<strong>Generate the Basic Auth Token:</strong> Liferay requires Basic Authentication via a Base64 encoded string of your <code>username:password</code>."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "html": "<em>Quick generation via terminal:</em>"
+      },
+      {
+        "type": "code",
+        "lang": "bash",
+        "code": "echo -n \"mcp-ai@pyronite.in:YourSecurePassword\" | base64"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 3: Configure Antigravity to Communicate with Liferay"
+      },
+      {
+        "type": "paragraph",
+        "html": "Antigravity requires a strictly formatted JSON configuration file to establish the Server-Sent Events (SSE) connection with Liferay."
+      },
+      {
+        "type": "paragraph",
+        "html": "Locate your Antigravity configuration directory:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "<strong>Windows:</strong> <code>%AppData%\\Roaming\\Antigravity\\mcp.json</code> or <code>~/.antigravity/mcp_config.json</code>",
+          "<strong>macOS/Linux:</strong> <code>~/.config/Antigravity/mcp.json</code>"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "html": "Add the following JSON block. We utilize the <code>npx mcp-remote</code> command to reliably handle the SSE connection bridge, which solves common IDE validation errors:"
+      },
+      {
+        "type": "code",
+        "lang": "json",
+        "code": "{\n  \"mcpServers\": {\n    \"liferay\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mcp-remote\",\n        \"http://localhost:8080/o/mcp\",\n        \"--header\",\n        \"Authorization: Basic [YOUR_BASE64_TOKEN_HERE]\",\n        \"--header\",\n        \"Accept: text/event-stream\"\n      ]\n    }\n  }\n}"
+      },
+      {
+        "type": "image",
+        "src": "/blogs/blog-1/1.png",
+        "alt": "MCP JSON Config in Antigravity",
+        "caption": "Fig 1. MCP JSON Config in Antigravity"
+      },
+      {
+        "type": "paragraph",
+        "html": "<strong>Crucial Configuration Notes:</strong>"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "You <em>must</em> have Node.js installed on your machine for the <code>npx</code> command to execute successfully.",
+          "The <code>--header \"Accept: text/event-stream\"</code> argument is mandatory. Without it, Liferay will reject the connection with a 400 Bad Request and an <em>\"text/event-stream required\"</em> error, causing Antigravity to hang in an infinite loading loop."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Step 4: Verify and Start Using AI as a Platform"
+      },
+      {
+        "type": "paragraph",
+        "html": "Once the JSON is saved, completely restart Antigravity (ensure you kill any lingering background <code>node.exe</code> processes via Task Manager to clear the cache)."
+      },
+      {
+        "type": "paragraph",
+        "html": "When you reopen Antigravity, navigate to your MCP Servers panel. You should see <code>liferay</code> listed with <strong>3/3 tools</strong> enabled. These built-in tools instantly empower your AI workflow:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "<strong><code>get-openapis</code></strong>: The AI can now discover all available Liferay OpenAPIs dynamically.",
+          "<strong><code>get-openapi</code></strong>: Fetches the specific YAML structure for a chosen API, allowing the AI to understand exactly what parameters are required.",
+          "<strong><code>call-http-endpoint</code></strong>: The AI can execute actual read/write operations (based on the permissions of your service account) directly against your Liferay instance."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "/blogs/blog-1/2.png",
+        "alt": "Completed MCP Liferay Configuration",
+        "caption": "Fig 2. Completed MCP Liferay configuration in Antigravity"
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "The Pyronite Workflow in Action"
+      },
+      {
+        "type": "paragraph",
+        "html": "Before prompting the AI, here is our Liferay environment showing the current list of sites available:"
+      },
+      {
+        "type": "image",
+        "src": "/blogs/blog-1/3.png",
+        "alt": "List of sites in Liferay before prompt",
+        "caption": "Fig 3. List of sites in Liferay before any prompt"
+      },
+      {
+        "type": "paragraph",
+        "html": "Instead of spending hours reading through API documentation or writing boilerplate REST calls, our developers can now simply open the Antigravity chat and ask:"
+      },
+      {
+        "type": "blockquote",
+        "text": "\"Create a new site in Liferay.\""
+      },
+      {
+        "type": "image",
+        "src": "/blogs/blog-1/4.png",
+        "alt": "Prompting to create a site in Liferay",
+        "caption": "Fig 4. Prompting to create a site in Liferay"
+      },
+      {
+        "type": "paragraph",
+        "html": "The AI automatically invokes <code>get-openapis</code> to find the correct endpoint, understands the schema via <code>get-openapi</code>, and executes the fetch using <code>call-http-endpoint</code>."
+      },
+      {
+        "type": "image",
+        "src": "/blogs/blog-1/5.png",
+        "alt": "Site successfully created in Liferay",
+        "caption": "Fig 5. Site successfully created in Liferay"
+      },
+      {
+        "type": "paragraph",
+        "html": "By integrating MCP with Liferay DXP, we are no longer just building portals; we are creating intelligent, self-documenting, and context-aware enterprise platforms."
+      },
+      {
+        "type": "hr"
+      },
+      {
+        "type": "paragraph",
+        "html": "<strong>Ready to elevate your digital platform?</strong><br/>If you are looking to integrate advanced AI capabilities into your Liferay ecosystem or need expert enterprise architecture consulting, the Pyronite Tech team is here to help."
+      },
+      {
+        "type": "paragraph",
+        "html": "Drop us a msg at <a href=\"mailto:business@pyronite.in\">business@pyronite.in</a> to start the conversation."
+      }
+    ]
+  }
+]
