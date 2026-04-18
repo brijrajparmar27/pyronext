@@ -25,9 +25,27 @@ export async function generateMetadata({
   const post = blogs.find((b) => b.slug === slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Pyronite Blogs`,
+    title: post.title,
     description: post.metaDescription,
     keywords: post.metaKeywords,
+    authors: [{ name: post.author }],
+    alternates: { canonical: `/blogs/${post.slug}` },
+    openGraph: {
+      type: "article",
+      url: `/blogs/${post.slug}`,
+      title: post.title,
+      description: post.metaDescription,
+      publishedTime: post.dateISO,
+      authors: [post.author],
+      tags: post.tags,
+      images: [{ url: "/logo.png", alt: "Pyronite" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.metaDescription,
+      images: ["/logo.png"],
+    },
   };
 }
 
@@ -41,8 +59,36 @@ export default async function BlogPostPage({
 
   if (!post) return notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.metaDescription,
+    datePublished: post.dateISO,
+    author: {
+      "@type": "Organization",
+      name: post.author,
+      url: "https://pyronite.codealchemy.tech",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Pyronite",
+      url: "https://pyronite.codealchemy.tech",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://pyronite.codealchemy.tech/logo.png",
+      },
+    },
+    keywords: post.tags.join(", "),
+    url: `https://pyronite.codealchemy.tech/blogs/${post.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ScrollReveal />
       <section className="section" style={{ paddingTop: "4rem" }}>
         <div className="blog-container">

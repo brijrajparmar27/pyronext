@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
   description:
     "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers. We deliver state-of-the-art Liferay enterprise portals, headless architectures, and immutable scalable infrastructure.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+    description:
+      "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+    description:
+      "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers.",
+  },
 };
 
 const partners = [

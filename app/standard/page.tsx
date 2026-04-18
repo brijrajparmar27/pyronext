@@ -3,9 +3,31 @@ import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "The Standard | Pyronite",
+  title: "The Standard",
   description:
     "Discover Pyronite's engineering standards for Liferay DXP. We enforce zero-downtime tolerance, OSGi modularization, headless API-first integration, and top-tier Liferay capability.",
+  keywords: [
+    "Pyronite Standards",
+    "Liferay DXP",
+    "Headless Architecture",
+    "OSGi Modularization",
+    "API-First Liferay",
+    "Enterprise Portals",
+    "Zero-Downtime Tolerant Infrastructure",
+  ],
+  alternates: { canonical: "/standard" },
+  openGraph: {
+    type: "website",
+    url: "/standard",
+    title: "The Standard | Pyronite",
+    description:
+      "Discover Pyronite's engineering standards and Liferay DXP expertise.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Standard | Pyronite",
+    description: "Discover Pyronite's engineering standards and Liferay DXP expertise.",
+  },
 };
 
 export default function StandardPage() {

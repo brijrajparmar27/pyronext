@@ -4,9 +4,32 @@ import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Philosophy | Pyronite",
+  title: "Philosophy",
   description:
     "Explore Pyronite's philosophy on native Liferay DXP architectural precision. We build purpose-driven enterprise portals and low-latency headless implementations.",
+  keywords: [
+    "Pyronite Philosophy",
+    "Liferay Architecture",
+    "Headless Liferay",
+    "Liferay DXP Solutions",
+    "Purpose-Driven Engineering",
+    "Enterprise Architecture",
+    "Scalable Portals",
+  ],
+  alternates: { canonical: "/philosophy" },
+  openGraph: {
+    type: "website",
+    url: "/philosophy",
+    title: "Philosophy | Pyronite",
+    description:
+      "Explore Pyronite's philosophy on architectural precision and purpose-driven engineering.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Philosophy | Pyronite",
+    description:
+      "Explore Pyronite's philosophy on architectural precision and purpose-driven engineering.",
+  },
 };
 
 export default function PhilosophyPage() {

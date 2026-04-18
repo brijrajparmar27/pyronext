@@ -6,9 +6,31 @@ import blogsData from "../data/blogs.json";
 import type { BlogPost } from "../data/types";
 
 export const metadata: Metadata = {
-  title: "Engineering Blogs & Insights | Pyronite Liferay Experts",
+  title: "Engineering Blogs & Insights",
   description:
     "Explore Pyronite's engineering blogs on advanced Liferay DXP implementations, headless architecture, and connecting native AI protocols.",
+  keywords: [
+    "Pyronite Blogs",
+    "Liferay DXP",
+    "Liferay Development",
+    "Liferay Integration",
+    "Liferay AI",
+    "Enterprise Architecture",
+  ],
+  alternates: { canonical: "/blogs" },
+  openGraph: {
+    type: "website",
+    url: "/blogs",
+    title: "Engineering Blogs & Insights | Pyronite",
+    description:
+      "Explore Pyronite's engineering blogs on advanced Liferay DXP implementations and headless architecture.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engineering Blogs & Insights | Pyronite",
+    description:
+      "Explore Pyronite's engineering blogs on advanced Liferay DXP implementations and headless architecture.",
+  },
 };
 
 const blogs = blogsData as BlogPost[];
