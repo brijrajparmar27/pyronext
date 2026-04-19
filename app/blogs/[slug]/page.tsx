@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../../components/Footer";
 import ScrollReveal from "../../components/ScrollReveal";
 import BlogRenderer from "../../components/BlogRenderer";
 import blogsData from "../../data/blogs.json";
@@ -180,7 +179,6 @@ export default async function BlogPostPage({
           <BlogRenderer blocks={post.content} />
         </div>
       </section>
-      <Footer />
     </>
   );
 }

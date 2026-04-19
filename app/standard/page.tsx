@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -143,7 +142,6 @@ export default function StandardPage() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

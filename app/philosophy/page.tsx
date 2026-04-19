@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -121,7 +120,6 @@ export default function PhilosophyPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

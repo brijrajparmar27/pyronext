@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 import blogsData from "../data/blogs.json";
 import type { BlogPost } from "../data/types";
@@ -96,7 +95,6 @@ export default function BlogsPage() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

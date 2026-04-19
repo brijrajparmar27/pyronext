@@ -88,23 +88,6 @@ export default function ConnectClient() {
         </div>
       </main>
 
-      <footer className="footer">
-        <div className="container reveal">
-          <div className="footer-grid" style={{ gridTemplateColumns: "1fr" }}>
-            <div>
-              <h2 style={{ fontSize: "4rem", fontWeight: 700, color: "var(--bg-surface)", WebkitTextStroke: "1px var(--border-light)", textTransform: "uppercase" }}>
-                PYRONITE
-              </h2>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "1rem" }}>
-                © 2026 PYRONITE. LIFERAY DXP SOLUTION ARCHITECTS. INDUSTRIAL INTEGRITY VERIFIED.
-              </p>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
-                <Link href="/terms" style={{ color: "var(--primary)", textDecoration: "none" }}>Terms &amp; Conditions</Link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
