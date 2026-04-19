@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import TopStrip from "./components/TopStrip";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 const BASE_URL = "https://pyronite.in";
 
@@ -69,23 +83,15 @@ export const metadata: Metadata = {
   },
 };
 
-import Footer from "./components/Footer";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/logo.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
-        />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
@@ -94,10 +100,15 @@ export default function RootLayout({
       <body>
         <TopStrip />
         <Navbar />
-        <main style={{ paddingTop: "calc(var(--nav-height) + 36px)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-          <div style={{ flexGrow: 1 }}>
-            {children}
-          </div>
+        <main
+          style={{
+            paddingTop: "calc(var(--nav-height) + 36px)",
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ flexGrow: 1 }}>{children}</div>
           <Footer />
         </main>
       </body>

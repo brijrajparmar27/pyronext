@@ -61,6 +61,7 @@ export default function BlogRenderer({ blocks }: Props) {
                   alt={block.alt}
                   width={1200}
                   height={600}
+                  sizes="(max-width: 800px) 100vw, 1200px"
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
                 <p

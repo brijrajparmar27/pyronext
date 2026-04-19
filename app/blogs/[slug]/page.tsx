@@ -152,6 +152,7 @@ export default async function BlogPostPage({
                     padding: 4,
                     background: "#000",
                   }}
+                  priority
                 />
                 <span
                   style={{

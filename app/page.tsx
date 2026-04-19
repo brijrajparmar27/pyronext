@@ -70,7 +70,17 @@ export default function Home() {
           <div className="marquee-content">
             {[...partners, ...partners].map((p, i) => (
               <div key={i} className="marquee-item">
-                <img alt={p.alt} loading="lazy" width={203} height={54} className="object-contain" src={p.src} />
+                <Image
+                  alt={p.alt}
+                  src={p.src}
+                  width={203}
+                  height={54}
+                  className="object-contain"
+                  style={{
+                    filter: "grayscale(1) brightness(0.8)",
+                  }}
+                  sizes="(max-width: 768px) 100px, 203px"
+                />
               </div>
             ))}
           </div>
@@ -91,12 +101,13 @@ export default function Home() {
               </p>
             </div>
             <div className="philosophy-image" style={{ border: "1px solid var(--border-light)", aspectRatio: "4/5" }}>
-              <Image
-                src="/liferay-summit.jpg"
-                alt="Liferay Digital Experience Platform"
-                fill
-                style={{ objectFit: "cover", filter: "grayscale(1) contrast(1.2) brightness(0.6)", transition: "0.5s" }}
-              />
+                <Image
+                  src="/liferay-summit.jpg"
+                  alt="Liferay Digital Experience Platform"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  style={{ objectFit: "cover", filter: "grayscale(1) contrast(1.2) brightness(0.6)", transition: "0.5s" }}
+                />
             </div>
           </div>
         </div>
@@ -122,7 +133,13 @@ export default function Home() {
                 </div>
               </div>
               <div className="project-img">
-                <Image src="/developers-working.jpg" alt="Dedicated Liferay Developers Working" fill style={{ objectFit: "cover" }} />
+                <Image
+                  src="/developers-working.jpg"
+                  alt="Dedicated Liferay Developers Working"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             </article>
             <article className="project-row">
@@ -137,7 +154,13 @@ export default function Home() {
                 </div>
               </div>
               <div className="project-img">
-                <Image src="/developers-working-2.jpg" alt="Liferay Headless Architecture Developers" fill style={{ objectFit: "cover" }} />
+                <Image
+                  src="/developers-working-2.jpg"
+                  alt="Liferay Headless Architecture Developers"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             </article>
           </div>

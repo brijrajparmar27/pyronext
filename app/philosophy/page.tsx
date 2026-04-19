@@ -78,7 +78,9 @@ export default function PhilosophyPage() {
               src="/liferay-summit-board.jpg"
               alt="Liferay Architecture Planning"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               style={{ objectFit: "cover" }}
+              priority
             />
             <span className="material-symbols-outlined" style={{ position: "relative", zIndex: 2, fontSize: "6rem", color: "var(--primary)", opacity: 0.8 }}>
               architecture

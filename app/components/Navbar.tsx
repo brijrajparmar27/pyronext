@@ -25,6 +25,7 @@ export default function Navbar() {
           height={32}
           className="logo"
           style={{ objectFit: "contain" }}
+          priority
         />
         PYRONITE
       </Link>
