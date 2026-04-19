@@ -157,13 +157,6 @@ textarea.form-control { resize: vertical; min-height: 150px; }
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-@media (max-width: 1024px) {
-  .hero-content { grid-template-columns: 1fr; }
-  .philosophy-grid, .contact-container, .project-row { grid-template-columns: 1fr; }
-  .project-img { border-left: none; border-top: 1px solid var(--border-light); }
-  .nav-links { display: none; }
-}
-
 /* Capabilities Specific */
 .cap-interactive-container {
   display: flex;
@@ -221,11 +214,6 @@ textarea.form-control { resize: vertical; min-height: 150px; }
   font-size: 1.2rem;
   color: var(--text-muted);
   line-height: 1.6;
-}
-
-@media (max-width: 1024px) {
-  .cap-interactive-container { flex-direction: column; }
-  .cap-readout { width: 100%; position: relative; top: 0; min-height: auto; padding: 2rem; }
 }
 
 /* Marquee / Partner Logos */
@@ -360,38 +348,142 @@ textarea.form-control { resize: vertical; min-height: 150px; }
   background: rgba(255, 62, 0, 0.05);
 }
 
-/* Base Mobile Overrides */
-@media (max-width: 768px) {
-  .container { padding: 0 1.5rem; }
+/* Navbar Responsive & Toggle */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  order: 3;
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 2rem;
+  padding-bottom: 4rem;
+}
+
+.mobile-nav a {
+  font-size: 1.2rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav a .label {
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-nav a.active {
+  color: var(--primary);
+}
+
+.mobile-close {
+  position: absolute;
+  top: 52px;
+  right: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
   .navbar { padding: 0 1.5rem; }
+  .nav-links, .nav-meta { display: none; }
+  .nav-toggle { display: flex; }
+  .container { padding: 0 1.5rem; }
+  .cap-interactive-container { flex-direction: column; }
+  .cap-readout { width: 100%; position: relative; top: 0; min-height: auto; padding: 2rem; }
+}
+
+/* Typography & Layout Refinement */
+@media (max-width: 768px) {
+  :root { --nav-height: 70px; }
+  .navbar { top: 36px; }
+  .top-strip { font-size: 0.55rem; padding: 0 1rem; }
+  
   .section { padding: 4rem 0; }
-  .project-info { padding: 2rem 1.5rem; }
-  .hero { min-height: auto; padding-top: 150px; padding-bottom: 3rem; }
-  .hero h1 { font-size: clamp(2rem, 10vw, 2.5rem) !important; line-height: 1.1; }
-  .hero-desc { border-left: none; padding-left: 0; border-top: 1px solid var(--border-light); padding-top: 1.5rem; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-  .card { padding: 2rem 1.5rem; }
-  .card h3 { font-size: 1.25rem !important; }
-  .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
-  .project-info h3 { font-size: clamp(1.5rem, 6vw, 2rem) !important; line-height: 1.2; }
-  h1 { font-size: 2rem !important; }
-  h2 { font-size: 1.75rem !important; line-height: 1.2; }
-  h3 { font-size: 1.25rem !important; }
-  p { font-size: 1rem !important; }
-  .btn { padding: 1rem 1.5rem; font-size: 0.8rem; width: 100%; text-align: center; }
-  .cap-readout { padding: 1.5rem; margin-top: 2rem; }
-  .form-control { padding: 1rem; font-size: 0.8rem; }
-  img { max-width: 100%; height: auto; }
-  .blog-content pre code { font-size: 0.75rem; white-space: pre; }
-  .blog-content pre { padding: 1rem !important; overflow-x: auto; max-width: calc(100vw - 3rem); }
+  .section-header { margin-bottom: 2.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .section-header .line { width: 100%; }
+
+  /* Hero */
+  .hero { padding-top: 150px; padding-bottom: 4rem; min-height: auto; }
+  .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+  .hero h1 { font-size: 2.8rem; line-height: 1; letter-spacing: -1px; }
+  .hero-desc { border-left: none; border-top: 1px solid var(--border-light); padding-left: 0; padding-top: 1.5rem; }
+  
+  /* Philosophy/Grid Layouts */
+  .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .philosophy-text h2 { font-size: 2rem; }
+  .philosophy-image { aspect-ratio: 16/9; }
+  
+  /* Projects */
+  .project-row { grid-template-columns: 1fr; }
+  .project-info { padding: 2rem 0; }
+  .project-img { height: 300px; border-left: none; border-top: 1px solid var(--border-light); }
+  
+  /* Growth Metrics */
+  .growth-metrics-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 3rem; }
+  .footer-col { text-align: left; }
+
+  /* Capabilities */
+  .cap-tag { padding: 0.7rem 1.2rem; font-size: 0.75rem; }
+  
+  /* Blog Container */
   .blog-container { max-width: 100%; padding: 2rem 1.5rem; border-left: none; border-right: none; }
-  .blog-header h1 { font-size: 2rem !important; }
-  .blog-content h2 { font-size: 1.5rem; }
-  .blog-content h3 { font-size: 1.25rem; }
+  .blog-content pre { padding: 1rem !important; max-width: calc(100vw - 3rem); }
 }
 
 @media (max-width: 480px) {
-  .top-strip { font-size: 0.5rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .mobile-nav a { font-size: 1.1rem !important; }
+  .btn { width: 100%; text-align: center; }
 }
 
 /* Utilities */
