@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import blogsData from "./data/blogs.json";
 import type { BlogPost } from "./data/types";
 
-const BASE_URL = "https://pyronite.codealchemy.tech";
+const BASE_URL = "https://pyronite.in";
 const blogs = blogsData as BlogPost[];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ];
 

@@ -3,7 +3,7 @@ import "./globals.css";
 import TopStrip from "./components/TopStrip";
 import Navbar from "./components/Navbar";
 
-const BASE_URL = "https://pyronite.codealchemy.tech";
+const BASE_URL = "https://pyronite.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -69,6 +69,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Footer from "./components/Footer";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -92,8 +94,11 @@ export default function RootLayout({
       <body>
         <TopStrip />
         <Navbar />
-        <main style={{ paddingTop: "calc(var(--nav-height) + 36px)" }}>
-          {children}
+        <main style={{ paddingTop: "calc(var(--nav-height) + 36px)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ flexGrow: 1 }}>
+            {children}
+          </div>
+          <Footer />
         </main>
       </body>
     </html>

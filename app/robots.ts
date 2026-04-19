@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [],
       },
     ],
-    sitemap: "https://pyronite.codealchemy.tech/sitemap.xml",
-    host: "https://pyronite.codealchemy.tech",
+    sitemap: "https://pyronite.in/sitemap.xml",
+    host: "https://pyronite.in",
   };
 }

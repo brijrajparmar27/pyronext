@@ -393,3 +393,6 @@ textarea.form-control { resize: vertical; min-height: 150px; }
 @media (max-width: 480px) {
   .top-strip { font-size: 0.5rem; }
 }
+
+/* Utilities */
+.hover-text-primary:hover { color: var(--primary) !important; }
