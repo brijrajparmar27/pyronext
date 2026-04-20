@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import TopStrip from "./components/TopStrip";
 import Navbar from "./components/Navbar";
@@ -111,6 +112,16 @@ export default function RootLayout({
           <div style={{ flexGrow: 1 }}>{children}</div>
           <Footer />
         </main>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-PSX0G5C1CF" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-PSX0G5C1CF');
+          `}
+        </Script>
       </body>
     </html>
   );
