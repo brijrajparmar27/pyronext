@@ -205,5 +205,114 @@
         "html": "Drop us a msg at <a href=\"mailto:business@pyronite.in\">business@pyronite.in</a> to start the conversation."
       }
     ]
+  },
+  {
+    "slug": "unlocking-enterprise-speed-nextjs-liferay-dxp",
+    "title": "Unlocking Enterprise Speed: Architecting Headless Portals with Next.js and Liferay DXP",
+    "date": "May 4, 2026",
+    "dateISO": "2026-05-04",
+    "category": "Enterprise Architecture",
+    "readTime": "5 Min Read",
+    "author": "Pyronite Tech",
+    "label": "NEW / Headless Architecture",
+    "excerpt": "In the competitive landscape of 2026, enterprise digital experiences demand two things: robust content management and uncompromising frontend performance.",
+    "metaDescription": "Explore how Pyronite Tech architects headless portals using Next.js and Liferay DXP for maximum performance and SEO.",
+    "metaKeywords": "Next.js, Liferay DXP, Headless Architecture, Enterprise Portals, Performance, SEO, Pyronite Tech",
+    "tags": ["Next.js", "Liferay DXP", "Headless", "Performance"],
+    "content": [
+      {
+        "type": "paragraph",
+        "html": "In the competitive landscape of 2026, enterprise digital experiences demand two things: robust content management and uncompromising frontend performance. While Liferay DXP has long been the gold standard for secure, scalable backends, the shift toward headless architecture has introduced a new powerhouse to the mix: <strong>Next.js</strong>."
+      },
+      {
+        "type": "paragraph",
+        "html": "At <strong>Pyronite Tech</strong>, we recently navigated a significant architectural transition, moving our core digital assets from a vanilla React implementation to a Next.js-driven headless environment. The results? A leap to a <strong>95 Desktop Performance score</strong> and a highly competitive <strong>75 on Mobile</strong>. In this post, we’ll dive into why this combination is the future of enterprise portals and how you can implement it."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Why Next.js is the Perfect Match for Liferay DXP"
+      },
+      {
+        "type": "paragraph",
+        "html": "Liferay DXP is an incredible \"Content Engine.\" However, traditional JSP-based themes or even pure Client-Side Rendered (CSR) React apps often struggle with SEO and initial load times. Next.js solves this by offering:"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "<strong>Server-Side Rendering (SSR) & Static Site Generation (SSG):</strong> Unlike standard React, Next.js allows Google crawlers to see your full content in the HTML source instantly. This is critical for indexing complex enterprise blogs and documentation.",
+          "<strong>Automatic Image Optimization:</strong> Using the <code>next/image</code> component ensures that large high-res assets from Liferay’s Document Library are served in modern formats like WebP, significantly boosting mobile scores.",
+          "<strong>Built-in SEO Tools:</strong> Meta tags and structured data management become seamless, allowing your Liferay-hosted content to rank higher for competitive keywords."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "The Pyronite Approach: How We Integrate Them"
+      },
+      {
+        "type": "paragraph",
+        "html": "Integrating these two platforms requires a clear \"Headless\" strategy:"
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "1. Liferay as the Headless Backend"
+      },
+      {
+        "type": "paragraph",
+        "html": "We utilize Liferay DXP's robust Headless REST APIs and Liferay Objects. By exposing content through these endpoints, Liferay acts as a secure data repository while Next.js handles the presentation layer."
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "2. Next.js as the Modern Frontend"
+      },
+      {
+        "type": "paragraph",
+        "html": "We leverage the App Router in Next.js to fetch data from Liferay during the build process (SSG) or on every request (SSR). This ensures that users get a lightning-fast experience without sacrificing the dynamic nature of a portal."
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "text": "3. Performance Metrics That Matter"
+      },
+      {
+        "type": "paragraph",
+        "html": "Our transition proved that the right architecture leads to measurable success. By moving to Next.js, we eliminated common bottlenecks like \"Script Evaluation\" and heavy JS bundles that typically weigh down portal frontends."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Metric",
+          "Previous (Vanilla React)",
+          "Current (Next.js)"
+        ],
+        "rows": [
+          ["Lighthouse Desktop Score", "85", "95"],
+          ["Lighthouse Mobile Score", "62", "75"],
+          ["SEO Indexing", "Delayed", "Instantaneous"]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Strategic Benefits for Your Business"
+      },
+      {
+        "type": "paragraph",
+        "html": "Choosing a Next.js + Liferay stack isn't just a developer preference; it’s a business strategy:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "<strong>Lower Total Cost of Ownership (TCO):</strong> Decoupling the frontend allows for faster iterations without redeploying the entire Liferay instance.",
+          "<strong>Scalability:</strong> Serve millions of users with a globally distributed frontend while maintaining your complex business logic within Liferay.",
+          "<strong>Future-Proofing:</strong> Leverage AI-driven integrations and modern web standards that are natively supported by the Next.js ecosystem."
+        ]
+      }
+    ]
   }
 ]

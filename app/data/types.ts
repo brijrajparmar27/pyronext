@@ -5,6 +5,7 @@ export type ContentBlock =
   | { type: "code"; lang: string; code: string }
   | { type: "image"; src: string; alt: string; caption: string }
   | { type: "blockquote"; text: string }
+  | { type: "table"; headers: string[]; rows: string[][] }
   | { type: "hr" };
 
 export interface BlogPost {

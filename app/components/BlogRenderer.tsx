@@ -80,6 +80,30 @@ export default function BlogRenderer({ blocks }: Props) {
 
           case "blockquote":
             return <blockquote key={index}>{block.text}</blockquote>;
+          
+          case "table":
+            return (
+              <div key={index} className="table-wrapper">
+                <table className="blog-table">
+                  <thead>
+                    <tr>
+                      {block.headers.map((header, i) => (
+                        <th key={i}>{header}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.rows.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        {row.map((cell, cellIndex) => (
+                          <td key={cellIndex}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
 
           case "hr":
             return <hr key={index} />;

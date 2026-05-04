@@ -488,3 +488,42 @@ textarea.form-control { resize: vertical; min-height: 150px; }
 
 /* Utilities */
 .hover-text-primary:hover { color: var(--primary) !important; }
+
+/* Blog Table Styles */
+.table-wrapper {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  padding: 1px;
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.blog-table th, .blog-table td {
+  padding: 1.2rem;
+  text-align: left;
+  border: 1px solid var(--border-light);
+}
+
+.blog-table th {
+  background: var(--bg-panel);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.blog-table td {
+  color: var(--text-muted);
+}
+
+.blog-table tr:hover td {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+}
