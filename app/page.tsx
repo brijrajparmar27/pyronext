@@ -182,7 +182,7 @@ export default function Home() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "3rem 2rem" }}>
               {[
-                { stat: "30+", title: "Delivered Solutions", desc: "Successfully delivered enterprise grade Liferay solutions across industries." },
+                { stat: "100+", title: "Delivered Solutions", desc: "Successfully delivered enterprise grade Liferay solutions across industries." },
                 { stat: "30+", title: "Experts Onboard", desc: "Certified Liferay experts ensuring secure, scalable, and standards aligned delivery." },
                 { stat: "98%", title: "Client Satisfaction", desc: "Earned through transparent collaboration and consistent Liferay delivery excellence." },
                 { stat: "10+", title: "Years of Excellence", desc: "Over a decade delivering enterprise grade, future ready Liferay digital platforms." },
