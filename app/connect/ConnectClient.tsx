@@ -31,10 +31,10 @@ export default function ConnectClient() {
           <div>
             <span className="label">// INITIALIZE CONNECTION</span>
             <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase", marginBottom: "2rem", lineHeight: 1.1 }}>
-              Initiate a deep-dive consultation to architect your complex Liferay digital solution.
+              Initiate a deep-dive consultation to architect your enterprise Liferay &amp; open-source systems.
             </h1>
             <p style={{ fontSize: "1.2rem", color: "var(--text-muted)", marginBottom: "3rem", fontWeight: 300 }}>
-              We work exclusively with organizations requiring high-availability portal infrastructure and zero-latency engineering methodologies.
+              We work exclusively with organizations requiring high-availability enterprise infrastructure and zero-latency engineering methodologies.
             </p>
 
             <div style={{ marginTop: "4rem", display: "grid", gap: "2rem", gridTemplateColumns: "1fr 1fr" }}>

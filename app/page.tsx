@@ -5,22 +5,22 @@ import ScrollReveal from "./components/ScrollReveal";
 import CapabilitiesSection from "./components/CapabilitiesSection";
 
 export const metadata: Metadata = {
-  title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+  title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
   description:
-    "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers. We deliver state-of-the-art Liferay enterprise portals, headless architectures, and immutable scalable infrastructure.",
+    "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends. We forge complex enterprise portals and scalable web infrastructure from the ground up.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+    title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
-      "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers.",
+      "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+    title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
-      "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers.",
+      "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
   },
 };
 
@@ -51,15 +51,15 @@ export default function Home() {
           <div>
             <h1>
               Architecting <br />
-              <span>Liferay</span> Solutions <br />
-              For Industry.
+              Enterprise <span>Liferay</span> &amp; <br />
+              Open-Source Systems
             </h1>
           </div>
           <div className="hero-desc">
             <p>
-              Sculpt your digital ecosystem natively with our specialized Liferay DXP engineers. We forge complex enterprise portals and immutable infrastructure from the ground up.
+              Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends. We forge complex enterprise portals and scalable web infrastructure from the ground up.
             </p>
-            <span className="meta">Liferay DXP 7.4+ Certified / Enterprise Engineering</span>
+            <span className="meta">Enterprise Liferay &amp; Open-Source Architecture</span>
           </div>
         </div>
       </section>
@@ -92,12 +92,12 @@ export default function Home() {
         <div className="container reveal">
           <div className="philosophy-grid" style={{ alignItems: "center" }}>
             <div className="philosophy-text">
-              <span className="label">01 / The Platform</span>
+              <span className="label">01 / The Architecture</span>
               <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "2rem", marginTop: "1rem" }}>
-                One Platform.<br />Endless <span style={{ color: "var(--primary)" }}>Digital Possibilities</span><br />with Liferay DXP
+                Bridging Governance<br />with <span style={{ color: "var(--primary)" }}>Open-Source Agility</span>
               </h2>
               <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.8 }}>
-                Liferay DXP is a unified digital experience platform that empowers enterprises to build portals, intranets, websites, and customer solutions with speed and flexibility. With powerful out of the box features, strong security, seamless integrations, and low code tools, Liferay enables scalable experiences and long term digital transformation across the entire Liferay ecosystem while reducing complexity and enhancing operational efficiency.
+                We bridge enterprise-grade governance (like Liferay DXP) with agile open-source stacks. Through full-stack synergy, we connect secure core platforms with decoupled microservice layers and dynamic headless frontends to achieve ultra-fast load times, flawless indexing, and zero-downtime performance. By minimizing infrastructure friction and leveraging open standards, we maximize long-term digital growth and cross-platform scalability.
               </p>
             </div>
             <div className="philosophy-image" style={{ border: "1px solid var(--border-light)", aspectRatio: "4/5" }}>
@@ -174,10 +174,10 @@ export default function Home() {
             <div>
               <span className="label">03 / Growth Metrics</span>
               <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginTop: "1rem", marginBottom: "2rem" }}>
-                Empowering Enterprises,<br /><span style={{ color: "var(--primary)" }}>Through Liferay First Thinking</span>
+                Empowering Enterprises,<br /><span style={{ color: "var(--primary)" }}>Engineered on Enterprise Standards</span>
               </h2>
               <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: 500 }}>
-                We deliver Liferay first digital solutions using best practice, OOTB driven implementations that maximise platform value and long term enterprise growth.
+                We deliver robust, high-performance digital solutions using best practices that combine secure core infrastructure with modular open-source architectures to maximize value.
               </p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "3rem 2rem" }}>
@@ -203,15 +203,15 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">04 / Liferay Core</span>
+            <span className="label">04 / Core Capabilities</span>
             <div className="line"></div>
           </div>
           <div style={{ marginBottom: "4rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "2rem" }}>
             <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
-              Our Liferay <br /><span style={{ color: "var(--primary)" }}>Capabilities</span>
+              Core Technical <br /><span style={{ color: "var(--primary)" }}>Capabilities</span>
             </h2>
             <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", maxWidth: 600, fontWeight: 300 }}>
-              We build scalable platforms and meaningful digital experiences on Liferay DXP, empowering enterprises with best practice implementation, performance, and future ready digital growth.
+              We build scalable platforms and modern digital experiences, combining the enterprise governance of Liferay DXP with decoupled, agile open-source engineering.
             </p>
           </div>
           <CapabilitiesSection />

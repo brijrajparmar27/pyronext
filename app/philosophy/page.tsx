@@ -5,12 +5,12 @@ import ScrollReveal from "../components/ScrollReveal";
 export const metadata: Metadata = {
   title: "Philosophy",
   description:
-    "Explore Pyronite's philosophy on native Liferay DXP architectural precision. We build purpose-driven enterprise portals and low-latency headless implementations.",
+    "Explore Pyronite's philosophy on enterprise Liferay DXP & open-source architectural precision. We build purpose-driven digital portals and low-latency decoupled headless implementations.",
   keywords: [
     "Pyronite Philosophy",
     "Liferay Architecture",
     "Headless Liferay",
-    "Liferay DXP Solutions",
+    "Open-Source Systems",
     "Purpose-Driven Engineering",
     "Enterprise Architecture",
     "Scalable Portals",
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/philosophy",
-    title: "Philosophy | Pyronite",
+    title: "Philosophy | Pyronite Tech",
     description:
       "Explore Pyronite's philosophy on architectural precision and purpose-driven engineering.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Philosophy | Pyronite",
+    title: "Philosophy | Pyronite Tech",
     description:
       "Explore Pyronite's philosophy on architectural precision and purpose-driven engineering.",
   },
@@ -53,7 +53,7 @@ export default function PhilosophyPage() {
             OUR APPROACH
           </h1>
           <p style={{ fontSize: "1.5rem", color: "var(--text-muted)", fontStyle: "italic", maxWidth: 800 }}>
-            &quot;Complexity requires uncompromising execution. We craft intricate Liferay digital solutions forged with absolute industrial precision.&quot;
+            &quot;Complexity requires uncompromising execution. We craft intricate enterprise Liferay and open-source systems forged with absolute industrial precision.&quot;
           </p>
         </div>
 
@@ -70,13 +70,13 @@ export default function PhilosophyPage() {
               [RESULT]: SCALABLE_ROBUSTNESS_OPTIMIZED_BY_100%
             </div>
             <p>
-              In an industrial environment, ambiguity is the primary vector for failure. We eliminate &quot;soft&quot; variables by enforcing rigid engineering protocols, ensuring our Liferay solutions effortlessly digest complexity to output predictable, frictionless experiences.
+              In an industrial environment, ambiguity is the primary vector for failure. We eliminate &quot;soft&quot; variables by enforcing rigid engineering protocols, ensuring our systems effortlessly digest complexity to output predictable, frictionless experiences.
             </p>
           </div>
           <div className="philosophy-image">
             <Image
               src="/liferay-summit-board.jpg"
-              alt="Liferay Architecture Planning"
+              alt="Enterprise Architecture Planning"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               style={{ objectFit: "cover" }}

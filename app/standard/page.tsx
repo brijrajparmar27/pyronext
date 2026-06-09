@@ -4,13 +4,13 @@ import ScrollReveal from "../components/ScrollReveal";
 export const metadata: Metadata = {
   title: "The Standard",
   description:
-    "Discover Pyronite's engineering standards for Liferay DXP. We enforce zero-downtime tolerance, OSGi modularization, headless API-first integration, and top-tier Liferay capability.",
+    "Discover Pyronite's engineering standards for enterprise Liferay & open-source systems. We enforce zero-downtime tolerance, modular architecture, headless API-first integration, and top-tier systems engineering.",
   keywords: [
     "Pyronite Standards",
     "Liferay DXP",
     "Headless Architecture",
-    "OSGi Modularization",
-    "API-First Liferay",
+    "Modular Systems",
+    "API-First Integration",
     "Enterprise Portals",
     "Zero-Downtime Tolerant Infrastructure",
   ],
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/standard",
-    title: "The Standard | Pyronite",
+    title: "The Standard | Pyronite Tech",
     description:
-      "Discover Pyronite's engineering standards and Liferay DXP expertise.",
+      "Discover Pyronite's engineering standards and enterprise Liferay & open-source expertise.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Standard | Pyronite",
-    description: "Discover Pyronite's engineering standards and Liferay DXP expertise.",
+    title: "The Standard | Pyronite Tech",
+    description: "Discover Pyronite's engineering standards and enterprise Liferay & open-source expertise.",
   },
 };
 
@@ -55,7 +55,7 @@ export default function StandardPage() {
           {[
             { icon: "emergency_home", title: "Zero-Downtime", desc: "Continuous availability protocols ensuring no disruption during operational cycles." },
             { icon: "grid_guides", title: "Strict Isolation", desc: "Hard-siloed architecture preventing cross-system contamination or failure propagation." },
-            { icon: "developer_board", title: "Liferay DXP Experts", desc: "Our bespoke engineering units are deeply specialized in building native Liferay ecosystems and low-latency OSGi abstractions." },
+            { icon: "developer_board", title: "System Architects", desc: "Our bespoke engineering units are deeply specialized in building native Liferay DXP platforms and integrating decoupled open-source systems." },
             { icon: "hub", title: "API-First", desc: "Headless-first methodology for seamless integration across the industrial stack." },
           ].map((card) => (
             <div key={card.title} className="card">

@@ -23,7 +23,7 @@ export default function Footer() {
               </div>
             </Link>
             <p style={{ textTransform: "none", marginTop: "1rem", lineHeight: "1.6" }}>
-              Specialized Liferay DXP & Portal Solutions driving enterprise digital transformation.
+              Architecting Enterprise Liferay & Open-Source Systems driving digital transformation.
             </p>
             <div style={{ marginTop: "2rem" }}>
               <h4>A Subsidiary Of</h4>

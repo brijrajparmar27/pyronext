@@ -23,18 +23,18 @@ const BASE_URL = "https://pyronite.in";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Pyronite | Specialized Liferay DXP & Portal Solutions",
-    template: "%s | Pyronite",
+    default: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
+    template: "%s | Pyronite Tech",
   },
   description:
-    "Sculpt your digital ecosystem natively with Pyronite's specialized Liferay DXP engineers. We deliver state-of-the-art Liferay enterprise portals, headless architectures, and immutable scalable infrastructure.",
+    "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends. We forge complex enterprise portals and scalable web infrastructure from the ground up.",
   keywords: [
-    "Pyronite",
+    "Pyronite Tech",
     "Liferay DXP",
-    "Liferay Experts",
     "Enterprise Portals",
     "Headless Liferay",
-    "Liferay Consulting",
+    "Open-Source Systems",
+    "Microservices Integration",
     "Digital Business Platforms",
     "Digital Ecosystem",
     "Web Engineering",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
     siteName: "Pyronite",
     locale: "en_US",
     url: BASE_URL,
-    title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+    title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
-      "Sculpt your digital ecosystem natively with specialized Liferay DXP engineers.",
+      "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
     images: [
       {
         url: "/logo.png",
@@ -73,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pyronite | Specialized Liferay DXP & Portal Solutions",
+    title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
-      "Sculpt your digital ecosystem natively with specialized Liferay DXP engineers.",
+      "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
     images: ["/logo.png"],
     creator: "@pyronite",
   },

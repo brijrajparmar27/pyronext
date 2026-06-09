@@ -3,21 +3,12 @@
 import { useState } from "react";
 
 const capabilities = [
-  { icon: "fact_check", label: "Platform Selection", desc: "Evaluate whether Liferay is the right platform to meet your requirements." },
-  { icon: "devices", label: "Omni channel", desc: "Deliver seamless, consistent experiences across web, mobile, and digital platforms." },
-  { icon: "update", label: "Platform upgrades", desc: "Upgrade to the newest Liferay DXP version for improved performance, stability, and long term security." },
-  { icon: "edit_document", label: "CMS", desc: "Empower teams with flexible, intuitive Liferay CMS capabilities for efficient, effortless content management." },
-  { icon: "person_search", label: "Personalization", desc: "Deliver tailored, context aware Liferay experiences driven by user behaviour, platform intelligence, and insight." },
-  { icon: "search", label: "Search", desc: "Enhance content discovery and user experience with advanced Liferay search and indexing." },
-  { icon: "shopping_cart", label: "Commerce", desc: "Build seamless, integrated Liferay Commerce experiences that elevate digital shopping and purchasing journeys." },
-  { icon: "perm_media", label: "DAM", desc: "Manage and distribute digital assets efficiently with Liferay DAM tools and features." },
-  { icon: "account_tree", label: "Workflow Automation", desc: "Automate processes, strengthen governance, and enhance efficiency using Liferay's powerful and enterprise grade workflow capabilities." },
-  { icon: "domain", label: "Multisite Management", desc: "Manage multiple sites effortlessly through Liferay's centralised, streamlined platform controls for enterprises." },
-  { icon: "hub", label: "Integrations", desc: "Connect enterprise systems and tools seamlessly with Liferay DXP integration capabilities." },
-  { icon: "api", label: "Headless Architecture", desc: "Deliver flexible, API driven experiences through Liferay's modern, scalable headless architecture." },
-  { icon: "code_blocks", label: "Lowcode", desc: "Build faster using Liferay's object based low code features and streamlined workflow automation tools." },
-  { icon: "security", label: "Security & Governance", desc: "Ensure robust security, compliance, and governance through Liferay's enterprise grade capabilities." },
-  { icon: "psychology", label: "Artificial Intelligence", desc: "Leverage Liferay's AI capabilities to deliver smarter, adaptive, and insight driven digital experiences." },
+  { icon: "domain", label: "Liferay DXP & Enterprise Portals", desc: "Orchestrate unified, multi-tenant digital experience platforms and enterprise portals with scalable content delivery systems and role-based access." },
+  { icon: "hub", label: "Open-Source Microservices & API Integration", desc: "Establish resilient communication pathways across distributed services using decoupled, high-performance API gateways, REST, and GraphQL schemas." },
+  { icon: "devices", label: "Headless Web & Frontend Modernization (React/Next.js)", desc: "Build modern, decoupled storefronts and web applications using React and Next.js integrated seamlessly with core backend systems." },
+  { icon: "dns", label: "Cloud-Native Deployments & Immutable Infrastructure", desc: "Deploy highly available platforms leveraging container orchestration, GitOps workflows, and automated, infrastructure-as-code configuration." },
+  { icon: "security", label: "Identity Management, Security & Governance", desc: "Enforce zero-trust architectures, single sign-on (SSO), comprehensive role-based access controls (RBAC), and robust regulatory compliance." },
+  { icon: "psychology", label: "Intelligent Automation & AI Workflows", desc: "Embed machine learning models, search vectors, and automated processing agents directly into business applications to drive operational efficiency." },
 ];
 
 export default function CapabilitiesSection() {
