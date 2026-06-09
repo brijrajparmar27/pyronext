@@ -44,6 +44,98 @@ const partners = [
 export default function Home() {
   return (
     <>
+      <style>{`
+        /* Workflow Section */
+        .workflow-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+        .workflow-card {
+          background: var(--bg-surface);
+          border: 1px solid var(--border-light);
+          padding: 3rem 2.5rem;
+          transition: all 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .workflow-card:hover {
+          border-color: var(--primary);
+          background: rgba(236, 91, 19, 0.02);
+        }
+        .workflow-step-num {
+          font-family: var(--font-mono);
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--primary);
+          line-height: 1;
+        }
+        .workflow-step-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #fff;
+        }
+        .workflow-step-desc {
+          font-size: 0.95rem;
+          color: var(--text-muted);
+          line-height: 1.6;
+        }
+
+        /* Engagement Grid */
+        .engagement-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+        .engagement-card {
+          background: var(--bg-surface);
+          border: 1px solid var(--border-light);
+          padding: 4rem 3rem;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .engagement-card:hover {
+          border-color: var(--primary);
+          box-shadow: 0 0 15px rgba(236, 91, 19, 0.15);
+          background: rgba(236, 91, 19, 0.02);
+        }
+        .engagement-icon {
+          font-size: 2.5rem;
+          color: var(--primary);
+          opacity: 0.8;
+        }
+        .engagement-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #fff;
+        }
+        .engagement-desc {
+          font-size: 0.95rem;
+          color: var(--text-muted);
+          line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+          .engagement-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+        }
+        @media (max-width: 768px) {
+          .workflow-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          .engagement-card {
+            padding: 2.5rem 2rem;
+          }
+        }
+      `}</style>
       <ScrollReveal />
 
       {/* Hero Section */}
@@ -61,6 +153,21 @@ export default function Home() {
               Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends. We forge complex enterprise portals and scalable web infrastructure from the ground up.
             </p>
             <span className="meta">Enterprise Liferay &amp; Open-Source Architecture</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Footprint Context */}
+      <section className="section border-top" style={{ paddingBottom: "2rem", paddingTop: "6rem" }}>
+        <div className="container reveal">
+          <div style={{ maxWidth: "800px" }}>
+            <span className="label">// REGULATED INDUSTRIES</span>
+            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "1.5rem" }}>
+              Enterprise Footprint Across Regulated Industries
+            </h2>
+            <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.8 }}>
+              We engineer resilient solutions, scalable web portals, and secure architectures for Global Logistics, Gov-Tech Platforms, and High-Throughput E-Commerce ecosystems across APAC and EMEA regions.
+            </p>
           </div>
         </div>
       </section>
@@ -114,11 +221,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Modernization Workflow Section */}
+      <section className="section border-top">
+        <div className="container reveal">
+          <div className="section-header">
+            <span className="label">02 / The Modernization Workflow</span>
+            <div className="line"></div>
+          </div>
+          
+          <div className="workflow-grid">
+            {[
+              {
+                step: "01",
+                title: "Assess & Decouple",
+                desc: "Comprehensive code audits of legacy enterprise frameworks to isolate architectural bottlenecks.",
+              },
+              {
+                step: "02",
+                title: "Microservices Split",
+                desc: "Migrating heavy monolith structures into decoupled, secure, and production-ready API nodes.",
+              },
+              {
+                step: "03",
+                title: "Headless Acceleration",
+                desc: "Deploying globally distributed Next.js and React frontends optimized for maximum Core Web Vitals and instant indexing.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="workflow-card">
+                <div className="workflow-step-num">{item.step}</div>
+                <h3 className="workflow-step-title">{item.title}</h3>
+                <p className="workflow-step-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Proven Implementations Section */}
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">02 / Proven Implementations</span>
+            <span className="label">03 / Proven Implementations</span>
             <div className="line"></div>
           </div>
           <div className="projects">
@@ -173,7 +316,7 @@ export default function Home() {
         <div className="container reveal">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "4rem", alignItems: "start" }}>
             <div>
-              <span className="label">03 / Growth Metrics</span>
+              <span className="label">04 / Growth Metrics</span>
               <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginTop: "1rem", marginBottom: "2rem" }}>
                 Empowering Enterprises,<br /><span style={{ color: "var(--primary)" }}>Engineered on Enterprise Standards</span>
               </h2>
@@ -204,7 +347,7 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">04 / Core Capabilities</span>
+            <span className="label">05 / Core Capabilities</span>
             <div className="line"></div>
           </div>
           <div style={{ marginBottom: "4rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "2rem" }}>
@@ -223,7 +366,7 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">05 / Tech Spectrum</span>
+            <span className="label">06 / Tech Spectrum</span>
             <div className="line"></div>
           </div>
           <div style={{ marginBottom: "4rem" }}>
@@ -232,6 +375,50 @@ export default function Home() {
             </h2>
           </div>
           <TechSpectrum />
+        </div>
+      </section>
+
+      {/* Engagement Models Section */}
+      <section className="section border-top">
+        <div className="container reveal">
+          <div className="section-header">
+            <span className="label">07 / Engagement Models</span>
+            <div className="line"></div>
+          </div>
+          
+          <div style={{ marginBottom: "4rem" }}>
+            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, margin: 0 }}>
+              Flexible Outcome-Driven <br /><span style={{ color: "var(--primary)" }}>Alignment Models</span>
+            </h2>
+            <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginTop: "1.5rem", maxWidth: "600px", fontWeight: 300 }}>
+              Flexible, outcome-driven alignment tailored to enterprise project timelines and scaling requirements.
+            </p>
+          </div>
+
+          <div className="engagement-grid">
+            {[
+              {
+                title: "Staff Augmentation",
+                desc: "Instantly plug pre-vetted, senior-level Liferay, Java Microservices, and React engineers directly into your internal delivery team to accelerate sprints.",
+              },
+              {
+                title: "Dedicated Engineering Squads",
+                desc: "A fully autonomous, cross-functional team of technical architects, lead developers, and QA engineers managed entirely by Pyronite to deliver end-to-end products.",
+              },
+              {
+                title: "Fixed-Scope Modernization",
+                desc: "Perfect for defined milestone execution, milestone upgrades, headless migrations, and architectural transformations with guaranteed delivery timelines.",
+              },
+            ].map((model) => (
+              <div key={model.title} className="engagement-card">
+                <span className="material-symbols-outlined engagement-icon">
+                  handshake
+                </span>
+                <h3 className="engagement-title">{model.title}</h3>
+                <p className="engagement-desc">{model.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
