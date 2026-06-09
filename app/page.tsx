@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "./components/ScrollReveal";
 import CapabilitiesSection from "./components/CapabilitiesSection";
+import TechSpectrum from "./components/TechSpectrum";
 
 export const metadata: Metadata = {
   title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
@@ -106,7 +107,7 @@ export default function Home() {
                   alt="Liferay Digital Experience Platform"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  style={{ objectFit: "cover", filter: "grayscale(1) contrast(1.2) brightness(0.6)", transition: "0.5s" }}
+                  style={{ objectFit: "cover" }}
                 />
             </div>
           </div>
@@ -215,6 +216,22 @@ export default function Home() {
             </p>
           </div>
           <CapabilitiesSection />
+        </div>
+      </section>
+
+      {/* Tech Spectrum Section */}
+      <section className="section border-top">
+        <div className="container reveal">
+          <div className="section-header">
+            <span className="label">05 / Tech Spectrum</span>
+            <div className="line"></div>
+          </div>
+          <div style={{ marginBottom: "4rem" }}>
+            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
+              Enterprise Integration &amp; <br /><span style={{ color: "var(--primary)" }}>Modern Infrastructure</span>
+            </h2>
+          </div>
+          <TechSpectrum />
         </div>
       </section>
 
