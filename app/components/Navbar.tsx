@@ -11,7 +11,7 @@ const navLinks = [
   { href: "/standard", label: "Standard" },
   { href: "/philosophy", label: "Philosophy" },
   { href: "/blogs", label: "Blogs" },
-  { href: "/hire-liferay-developers", label: "Hire Developers" },
+  { href: "/hire-liferay-developers", label: "Build Your Team" },
   { href: "/connect", label: "Connect" },
 ];
 

@@ -63,7 +63,7 @@ export default function Footer() {
                 <Link href="/blogs" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Blogs</Link>
               </li>
               <li>
-                <Link href="/hire-liferay-developers" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Hire Developers</Link>
+                <Link href="/hire-liferay-developers" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Build Your Team</Link>
               </li>
               <li>
                 <Link href="/connect" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Connect</Link>
