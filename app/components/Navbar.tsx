@@ -3,24 +3,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
 import { useState } from "react";
+import { services } from "../data/services";
 
 const navLinks = [
   { href: "/", label: "Intro" },
   { href: "/standard", label: "Standard" },
   { href: "/philosophy", label: "Philosophy" },
-  { href: "/connect", label: "Connect" },
   { href: "/blogs", label: "Blogs" },
+  { href: "/connect", label: "Connect" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   return (
     <nav className={`navbar ${isOpen ? "is-open" : ""}`}>
-      <Link href="/" className="brand">
+      <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
         <Image
           src="/logo.png"
           alt="Pyronite Logo"
@@ -34,19 +35,42 @@ export default function Navbar() {
       </Link>
 
       <div className="nav-links">
-        {navLinks.map((link) => (
+        {/* Intro */}
+        <Link href="/" className={pathname === "/" ? "active" : ""}>
+          Intro
+        </Link>
+
+        {/* Services Dropdown */}
+        <div className="nav-item-dropdown">
+          <span className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}>
+            Services
+            <span className="material-symbols-outlined dropdown-arrow">keyboard_arrow_down</span>
+          </span>
+          <div className="dropdown-menu">
+            <div className="dropdown-grid">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className={`dropdown-item ${pathname === `/services/${service.slug}` ? "active" : ""}`}
+                >
+                  <span className="material-symbols-outlined item-icon">{service.icon}</span>
+                  <div className="item-details">
+                    <span className="item-title">{service.title}</span>
+                    <span className="item-desc">{service.shortDescription}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Standard, Philosophy, Blogs, Connect */}
+        {navLinks.slice(1).map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={
-              link.href === "/"
-                ? pathname === "/"
-                  ? "active"
-                  : ""
-                : pathname.startsWith(link.href)
-                ? "active"
-                : ""
-            }
+            className={pathname.startsWith(link.href) ? "active" : ""}
           >
             {link.label}
           </Link>
@@ -62,20 +86,52 @@ export default function Navbar() {
           <span className="material-symbols-outlined">close</span>
         </button>
         <div className="mobile-nav" onClick={(e) => e.stopPropagation()}>
-          {navLinks.map((link) => (
+          {/* Mobile Intro */}
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            className={pathname === "/" ? "active" : ""}
+          >
+            <span className="label">[INTRO]</span>
+            Intro
+          </Link>
+
+          {/* Mobile Services Collapsible */}
+          <div className="mobile-services-collapsible">
+            <button
+              className={`mobile-services-trigger ${pathname.startsWith("/services") ? "active" : ""}`}
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+            >
+              <span className="label">[SERVICES]</span>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+                <span>Services</span>
+                <span className={`material-symbols-outlined mobile-arrow ${mobileServicesOpen ? "rotated" : ""}`}>
+                  keyboard_arrow_down
+                </span>
+              </div>
+            </button>
+            <div className={`mobile-services-list ${mobileServicesOpen ? "expanded" : ""}`}>
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  onClick={() => setIsOpen(false)}
+                  className={`mobile-service-link ${pathname === `/services/${service.slug}` ? "active" : ""}`}
+                >
+                  <span className="material-symbols-outlined mobile-item-icon">{service.icon}</span>
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Standard, Philosophy, Blogs, Connect */}
+          {navLinks.slice(1).map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={
-                link.href === "/"
-                  ? pathname === "/"
-                    ? "active"
-                    : ""
-                  : pathname.startsWith(link.href)
-                  ? "active"
-                  : ""
-              }
+              className={pathname.startsWith(link.href) ? "active" : ""}
             >
               <span className="label">[{link.label.toUpperCase()}]</span>
               {link.label}
@@ -86,3 +142,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

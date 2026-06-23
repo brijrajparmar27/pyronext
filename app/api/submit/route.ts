@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const { Name, Email, Message } = await request.json();
+    const { Name, Email, Message, Company, Phone } = await request.json();
 
-    if (!Name || !Email || !Message) {
+    if (!Name || !Email || !Message || !Company || !Phone) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -19,6 +19,8 @@ export async function POST(request: NextRequest) {
     formData.append("Name", Name);
     formData.append("Email", Email);
     formData.append("Message", Message);
+    formData.append("Company", Company);
+    formData.append("Phone", Phone);
 
     // Forward request to Google Apps Script
     const response = await fetch(scriptURL, {

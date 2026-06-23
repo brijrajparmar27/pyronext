@@ -14,7 +14,9 @@ export default function ConnectClient() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const Name = formData.get("Name") as string;
+    const Company = formData.get("Company") as string;
     const Email = formData.get("Email") as string;
+    const Phone = formData.get("Phone") as string;
     const Message = formData.get("Message") as string;
 
     try {
@@ -23,7 +25,7 @@ export default function ConnectClient() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ Name, Email, Message }),
+        body: JSON.stringify({ Name, Company, Email, Phone, Message }),
       });
 
       if (response.ok) {
@@ -119,10 +121,16 @@ export default function ConnectClient() {
             )}
             <form id="contactForm" onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text" name="Name" className="form-control" placeholder="ENTITY_NAME" required />
+                <input type="text" name="Name" className="form-control" placeholder="NAME" required />
               </div>
               <div className="form-group">
-                <input type="email" name="Email" className="form-control" placeholder="COMMUNICATION_ENDPOINT" required />
+                <input type="text" name="Company" className="form-control" placeholder="COMPANY / ORGANIZATION" required />
+              </div>
+              <div className="form-group">
+                <input type="email" name="Email" className="form-control" placeholder="EMAIL" required />
+              </div>
+              <div className="form-group">
+                <input type="tel" name="Phone" className="form-control" placeholder="PHONE NUMBER" required />
               </div>
               <div className="form-group">
                 <textarea name="Message" className="form-control" placeholder="SYSTEM_SPECIFICATIONS / REQUIREMENTS" required></textarea>

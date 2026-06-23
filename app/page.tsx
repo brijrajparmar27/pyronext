@@ -49,12 +49,12 @@ export default function Home() {
         .workflow-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
+          gap: 1.5rem;
         }
         .workflow-card {
           background: var(--bg-surface);
           border: 1px solid var(--border-light);
-          padding: 3rem 2.5rem;
+          padding: 2rem 1.75rem;
           transition: all 0.3s ease;
           display: flex;
           flex-direction: column;
@@ -87,12 +87,12 @@ export default function Home() {
         .engagement-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
+          gap: 1.5rem;
         }
         .engagement-card {
           background: var(--bg-surface);
           border: 1px solid var(--border-light);
-          padding: 4rem 3rem;
+          padding: 2.5rem 2rem;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;
           flex-direction: column;
@@ -158,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* Industry Footprint Context */}
-      <section className="section border-top" style={{ paddingBottom: "2rem", paddingTop: "6rem" }}>
+      <section className="section border-top" style={{ paddingBottom: "2rem", paddingTop: "3.5rem" }}>
         <div className="container reveal">
           <div style={{ maxWidth: "800px" }}>
             <span className="label">// REGULATED INDUSTRIES</span>
@@ -324,7 +324,7 @@ export default function Home() {
                 We deliver robust, high-performance digital solutions using best practices that combine secure core infrastructure with modular open-source architectures to maximize value.
               </p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "3rem 2rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem 1.5rem" }}>
               {[
                 { stat: "100+", title: "Delivered Solutions", desc: "Successfully delivered enterprise grade Liferay solutions across industries." },
                 { stat: "30+", title: "Experts Onboard", desc: "Certified Liferay experts ensuring secure, scalable, and standards aligned delivery." },
@@ -350,7 +350,7 @@ export default function Home() {
             <span className="label">05 / Core Capabilities</span>
             <div className="line"></div>
           </div>
-          <div style={{ marginBottom: "4rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "2rem" }}>
+          <div style={{ marginBottom: "2.5rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "1.5rem" }}>
             <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
               Core Technical <br /><span style={{ color: "var(--primary)" }}>Capabilities</span>
             </h2>
@@ -369,7 +369,7 @@ export default function Home() {
             <span className="label">06 / Tech Spectrum</span>
             <div className="line"></div>
           </div>
-          <div style={{ marginBottom: "4rem" }}>
+          <div style={{ marginBottom: "2.5rem" }}>
             <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
               Enterprise Integration &amp; <br /><span style={{ color: "var(--primary)" }}>Modern Infrastructure</span>
             </h2>
@@ -386,7 +386,7 @@ export default function Home() {
             <div className="line"></div>
           </div>
           
-          <div style={{ marginBottom: "4rem" }}>
+          <div style={{ marginBottom: "2.5rem" }}>
             <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, margin: 0 }}>
               Flexible Outcome-Driven <br /><span style={{ color: "var(--primary)" }}>Alignment Models</span>
             </h2>
