@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import TopStrip from "./components/TopStrip";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -99,11 +98,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <TopStrip />
         <Navbar />
         <main
           style={{
-            paddingTop: "calc(var(--nav-height) + 36px)",
+            paddingTop: "var(--nav-height)",
             minHeight: "100vh",
             display: "flex",
             flexDirection: "column",
