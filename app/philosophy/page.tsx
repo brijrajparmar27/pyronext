@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "../components/ScrollReveal";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Philosophy",
@@ -111,12 +112,18 @@ export default function PhilosophyPage() {
               Efficiency Metrics
             </h3>
             {[
-              { val: "Best In Class", label: "Latency Tolerance" },
-              { val: "100%", label: "Logic Justification" },
-              { val: "∞", label: "Iterative Refinement" },
+              { val: "Best In Class", isNumeric: false, label: "Latency Tolerance" },
+              { val: 100, suffix: "%", isNumeric: true, label: "Logic Justification" },
+              { val: "∞", isNumeric: false, label: "Iterative Refinement" },
             ].map((m) => (
               <div key={m.label} style={{ marginBottom: "2.5rem" }}>
-                <div style={{ fontFamily: "var(--font-mono)", fontSize: "2rem", color: "var(--primary)", lineHeight: 1 }}>{m.val}</div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "2rem", color: "var(--primary)", lineHeight: 1 }}>
+                  {m.isNumeric ? (
+                    <AnimatedCounter target={m.val as number} suffix={m.suffix} />
+                  ) : (
+                    m.val
+                  )}
+                </div>
                 <div style={{ textTransform: "uppercase", fontWeight: 700, fontSize: "0.9rem", marginTop: "0.5rem", color: "var(--text-muted)" }}>{m.label}</div>
               </div>
             ))}

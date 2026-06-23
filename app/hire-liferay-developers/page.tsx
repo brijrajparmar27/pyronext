@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Hire Liferay Developers | Certified DXP Engineers",
@@ -152,9 +153,9 @@ export default function HireDevelopersPage() {
           }}
         >
           {[
-            { stat: "15+ Years", label: "Liferay Architecture Combined" },
-            { stat: "100%", label: "Strict OSGi & Standards Compliance" },
-            { stat: "48 Hours", label: "Developer Matching & Onboarding SLA" },
+            { val: 15, suffix: "+ Years", label: "Liferay Architecture Combined" },
+            { val: 100, suffix: "%", label: "Strict OSGi & Standards Compliance" },
+            { val: 48, suffix: " Hours", label: "Developer Matching & Onboarding SLA" },
           ].map((m, i) => (
             <div
               key={i}
@@ -175,7 +176,7 @@ export default function HireDevelopersPage() {
                   marginBottom: "0.5rem",
                 }}
               >
-                {m.stat}
+                <AnimatedCounter target={m.val} suffix={m.suffix} />
               </div>
               <div
                 style={{

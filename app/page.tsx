@@ -4,6 +4,9 @@ import Link from "next/link";
 import ScrollReveal from "./components/ScrollReveal";
 import CapabilitiesSection from "./components/CapabilitiesSection";
 import TechSpectrum from "./components/TechSpectrum";
+import AnimatedCounter from "./components/AnimatedCounter";
+import ServicesCarousel from "./components/ServicesCarousel";
+import { services } from "./data/services";
 
 export const metadata: Metadata = {
   title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
@@ -221,11 +224,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services Showcase Section */}
+      <section className="section border-top">
+        <div className="container reveal">
+          <div className="section-header" style={{ justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1.5rem" }}>
+            <div>
+              <span className="label">02 / Technical Services</span>
+              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, margin: 0 }}>
+                Innovative Services <br />for Your <span style={{ color: "var(--primary)" }}>Enterprise</span>
+              </h2>
+            </div>
+            <div>
+              <Link href="/services" className="btn btn-outline" style={{ padding: "0.8rem 2rem", fontSize: "0.8rem" }}>
+                View All Services
+              </Link>
+            </div>
+          </div>
+          <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", maxWidth: "800px", marginBottom: "3rem", fontWeight: 300, lineHeight: 1.7 }}>
+            Unlock the full potential of your business with our comprehensive range of expert services. We engineer next-generation platforms tailored for high scalability, robustness, and security.
+          </p>
+
+          <ServicesCarousel services={services} />
+        </div>
+      </section>
+
       {/* Modernization Workflow Section */}
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">02 / The Modernization Workflow</span>
+            <span className="label">03 / The Modernization Workflow</span>
             <div className="line"></div>
           </div>
           
@@ -261,7 +288,7 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">03 / Proven Implementations</span>
+            <span className="label">04 / Proven Implementations</span>
             <div className="line"></div>
           </div>
           <div className="projects">
@@ -316,26 +343,28 @@ export default function Home() {
         <div className="container reveal">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "4rem", alignItems: "start" }}>
             <div>
-              <span className="label">04 / Growth Metrics</span>
-              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginTop: "1rem", marginBottom: "2rem" }}>
+              <span className="label">05 / Growth Metrics</span>
+              <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.6rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginTop: "1rem", marginBottom: "2rem" }}>
                 Empowering Enterprises,<br /><span style={{ color: "var(--primary)" }}>Engineered on Enterprise Standards</span>
               </h2>
-              <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: 500 }}>
+              <p style={{ color: "var(--text-muted)", fontSize: "1rem", lineHeight: 1.8, maxWidth: 500 }}>
                 We deliver robust, high-performance digital solutions using best practices that combine secure core infrastructure with modular open-source architectures to maximize value.
               </p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem 1.5rem" }}>
               {[
-                { stat: "100+", title: "Delivered Solutions", desc: "Successfully delivered enterprise grade Liferay solutions across industries." },
-                { stat: "30+", title: "Experts Onboard", desc: "Certified Liferay experts ensuring secure, scalable, and standards aligned delivery." },
-                { stat: "98%", title: "Client Satisfaction", desc: "Earned through transparent collaboration and consistent Liferay delivery excellence." },
-                { stat: "10+", title: "Years of Excellence", desc: "Over a decade delivering enterprise grade, future ready Liferay digital platforms." },
+                { val: 100, suffix: "+", title: "Delivered Solutions", desc: "Successfully delivered enterprise grade Liferay solutions across industries." },
+                { val: 30, suffix: "+", title: "Experts Onboard", desc: "Certified Liferay experts ensuring secure, scalable, and standards aligned delivery." },
+                { val: 98, suffix: "%", title: "Client Satisfaction", desc: "Earned through transparent collaboration and consistent Liferay delivery excellence." },
+                { val: 10, suffix: "+", title: "Years of Excellence", desc: "Over a decade delivering enterprise grade, future ready Liferay digital platforms." },
               ].map((item) => (
                 <div key={item.title}>
-                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "4rem", color: "#fff", lineHeight: 1, marginBottom: "1rem", fontWeight: 700 }}>{item.stat}</div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "3.25rem", color: "#fff", lineHeight: 1, marginBottom: "1rem", fontWeight: 700 }}>
+                    <AnimatedCounter target={item.val} suffix={item.suffix} />
+                  </div>
                   <div style={{ height: 1, width: "100%", background: "var(--border-light)", marginBottom: "1.5rem" }}></div>
-                  <h4 style={{ fontSize: "1.1rem", fontWeight: 700, textTransform: "uppercase", marginBottom: "0.5rem", color: "var(--primary)" }}>{item.title}</h4>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>{item.desc}</p>
+                  <h4 style={{ fontSize: "1rem", fontWeight: 700, textTransform: "uppercase", marginBottom: "0.5rem", color: "var(--primary)" }}>{item.title}</h4>
+                  <p style={{ fontSize: "0.85rem", color: "var(--text-muted)" }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -347,7 +376,7 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">05 / Core Capabilities</span>
+            <span className="label">06 / Core Capabilities</span>
             <div className="line"></div>
           </div>
           <div style={{ marginBottom: "2.5rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "1.5rem" }}>
@@ -366,7 +395,7 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">06 / Tech Spectrum</span>
+            <span className="label">07 / Tech Spectrum</span>
             <div className="line"></div>
           </div>
           <div style={{ marginBottom: "2.5rem" }}>
@@ -382,7 +411,7 @@ export default function Home() {
       <section className="section border-top">
         <div className="container reveal">
           <div className="section-header">
-            <span className="label">07 / Engagement Models</span>
+            <span className="label">08 / Engagement Models</span>
             <div className="line"></div>
           </div>
           

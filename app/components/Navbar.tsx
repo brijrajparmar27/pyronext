@@ -43,10 +43,10 @@ export default function Navbar() {
 
         {/* Services Dropdown */}
         <div className="nav-item-dropdown">
-          <span className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}>
+          <Link href="/services" className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}>
             Services
             <span className="material-symbols-outlined dropdown-arrow">keyboard_arrow_down</span>
-          </span>
+          </Link>
           <div className="dropdown-menu">
             <div className="dropdown-grid">
               {services.map((service) => (
@@ -112,6 +112,16 @@ export default function Navbar() {
               </div>
             </button>
             <div className={`mobile-services-list ${mobileServicesOpen ? "expanded" : ""}`}>
+              <Link
+                href="/services"
+                onClick={() => setIsOpen(false)}
+                className={`mobile-service-link ${pathname === "/services" ? "active" : ""}`}
+                style={{ fontWeight: 700, color: "var(--primary)" }}
+              >
+                <span className="material-symbols-outlined mobile-item-icon">apps</span>
+                View All Services
+              </Link>
+              <div style={{ height: "1px", background: "var(--border-light)", margin: "0.25rem 0" }} />
               {services.map((service) => (
                 <Link
                   key={service.slug}

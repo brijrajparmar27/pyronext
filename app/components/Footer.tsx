@@ -54,6 +54,9 @@ export default function Footer() {
                 <Link href="/" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Intro</Link>
               </li>
               <li>
+                <Link href="/services" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Services</Link>
+              </li>
+              <li>
                 <Link href="/standard" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Standard</Link>
               </li>
               <li>
