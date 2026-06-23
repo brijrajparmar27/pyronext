@@ -33,10 +33,11 @@ export default function StandardPage() {
   return (
     <>
       <ScrollReveal />
-      <section className="section container reveal" style={{ paddingTop: "6rem" }}>
-        {/* Hero Title */}
+      <section className="section reveal" style={{ paddingTop: "6rem" }}>
+        <div className="container">
+          {/* Hero Title */}
         <div style={{ borderLeft: "8px solid var(--primary)", paddingLeft: "2rem", marginBottom: "5rem" }}>
-          <h1 style={{ fontSize: "clamp(3rem, 7vw, 6rem)", fontWeight: 700, lineHeight: 0.9, textTransform: "uppercase" }}>
+          <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4.2rem)", fontWeight: 700, lineHeight: 0.9, textTransform: "uppercase" }}>
             OUR ENGINEERING
           </h1>
           <p style={{ color: "var(--primary)", fontFamily: "var(--font-mono)", fontSize: "0.9rem", marginTop: "2rem", letterSpacing: 2 }}>
@@ -140,6 +141,7 @@ export default function StandardPage() {
               {"}"}
             </pre>
           </div>
+        </div>
         </div>
       </section>
     </>

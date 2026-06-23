@@ -35,13 +35,14 @@ export default function PhilosophyPage() {
   return (
     <>
       <ScrollReveal />
-      <main className="container section reveal" style={{ paddingTop: "6rem" }}>
-        {/* Hero Header */}
+      <main className="section reveal" style={{ paddingTop: "6rem" }}>
+        <div className="container">
+          {/* Hero Header */}
         <div style={{ marginBottom: "6rem" }}>
           <span className="label" style={{ display: "block", marginBottom: "1rem" }}>LOG_FILE: 003_ARCH</span>
           <h1
             style={{
-              fontSize: "clamp(3rem, 7vw, 6rem)",
+              fontSize: "clamp(2.5rem, 5vw, 4.2rem)",
               fontWeight: 700,
               lineHeight: 0.9,
               textTransform: "uppercase",
@@ -120,6 +121,7 @@ export default function PhilosophyPage() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </main>
     </>
