@@ -139,7 +139,7 @@ export default function Home() {
       <ScrollReveal />
 
       {/* Hero Section */}
-      <section className="hero container reveal" style={{ paddingTop: 0, minHeight: "calc(100vh - 116px)" }}>
+      <section className="hero container reveal">
         <div className="hero-content">
           <div>
             <h1>

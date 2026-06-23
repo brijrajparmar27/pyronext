@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { services } from "../data/services";
 
 export default function Footer() {
   return (
@@ -16,6 +17,7 @@ export default function Footer() {
                   height={32} 
                   className="logo" 
                   style={{ objectFit: "contain" }} 
+                  priority
                 />
                 <span style={{ fontSize: "1.2rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px", color: "var(--text-primary)" }}>
                   PYRONITE
@@ -63,6 +65,29 @@ export default function Footer() {
               <li>
                 <Link href="/blogs" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Blogs</Link>
               </li>
+            </ul>
+          </div>
+
+          <div className="footer-col" style={{ display: 'flex', flexDirection: 'column' }}>
+            <h4>Services</h4>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", padding: 0 }}>
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.8rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px",
+                      transition: "color 0.3s"
+                    }}
+                    className="hover-text-primary"
+                  >
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
