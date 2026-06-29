@@ -9,7 +9,7 @@ export function Effects() {
       <Bloom 
         luminanceThreshold={0.2} 
         mipmapBlur 
-        intensity={1.5} 
+        intensity={0.5} 
       />
       <Noise 
         opacity={0.025} 

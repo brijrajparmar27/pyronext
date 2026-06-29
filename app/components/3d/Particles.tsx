@@ -55,9 +55,9 @@ export function Particles({ count = 2000 }) {
       <meshStandardMaterial 
         color="#ffffff" 
         emissive="#ec5b13" 
-        emissiveIntensity={1.5} 
+        emissiveIntensity={0.8} 
         transparent 
-        opacity={0.8} 
+        opacity={0.6} 
       />
     </instancedMesh>
   );

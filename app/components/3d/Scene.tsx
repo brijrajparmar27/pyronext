@@ -39,10 +39,10 @@ export function Scene() {
       <group ref={ringsGroup} position={[0, 0, -20]}>
         <Float speed={2} rotationIntensity={2} floatIntensity={2}>
           <Torus args={[4, 0.2, 16, 100]}>
-            <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={2} wireframe />
+            <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={1} wireframe />
           </Torus>
           <Torus args={[3, 0.1, 16, 100]} rotation={[Math.PI / 2, 0, 0]}>
-            <meshStandardMaterial color="#ec5b13" emissive="#ec5b13" emissiveIntensity={2} />
+            <meshStandardMaterial color="#ec5b13" emissive="#ec5b13" emissiveIntensity={1} />
           </Torus>
         </Float>
       </group>
