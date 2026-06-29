@@ -15,7 +15,7 @@ export default function CanvasContainer() {
         height: "100vh",
         zIndex: -1,
         pointerEvents: "none",
-        backgroundColor: "#050505", // Dark background for the space/AI theme
+        backgroundColor: "#050505",
       }}
     >
       <Canvas
