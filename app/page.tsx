@@ -56,6 +56,7 @@ export default function Home() {
         }
         .workflow-card {
           background: var(--bg-surface);
+          backdrop-filter: blur(10px);
           border: 1px solid var(--border-light);
           padding: 2rem 1.75rem;
           transition: all 0.3s ease;
@@ -94,6 +95,7 @@ export default function Home() {
         }
         .engagement-card {
           background: var(--bg-surface);
+          backdrop-filter: blur(10px);
           border: 1px solid var(--border-light);
           padding: 2.5rem 2rem;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);

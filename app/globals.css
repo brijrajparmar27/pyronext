@@ -3,10 +3,10 @@
 
 :root {
   --primary: #ec5b13;
-  --bg-base: #0a0a0a;
-  --bg-surface: #111111;
-  --bg-panel: #1a1a1a;
-  --border-light: #2a2a2a;
+  --bg-base: transparent;
+  --bg-surface: rgba(17, 17, 17, 0.5);
+  --bg-panel: rgba(26, 26, 26, 0.6);
+  --border-light: rgba(42, 42, 42, 0.5);
   --text-primary: #f5f5f5;
   --text-muted: #a1a1a1;
   --font-display: 'Space Grotesk', sans-serif;
@@ -20,15 +20,10 @@ html { overflow-x: hidden; width: 100%; }
 
 body {
   font-family: var(--font-display);
-  background-color: var(--bg-base);
+  background-color: transparent;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  background-image: 
-    linear-gradient(var(--border-light) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
-  background-size: 60px 60px;
-  background-position: center top;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s ease; }

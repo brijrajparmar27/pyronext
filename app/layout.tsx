@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CanvasContainer from "./components/3d/CanvasContainer";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -98,6 +99,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <CanvasContainer />
         <Navbar />
         <main
           style={{
@@ -105,6 +107,8 @@ export default function RootLayout({
             minHeight: "100vh",
             display: "flex",
             flexDirection: "column",
+            position: "relative",
+            zIndex: 1, // ensure DOM is above canvas
           }}
         >
           <div style={{ flexGrow: 1 }}>{children}</div>
