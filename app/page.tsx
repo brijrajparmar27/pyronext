@@ -356,7 +356,7 @@ export default function Home() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem 1.5rem" }}>
               {[
                 { val: 100, suffix: "+", title: "Delivered Solutions", desc: "Successfully delivered enterprise grade Liferay solutions across industries." },
-                { val: 30, suffix: "+", title: "Experts Onboard", desc: "Certified Liferay experts ensuring secure, scalable, and standards aligned delivery." },
+                { val: 100, suffix: "+", title: "Experts Onboard", desc: "Certified Liferay experts ensuring secure, scalable, and standards aligned delivery." },
                 { val: 98, suffix: "%", title: "Client Satisfaction", desc: "Earned through transparent collaboration and consistent Liferay delivery excellence." },
                 { val: 10, suffix: "+", title: "Years of Excellence", desc: "Over a decade delivering enterprise grade, future ready Liferay digital platforms." },
               ].map((item) => (
