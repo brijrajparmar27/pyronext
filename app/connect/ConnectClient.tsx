@@ -57,34 +57,34 @@ export default function ConnectClient() {
           </div>
 
           <div className="contact-container">
-            <div>
+            <div className="contact-title-block">
               <span className="label">// INITIALIZE CONNECTION</span>
               <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase", marginBottom: "2rem", lineHeight: 1.1 }}>
                 Initiate a deep-dive consultation to architect your enterprise Liferay &amp; open-source systems.
               </h1>
-              <p style={{ fontSize: "1.2rem", color: "var(--text-muted)", marginBottom: "3rem", fontWeight: 300 }}>
+              <p style={{ fontSize: "1.2rem", color: "var(--text-muted)", marginBottom: "1rem", fontWeight: 300 }}>
                 We work exclusively with organizations requiring high-availability enterprise infrastructure and zero-latency engineering methodologies.
               </p>
+            </div>
 
-              <div style={{ marginTop: "4rem", display: "grid", gap: "2rem", gridTemplateColumns: "1fr 1fr" }}>
-                <div>
-                  <span className="label" style={{ fontSize: "0.7rem" }}>Registry</span>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                    PYRONITE TECHNOLOGY<br />
-                    Sun Central Place, D-112<br />
-                    Bopal Cross Road, Bhagwatikrupa Society<br />
-                    Ahmedabad, Gujarat 380058<br />
-                    +91 820-0618261
-                  </p>
-                </div>
-                <div>
-                  <span className="label" style={{ fontSize: "0.7rem" }}>Availability</span>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                    MON — FRI<br />
-                    08:00 — 18:00 CET<br />
-                    SYSTEM STANDBY 24/7
-                  </p>
-                </div>
+            <div className="contact-meta-grid">
+              <div>
+                <span className="label" style={{ fontSize: "0.7rem" }}>Registry</span>
+                <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
+                  PYRONITE TECHNOLOGIES<br />
+                  Sun Central Place, D-112<br />
+                  Bopal Cross Road, Bhagwatikrupa Society<br />
+                  Ahmedabad, Gujarat 380058<br />
+                  +91 820-0618261
+                </p>
+              </div>
+              <div>
+                <span className="label" style={{ fontSize: "0.7rem" }}>Availability</span>
+                <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
+                  MON — FRI<br />
+                  08:00 — 18:00 CET<br />
+                  SYSTEM STANDBY 24/7
+                </p>
               </div>
             </div>
 

@@ -527,7 +527,14 @@ img {
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: 2.5rem;
+  align-items: start;
+}
+
+.contact-title-block {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .contact-info h2 {
@@ -544,30 +551,98 @@ img {
   font-weight: 300;
 }
 
+.contact-form {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  background: #111111; /* Solid dark background matching var(--bg-surface) to block the background canvas elements */
+  border: 1px solid var(--border-light);
+  padding: 3rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Cyber top highlight */
+.contact-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.contact-meta-grid {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 0;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
 .form-group {
   margin-bottom: 1.5rem;
 }
 
 .form-control {
   width: 100%;
-  background: transparent;
-  border: 1px solid var(--border-light);
+  background: #0a0a0a; /* Solid base background for high legibility */
+  border: 1px solid #333333; /* Distinct, visible border */
   color: var(--text-primary);
   padding: 1.2rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   outline: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   text-transform: uppercase;
+}
+
+.form-control:hover {
+  border-color: var(--primary);
+  background: #121212;
 }
 
 .form-control:focus {
   border-color: var(--primary);
+  background: #161616;
+  box-shadow: 0 0 15px rgba(236, 91, 19, 0.2);
 }
 
 textarea.form-control {
   resize: vertical;
   min-height: 150px;
+}
+
+/* Responsive Overrides for Contact Form */
+@media (max-width: 900px) {
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    align-items: stretch;
+  }
+  .contact-title-block {
+    order: 1;
+  }
+  .contact-form {
+    order: 2;
+    padding: 2.5rem 1.5rem;
+  }
+  .contact-meta-grid {
+    order: 3;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-meta-grid {
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+    gap: 1.5rem;
+  }
 }
 
 /* Code Block Styling */
