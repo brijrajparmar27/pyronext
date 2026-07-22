@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import blogsData from "./data/blogs.json";
 import type { BlogPost } from "./data/types";
+import { services } from "./data/services";
 
 const BASE_URL = "https://pyronite.in";
 const blogs = blogsData as BlogPost[];
@@ -24,6 +25,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/services`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/hire-liferay-developers`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/connect`,
@@ -52,5 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${BASE_URL}/services/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...serviceRoutes];
 }
