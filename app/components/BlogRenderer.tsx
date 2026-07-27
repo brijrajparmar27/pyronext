@@ -5,6 +5,14 @@ interface Props {
   blocks: ContentBlock[];
 }
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/[-\s]+/g, "-");
+}
+
 export default function BlogRenderer({ blocks }: Props) {
   return (
     <div className="blog-content">
@@ -20,7 +28,7 @@ export default function BlogRenderer({ blocks }: Props) {
 
           case "heading": {
             const Tag = `h${block.level}` as "h2" | "h3" | "h4";
-            return <Tag key={index}>{block.text}</Tag>;
+            return <Tag key={index} id={slugify(block.text)}>{block.text}</Tag>;
           }
 
           case "list":
@@ -63,6 +71,7 @@ export default function BlogRenderer({ blocks }: Props) {
                   height={600}
                   sizes="(max-width: 800px) 100vw, 1200px"
                   style={{ width: "100%", height: "auto", display: "block" }}
+                  unoptimized
                 />
                 <p
                   style={{
@@ -79,7 +88,12 @@ export default function BlogRenderer({ blocks }: Props) {
             );
 
           case "blockquote":
-            return <blockquote key={index}>{block.text}</blockquote>;
+            return (
+              <blockquote
+                key={index}
+                dangerouslySetInnerHTML={{ __html: block.text }}
+              />
+            );
           
           case "table":
             return (
@@ -88,7 +102,7 @@ export default function BlogRenderer({ blocks }: Props) {
                   <thead>
                     <tr>
                       {block.headers.map((header, i) => (
-                        <th key={i}>{header}</th>
+                        <th key={i} dangerouslySetInnerHTML={{ __html: header }} />
                       ))}
                     </tr>
                   </thead>
@@ -96,7 +110,7 @@ export default function BlogRenderer({ blocks }: Props) {
                     {block.rows.map((row, rowIndex) => (
                       <tr key={rowIndex}>
                         {row.map((cell, cellIndex) => (
-                          <td key={cellIndex}>{cell}</td>
+                          <td key={cellIndex} dangerouslySetInnerHTML={{ __html: cell }} />
                         ))}
                       </tr>
                     ))}

@@ -74,7 +74,7 @@ export default function BlogsPage() {
                 >
                   <div className="project-info">
                     <span className="label">{post.label}</span>
-                    <h3 style={{ margin: "1rem 0" }}>{post.title}</h3>
+                    <h3 style={{ margin: "1rem 0", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", lineHeight: 1.3 }}>{post.title}</h3>
                     <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
                       {post.excerpt}
                     </p>
