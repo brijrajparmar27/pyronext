@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CanvasContainer from "./components/3d/CanvasContainer";
 import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
+import ScheduleMeetingWidget from "./components/ScheduleMeetingWidget";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -100,6 +101,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleAnalyticsTracker />
+        <ScheduleMeetingWidget />
         <CanvasContainer />
         <Navbar />
         <main
