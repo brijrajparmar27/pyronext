@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import * as gtag from "../utils/gtag";
 
 export default function ConnectClient() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -31,13 +31,24 @@ export default function ConnectClient() {
       if (response.ok) {
         setStatus("sent");
         form.reset();
+        gtag.event("contact_form_submit", {
+          status: "success",
+        });
       } else {
         console.error("Submission failed");
         setStatus("error");
+        gtag.event("contact_form_submit", {
+          status: "error",
+          error_type: "server_response_error",
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus("error");
+      gtag.event("contact_form_submit", {
+        status: "error",
+        error_type: "network_exception",
+      });
     }
 
     setTimeout(() => setStatus("idle"), 7000);
@@ -58,7 +69,7 @@ export default function ConnectClient() {
 
           <div className="contact-container">
             <div className="contact-title-block">
-              <span className="label">// INITIALIZE CONNECTION</span>
+              <span className="label">{"// INITIALIZE CONNECTION"}</span>
               <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", textTransform: "uppercase", marginBottom: "2rem", lineHeight: 1.1 }}>
                 Initiate a deep-dive consultation to architect your enterprise Liferay &amp; open-source systems.
               </h1>

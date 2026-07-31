@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import ScrollReveal from "./components/ScrollReveal";
 import CapabilitiesSection from "./components/CapabilitiesSection";
 import TechSpectrum from "./components/TechSpectrum";
 import AnimatedCounter from "./components/AnimatedCounter";
 import ServicesCarousel from "./components/ServicesCarousel";
 import { services } from "./data/services";
+import TrackedLink from "./components/TrackedLink";
 
 export const metadata: Metadata = {
   title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
@@ -166,7 +166,7 @@ export default function Home() {
       <section className="section border-top" style={{ paddingBottom: "2rem", paddingTop: "3.5rem" }}>
         <div className="container reveal">
           <div style={{ maxWidth: "800px" }}>
-            <span className="label">// REGULATED INDUSTRIES</span>
+            <span className="label">{"// REGULATED INDUSTRIES"}</span>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "1.5rem" }}>
               Enterprise Footprint Across Regulated Industries
             </h2>
@@ -237,9 +237,9 @@ export default function Home() {
               </h2>
             </div>
             <div>
-              <Link href="/services" className="btn btn-outline" style={{ padding: "0.8rem 2rem", fontSize: "0.8rem" }}>
+              <TrackedLink href="/services" className="btn btn-outline" style={{ padding: "0.8rem 2rem", fontSize: "0.8rem" }} eventLabel="Homepage: View All Services">
                 View All Services
-              </Link>
+              </TrackedLink>
             </div>
           </div>
           <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", maxWidth: "800px", marginBottom: "3rem", fontWeight: 300, lineHeight: 1.7 }}>
@@ -458,8 +458,8 @@ export default function Home() {
         <div className="container reveal" style={{ textAlign: "center" }}>
           <h2 style={{ fontSize: "2.5rem", marginBottom: "2rem", textTransform: "uppercase" }}>Engineer Your Liferay Future</h2>
           <div style={{ display: "flex", gap: "2rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/standard" className="btn btn-outline">Our Engineering Standard</Link>
-            <Link href="/connect" className="btn">Initiate Build</Link>
+            <TrackedLink href="/standard" className="btn btn-outline" eventLabel="Homepage CTA: Our Engineering Standard">Our Engineering Standard</TrackedLink>
+            <TrackedLink href="/connect" className="btn" eventLabel="Homepage CTA: Initiate Build">Initiate Build</TrackedLink>
           </div>
         </div>
       </section>

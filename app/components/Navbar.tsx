@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { services } from "../data/services";
+import * as gtag from "../utils/gtag";
 
 const navLinks = [
   { href: "/", label: "Intro" },
@@ -20,9 +21,22 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
+  const handleToggle = () => {
+    const nextState = !isOpen;
+    setIsOpen(nextState);
+    gtag.event("mobile_menu_toggle", { state: nextState ? "open" : "close" });
+  };
+
   return (
     <nav className={`navbar ${isOpen ? "is-open" : ""}`}>
-      <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
+      <Link
+        href="/"
+        className="brand"
+        onClick={() => {
+          setIsOpen(false);
+          gtag.event("brand_click", { location: "navbar" });
+        }}
+      >
         <Image
           src="/logo.png"
           alt="Pyronite Logo"
@@ -37,13 +51,21 @@ export default function Navbar() {
 
       <div className="nav-links">
         {/* Intro */}
-        <Link href="/" className={pathname === "/" ? "active" : ""}>
+        <Link
+          href="/"
+          className={pathname === "/" ? "active" : ""}
+          onClick={() => gtag.event("nav_click", { label: "Intro", device: "desktop" })}
+        >
           Intro
         </Link>
 
         {/* Services Dropdown */}
         <div className="nav-item-dropdown">
-          <Link href="/services" className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}>
+          <Link
+            href="/services"
+            className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}
+            onClick={() => gtag.event("nav_click", { label: "Services Main", device: "desktop" })}
+          >
             Services
             <span className="material-symbols-outlined dropdown-arrow">keyboard_arrow_down</span>
           </Link>
@@ -54,6 +76,7 @@ export default function Navbar() {
                   key={service.slug}
                   href={`/services/${service.slug}`}
                   className={`dropdown-item ${pathname === `/services/${service.slug}` ? "active" : ""}`}
+                  onClick={() => gtag.event("nav_click", { label: `Service: ${service.title}`, device: "desktop" })}
                 >
                   <span className="material-symbols-outlined item-icon">{service.icon}</span>
                   <div className="item-details">
@@ -72,13 +95,14 @@ export default function Navbar() {
             key={link.href}
             href={link.href}
             className={pathname.startsWith(link.href) ? "active" : ""}
+            onClick={() => gtag.event("nav_click", { label: link.label, device: "desktop" })}
           >
             {link.label}
           </Link>
         ))}
       </div>
 
-      <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+      <button className="nav-toggle" onClick={handleToggle} aria-label="Toggle menu">
         <span className="material-symbols-outlined">{isOpen ? "close" : "menu"}</span>
       </button>
 
@@ -90,7 +114,10 @@ export default function Navbar() {
           {/* Mobile Intro */}
           <Link
             href="/"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              gtag.event("nav_click", { label: "Intro", device: "mobile" });
+            }}
             className={pathname === "/" ? "active" : ""}
           >
             <span className="label">[INTRO]</span>
@@ -114,7 +141,10 @@ export default function Navbar() {
             <div className={`mobile-services-list ${mobileServicesOpen ? "expanded" : ""}`}>
               <Link
                 href="/services"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  gtag.event("nav_click", { label: "Services Main", device: "mobile" });
+                }}
                 className={`mobile-service-link ${pathname === "/services" ? "active" : ""}`}
                 style={{ fontWeight: 700, color: "var(--primary)" }}
               >
@@ -126,7 +156,10 @@ export default function Navbar() {
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    gtag.event("nav_click", { label: `Service: ${service.title}`, device: "mobile" });
+                  }}
                   className={`mobile-service-link ${pathname === `/services/${service.slug}` ? "active" : ""}`}
                 >
                   <span className="material-symbols-outlined mobile-item-icon">{service.icon}</span>
@@ -141,7 +174,10 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                gtag.event("nav_click", { label: link.label, device: "mobile" });
+              }}
               className={pathname.startsWith(link.href) ? "active" : ""}
             >
               <span className="label">[{link.label.toUpperCase()}]</span>

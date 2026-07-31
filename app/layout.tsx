@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CanvasContainer from "./components/3d/CanvasContainer";
+import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -56,18 +57,18 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "Pyronite",
     locale: "en_US",
     url: BASE_URL,
     title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
       "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
+    siteName: "Pyronite Tech",
     images: [
       {
-        url: "/logo.png",
+        url: `${BASE_URL}/logo.png`,
         width: 512,
         height: 512,
-        alt: "Pyronite Logo",
+        alt: "Pyronite Tech Logo",
       },
     ],
   },
@@ -76,11 +77,10 @@ export const metadata: Metadata = {
     title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
       "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
-    images: ["/logo.png"],
-    creator: "@pyronite",
+    images: [`${BASE_URL}/logo.png`],
   },
   alternates: {
-    canonical: "/",
+    canonical: BASE_URL,
   },
 };
 
@@ -99,6 +99,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <GoogleAnalyticsTracker />
         <CanvasContainer />
         <Navbar />
         <main
@@ -120,8 +121,6 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
-            gtag('config', 'G-PSX0G5C1CF');
           `}
         </Script>
       </body>

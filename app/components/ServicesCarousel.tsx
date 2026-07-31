@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Service } from "../data/services";
+import * as gtag from "../utils/gtag";
 
 interface ServicesCarouselProps {
   services: Service[];
@@ -18,36 +19,37 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
   useEffect(() => {
     const handleResize = () => {
       setIsWide(window.innerWidth >= 1440);
+      let newCardsToShow: CardsToShowType = 4;
       if (window.innerWidth < 640) {
-        setCardsToShow(1);
+        newCardsToShow = 1;
       } else if (window.innerWidth < 1024) {
-        setCardsToShow(2);
+        newCardsToShow = 2;
       } else if (window.innerWidth < 1280) {
-        setCardsToShow(3);
+        newCardsToShow = 3;
       } else {
-        setCardsToShow(4);
+        newCardsToShow = 4;
       }
+      setCardsToShow(newCardsToShow);
+
+      const newMaxIndex = Math.max(0, services.length - newCardsToShow);
+      setCurrentIndex((prev) => Math.min(prev, newMaxIndex));
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [services.length]);
 
   const maxIndex = Math.max(0, services.length - cardsToShow);
 
-  useEffect(() => {
-    if (currentIndex > maxIndex) {
-      setCurrentIndex(maxIndex);
-    }
-  }, [cardsToShow, maxIndex, currentIndex]);
-
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
+    gtag.event("carousel_nav", { direction: "prev", component: "ServicesCarousel" });
   };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    gtag.event("carousel_nav", { direction: "next", component: "ServicesCarousel" });
   };
 
   return (
@@ -106,6 +108,7 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
                   href={`/services/${service.slug}`}
                   className={`services-home-card ${isLiferayUpgrade ? "highlighted" : ""}`}
                   style={{ height: "100%", display: "flex", flexDirection: "column" }}
+                  onClick={() => gtag.event("service_card_click", { slug: service.slug, title: service.title })}
                 >
                   <span className="material-symbols-outlined service-icon">
                     {service.icon}

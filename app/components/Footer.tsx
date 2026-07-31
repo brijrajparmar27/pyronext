@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { services } from "../data/services";
+import * as gtag from "../utils/gtag";
 
 export default function Footer() {
   return (
@@ -8,7 +11,12 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/" className="brand" style={{ marginBottom: "1rem", display: "inline-block", textDecoration: "none" }}>
+            <Link
+              href="/"
+              className="brand"
+              style={{ marginBottom: "1rem", display: "inline-block", textDecoration: "none" }}
+              onClick={() => gtag.event("brand_click", { location: "footer" })}
+            >
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                 <Image 
                   src="/logo.png" 
@@ -41,6 +49,7 @@ export default function Footer() {
                   fontWeight: 600,
                   transition: "color 0.3s"
                 }}
+                onClick={() => gtag.event("subsidiary_click", { name: "CodeAlchemy" })}
               >
                 CodeAlchemy
               </a>
@@ -51,25 +60,74 @@ export default function Footer() {
             <h4>Navigation</h4>
             <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem", padding: 0 }}>
               <li>
-                <Link href="/" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Intro</Link>
+                <Link
+                  href="/"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Intro" })}
+                >
+                  Intro
+                </Link>
               </li>
               <li>
-                <Link href="/services" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Services</Link>
+                <Link
+                  href="/services"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Services" })}
+                >
+                  Services
+                </Link>
               </li>
               <li>
-                <Link href="/standard" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Standard</Link>
+                <Link
+                  href="/standard"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Standard" })}
+                >
+                  Standard
+                </Link>
               </li>
               <li>
-                <Link href="/philosophy" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Philosophy</Link>
+                <Link
+                  href="/philosophy"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Philosophy" })}
+                >
+                  Philosophy
+                </Link>
               </li>
               <li>
-                <Link href="/blogs" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Blogs</Link>
+                <Link
+                  href="/blogs"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Blogs" })}
+                >
+                  Blogs
+                </Link>
               </li>
               <li>
-                <Link href="/hire-liferay-developers" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Build Your Team</Link>
+                <Link
+                  href="/hire-liferay-developers"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Build Your Team" })}
+                >
+                  Build Your Team
+                </Link>
               </li>
               <li>
-                <Link href="/connect" style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }} className="hover-text-primary">Connect</Link>
+                <Link
+                  href="/connect"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Connect" })}
+                >
+                  Connect
+                </Link>
               </li>
             </ul>
           </div>
@@ -89,6 +147,7 @@ export default function Footer() {
                       transition: "color 0.3s"
                     }}
                     className="hover-text-primary"
+                    onClick={() => gtag.event("nav_click", { label: `Footer Service: ${service.title}` })}
                   >
                     {service.title}
                   </Link>
@@ -105,6 +164,7 @@ export default function Footer() {
                   href="mailto:business@pyronite.in" 
                   style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "lowercase", letterSpacing: "1px", display: "flex", alignItems: "center", gap: "0.5rem", transition: "color 0.3s" }}
                   className="hover-text-primary"
+                  onClick={() => gtag.event("email_click", { email: "business@pyronite.in" })}
                 >
                   <span className="material-symbols-outlined" style={{ fontSize: "1.2rem", color: "var(--primary)" }}>mail</span>
                   business@pyronite.in
@@ -118,6 +178,7 @@ export default function Footer() {
                   style={{ color: "var(--text-primary)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", display: "flex", alignItems: "center", gap: "0.5rem", fontWeight: 600, transition: "color 0.3s" }}
                   title="Pyronite LinkedIn"
                   className="hover-text-primary"
+                  onClick={() => gtag.event("social_click", { platform: "LinkedIn" })}
                 >
                   <span className="material-symbols-outlined" style={{ fontSize: "1.2rem", color: "var(--primary)" }}>open_in_new</span>
                   LinkedIn
@@ -132,7 +193,12 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Pyronite. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "2rem" }}>
-             <Link href="/terms" style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", transition: "color 0.3s" }} className="hover-text-primary">
+             <Link
+               href="/terms"
+               style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", transition: "color 0.3s" }}
+               className="hover-text-primary"
+               onClick={() => gtag.event("nav_click", { label: "Footer: Terms" })}
+             >
                Terms &amp; Conditions
              </Link>
           </div>
