@@ -81,6 +81,16 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/solutions"
+                  style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
+                  className="hover-text-primary"
+                  onClick={() => gtag.event("nav_click", { label: "Footer: Solutions" })}
+                >
+                  Solutions
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/standard"
                   style={{ color: "var(--text-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "1px", transition: "color 0.3s" }}
                   className="hover-text-primary"

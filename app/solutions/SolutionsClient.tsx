@@ -2,31 +2,29 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Service } from "../data/services";
+import { Solution } from "../data/solutions";
 
-interface ServicesClientProps {
-  services: Service[];
+interface SolutionsClientProps {
+  solutions: Solution[];
 }
 
-type TabType = "all" | "liferay" | "system" | "web" | "ai-ops";
+type TabType = "all" | "dxp" | "workspaces" | "commerce";
 
 const tabs = [
-  { id: "all" as TabType, label: "All" },
-  { id: "liferay" as TabType, label: "Liferay Ecosystem" },
-  { id: "system" as TabType, label: "System Engineering" },
-  { id: "web" as TabType, label: "Web & Frontend" },
-  { id: "ai-ops" as TabType, label: "AI & DevOps" },
+  { id: "all" as TabType, label: "All Solutions" },
+  { id: "dxp" as TabType, label: "DXP & Portals" },
+  { id: "workspaces" as TabType, label: "Workspaces & Collaboration" },
+  { id: "commerce" as TabType, label: "Headless E-Commerce" },
 ];
 
-export default function ServicesClient({ services }: ServicesClientProps) {
+export default function SolutionsClient({ solutions }: SolutionsClientProps) {
   const [activeTab, setActiveTab] = useState<TabType>("all");
 
-  const filteredServices = services.filter((service) => {
+  const filteredSolutions = solutions.filter((solution) => {
     if (activeTab === "all") return true;
-    if (activeTab === "liferay") return service.category === "Liferay DXP Ecosystem";
-    if (activeTab === "system") return service.category === "System Engineering";
-    if (activeTab === "web") return service.category === "Web Engineering" || service.category === "Frontend Engineering";
-    if (activeTab === "ai-ops") return service.category === "Artificial Intelligence" || service.category === "Cloud Operations";
+    if (activeTab === "dxp") return solution.category === "Digital Experience Platforms" || solution.category === "B2B Ecosystems";
+    if (activeTab === "workspaces") return solution.category === "Digital Workspaces";
+    if (activeTab === "commerce") return solution.category === "B2B & B2C Digital Commerce";
     return true;
   });
 
@@ -45,28 +43,28 @@ export default function ServicesClient({ services }: ServicesClientProps) {
         ))}
       </div>
 
-      {/* Services Directory Grid */}
-      <div className="services-directory-grid">
-        {filteredServices.map((service) => (
-          <div key={service.slug} className="service-directory-card">
+      {/* Solutions Directory Grid with GSAP Stagger Animation */}
+      <div className="services-directory-grid gsap-stagger-container">
+        {filteredSolutions.map((solution) => (
+          <div key={solution.slug} className="service-directory-card gsap-stagger-item">
             <div className="card-header-row">
               <span className="material-symbols-outlined card-icon">
-                {service.icon}
+                {solution.icon}
               </span>
               <span className="card-category">
-                {service.category}
+                {solution.category}
               </span>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <h3>{service.title}</h3>
-              <p style={{ minHeight: "3rem" }}>{service.shortDescription}</p>
+              <h3>{solution.title}</h3>
+              <p style={{ minHeight: "3rem" }}>{solution.shortDescription}</p>
             </div>
 
             {/* Features Highlight */}
-            {service.features && service.features.length > 0 && (
+            {solution.features && solution.features.length > 0 && (
               <div className="card-highlights">
-                {service.features.slice(0, 2).map((feat, i) => (
+                {solution.features.slice(0, 2).map((feat, i) => (
                   <div key={i} className="highlight-item">
                     <span className="material-symbols-outlined">check_circle</span>
                     <span>{feat.title}</span>
@@ -76,9 +74,9 @@ export default function ServicesClient({ services }: ServicesClientProps) {
             )}
 
             {/* Tech stack badges */}
-            {service.technologies && service.technologies.length > 0 && (
+            {solution.technologies && solution.technologies.length > 0 && (
               <div className="card-techs">
-                {service.technologies.slice(0, 3).map((tech, i) => (
+                {solution.technologies.slice(0, 3).map((tech, i) => (
                   <span key={i} className="tech-badge">
                     {tech.name}
                   </span>
@@ -87,8 +85,8 @@ export default function ServicesClient({ services }: ServicesClientProps) {
             )}
 
             <div className="card-action">
-              <Link href={`/services/${service.slug}`} className="action-link">
-                Explore Service
+              <Link href={`/solutions/${solution.slug}`} className="action-link">
+                Explore Solution
                 <span className="material-symbols-outlined">arrow_forward</span>
               </Link>
             </div>

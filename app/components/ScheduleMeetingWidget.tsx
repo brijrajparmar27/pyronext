@@ -24,6 +24,14 @@ export default function ScheduleMeetingWidget() {
         console.error("Failed to load Cal.com API:", err);
       }
     })();
+
+    const handleOpenExternal = () => {
+      setIsOpen(true);
+      gtag.event("schedule_meeting_open", { location: "external_trigger" });
+    };
+
+    window.addEventListener("open-cal-widget", handleOpenExternal);
+    return () => window.removeEventListener("open-cal-widget", handleOpenExternal);
   }, []);
 
   const handleOpen = () => {

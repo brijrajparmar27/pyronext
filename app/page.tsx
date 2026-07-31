@@ -144,7 +144,7 @@ export default function Home() {
       <ScrollReveal />
 
       {/* Hero Section */}
-      <section className="hero container reveal">
+      <section className="hero container gsap-reveal">
         <div className="hero-content">
           <div>
             <h1>
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* Industry Footprint Context */}
-      <section className="section border-top" style={{ paddingBottom: "2rem", paddingTop: "3.5rem" }}>
+      <section className="section border-top gsap-reveal" style={{ paddingBottom: "2rem", paddingTop: "3.5rem" }}>
         <div className="container reveal">
           <div style={{ maxWidth: "800px" }}>
             <span className="label">{"// REGULATED INDUSTRIES"}</span>
@@ -201,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* One Platform Section */}
-      <section className="section border-top">
+      <section className="section border-top gsap-reveal">
         <div className="container reveal">
           <div className="philosophy-grid" style={{ alignItems: "center" }}>
             <div className="philosophy-text">
@@ -227,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* Services Showcase Section */}
-      <section className="section border-top">
+      <section className="section border-top gsap-reveal">
         <div className="container reveal">
           <div className="section-header" style={{ justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1.5rem" }}>
             <div>
@@ -251,14 +251,14 @@ export default function Home() {
       </section>
 
       {/* Modernization Workflow Section */}
-      <section className="section border-top">
-        <div className="container reveal">
+      <section className="section border-top gsap-reveal">
+        <div className="container">
           <div className="section-header">
             <span className="label">03 / The Modernization Workflow</span>
             <div className="line"></div>
           </div>
           
-          <div className="workflow-grid">
+          <div className="workflow-grid gsap-stagger-container">
             {[
               {
                 step: "01",
@@ -276,7 +276,7 @@ export default function Home() {
                 desc: "Deploying globally distributed Next.js and React frontends optimized for maximum Core Web Vitals and instant indexing.",
               },
             ].map((item) => (
-              <div key={item.step} className="workflow-card">
+              <div key={item.step} className="workflow-card gsap-stagger-item">
                 <div className="workflow-step-num">{item.step}</div>
                 <h3 className="workflow-step-title">{item.title}</h3>
                 <p className="workflow-step-desc">{item.desc}</p>
@@ -287,14 +287,14 @@ export default function Home() {
       </section>
 
       {/* Proven Implementations Section */}
-      <section className="section border-top">
-        <div className="container reveal">
+      <section className="section border-top gsap-reveal">
+        <div className="container">
           <div className="section-header">
             <span className="label">04 / Proven Implementations</span>
             <div className="line"></div>
           </div>
-          <div className="projects">
-            <article className="project-row">
+          <div className="projects gsap-stagger-container">
+            <article className="project-row gsap-stagger-item">
               <div className="project-info">
                 <span className="label">CLIENT_ID: LX-900_LOGISTICS</span>
                 <h3>Global Logistics Portal</h3>
@@ -315,7 +315,7 @@ export default function Home() {
                 />
               </div>
             </article>
-            <article className="project-row">
+            <article className="project-row gsap-stagger-item">
               <div className="project-info">
                 <span className="label">CLIENT_ID: V6-B2B_COMMERCE</span>
                 <h3>Industrial Headless Commerce</h3>
@@ -341,7 +341,7 @@ export default function Home() {
       </section>
 
       {/* Growth Metrics Section */}
-      <section className="section border-top" style={{ background: "var(--bg-surface)" }}>
+      <section className="section border-top gsap-reveal" style={{ background: "var(--bg-surface)" }}>
         <div className="container reveal">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "4rem", alignItems: "start" }}>
             <div>
@@ -375,7 +375,7 @@ export default function Home() {
       </section>
 
       {/* Capabilities Section */}
-      <section className="section border-top">
+      <section className="section border-top gsap-reveal">
         <div className="container reveal">
           <div className="section-header">
             <span className="label">06 / Core Capabilities</span>
@@ -394,7 +394,7 @@ export default function Home() {
       </section>
 
       {/* Tech Spectrum Section */}
-      <section className="section border-top">
+      <section className="section border-top gsap-reveal">
         <div className="container reveal">
           <div className="section-header">
             <span className="label">07 / Tech Spectrum</span>
@@ -410,8 +410,8 @@ export default function Home() {
       </section>
 
       {/* Engagement Models Section */}
-      <section className="section border-top">
-        <div className="container reveal">
+      <section className="section border-top gsap-reveal">
+        <div className="container">
           <div className="section-header">
             <span className="label">08 / Engagement Models</span>
             <div className="line"></div>
@@ -426,7 +426,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="engagement-grid">
+          <div className="engagement-grid gsap-stagger-container">
             {[
               {
                 title: "Staff Augmentation",
@@ -441,7 +441,7 @@ export default function Home() {
                 desc: "Perfect for defined milestone execution, milestone upgrades, headless migrations, and architectural transformations with guaranteed delivery timelines.",
               },
             ].map((model) => (
-              <div key={model.title} className="engagement-card">
+              <div key={model.title} className="engagement-card gsap-stagger-item">
                 <span className="material-symbols-outlined engagement-icon">
                   handshake
                 </span>
@@ -454,7 +454,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="section">
+      <section className="section gsap-reveal">
         <div className="container reveal" style={{ textAlign: "center" }}>
           <h2 style={{ fontSize: "2.5rem", marginBottom: "2rem", textTransform: "uppercase" }}>Engineer Your Liferay Future</h2>
           <div style={{ display: "flex", gap: "2rem", justifyContent: "center", flexWrap: "wrap" }}>
