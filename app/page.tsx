@@ -29,19 +29,19 @@ export const metadata: Metadata = {
 };
 
 const partners = [
-  { src: "/HP.webp", alt: "HP" },
-  { src: "/Dubai_Chamber.webp", alt: "Dubai Chamber" },
-  { src: "/iFad.webp", alt: "iFad" },
-  { src: "/KWSP.webp", alt: "KWSP" },
-  { src: "/Ooredoo.webp", alt: "Ooredoo" },
-  { src: "/SCAD.webp", alt: "SCAD" },
-  { src: "/United-nations.png", alt: "United Nations" },
-  { src: "/Broadcom.webp", alt: "Broadcom" },
-  { src: "/Uidai.webp", alt: "UIDAI" },
-  { src: "/Orbis.webp", alt: "Orbis" },
-  { src: "/Canopi.webp", alt: "Canopi" },
-  { src: "/Torry-Harris-Private-Limited.webp", alt: "Torry Harris Private Limited" },
-  { src: "/infogain.svg", alt: "Infogain" },
+  { src: "/Aadhar.png", alt: "Aadhar", height: 58 },
+  { src: "/ETDS.svg", alt: "ETDS", height: 74 },
+  { src: "/Federal.svg", alt: "Federal", height: 38 },
+  { src: "/HDB-Financial.png", alt: "HDB Financial", height: 48 },
+  { src: "/Hp-Calwin.png", alt: "HP Calwin", height: 50 },
+  { src: "/iLocalBox.svg", alt: "iLocalBox", height: 42 },
+  { src: "/Infosys.png", alt: "Infosys", height: 52 },
+  { src: "/Jio.png", alt: "Jio", height: 56 },
+  { src: "/Lenovo.png", alt: "Lenovo", height: 48 },
+  { src: "/Samsung.png", alt: "Samsung", height: 48 },
+  { src: "/SBI_Life.webp", alt: "SBI Life", height: 48 },
+  { src: "/Sompo.svg", alt: "Sompo", height: 44 },
+  { src: "/Tapestry.svg", alt: "Tapestry", height: 46 },
 ];
 
 export default function Home() {
@@ -191,6 +191,8 @@ export default function Home() {
                   className="object-contain"
                   style={{
                     filter: "grayscale(1) brightness(0.8)",
+                    height: `${p.height}px`,
+                    width: "auto",
                   }}
                   sizes="(max-width: 768px) 100px, 203px"
                 />

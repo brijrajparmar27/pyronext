@@ -1029,7 +1029,6 @@ textarea.form-control {
 
 .marquee-item {
   display: flex;
-  width: 11rem;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -1043,9 +1042,8 @@ textarea.form-control {
 
 .marquee-item img {
   object-fit: contain;
-  width: 100%;
-  height: max-content;
-  max-height: 54px;
+  height: 40px;
+  width: auto;
   filter: grayscale(1) brightness(0.8);
 }
 
