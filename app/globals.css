@@ -1032,7 +1032,7 @@ textarea.form-control {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  opacity: 0.5;
+  opacity: 0.8;
   transition: opacity 0.3s;
 }
 
@@ -1044,11 +1044,12 @@ textarea.form-control {
   object-fit: contain;
   height: 40px;
   width: auto;
-  filter: grayscale(1) brightness(0.8);
+  filter: grayscale(1) brightness(1.5);
+  transition: filter 0.3s;
 }
 
 .marquee-item:hover img {
-  filter: grayscale(0) brightness(1);
+  filter: grayscale(0) brightness(1.8);
 }
 
 /* Blog Styles */

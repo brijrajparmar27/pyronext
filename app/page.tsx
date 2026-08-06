@@ -190,7 +190,6 @@ export default function Home() {
                   height={54}
                   className="object-contain"
                   style={{
-                    filter: "grayscale(1) brightness(0.8)",
                     height: `${p.height}px`,
                     width: "auto",
                   }}
