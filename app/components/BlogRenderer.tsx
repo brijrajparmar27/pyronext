@@ -48,9 +48,26 @@ export default function BlogRenderer({ blocks }: Props) {
 
           case "code":
             return (
-              <pre key={index}>
-                <code>{block.code}</code>
-              </pre>
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "1.5rem 0",
+                  width: "100%",
+                }}
+              >
+                <pre
+                  style={{
+                    margin: 0,
+                    maxWidth: "100%",
+                    display: "inline-block",
+                    textAlign: "left",
+                  }}
+                >
+                  <code>{block.code}</code>
+                </pre>
+              </div>
             );
 
           case "image":
@@ -58,7 +75,8 @@ export default function BlogRenderer({ blocks }: Props) {
               <div
                 key={index}
                 style={{
-                  margin: "2.5rem 0",
+                  margin: "2.5rem auto",
+                  maxWidth: "720px",
                   border: "1px solid var(--border-light)",
                   padding: 5,
                   background: "#000",
@@ -69,7 +87,7 @@ export default function BlogRenderer({ blocks }: Props) {
                   alt={block.alt}
                   width={1200}
                   height={600}
-                  sizes="(max-width: 800px) 100vw, 1200px"
+                  sizes="(max-width: 800px) 100vw, 720px"
                   style={{ width: "100%", height: "auto", display: "block" }}
                   unoptimized
                 />
