@@ -9,6 +9,7 @@ const capabilities = [
   { icon: "dns", label: "Cloud-Native Deployments & Immutable Infrastructure", desc: "Deploy highly available platforms leveraging container orchestration, GitOps workflows, and automated, infrastructure-as-code configuration." },
   { icon: "security", label: "Identity Management, Security & Governance", desc: "Enforce zero-trust architectures, single sign-on (SSO), comprehensive role-based access controls (RBAC), and robust regulatory compliance." },
   { icon: "psychology", label: "Intelligent Automation & AI Workflows", desc: "Embed machine learning models, search vectors, and automated processing agents directly into business applications to drive operational efficiency." },
+  { icon: "travel_explore", label: "Search, GEO & Performance Growth Systems", desc: "Engineer traditional SEO and Generative Engine Optimization (GEO) for AI search engines, paired with server-side ad tracking and ROAS optimization." },
 ];
 
 export default function CapabilitiesSection() {

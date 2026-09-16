@@ -599,6 +599,177 @@ export const services: Service[] = [
         description: "We deliver code quality visual dashboards and configure automated build failures on testing regressions."
       }
     ]
+  },
+  {
+    slug: "seo-geo-optimization",
+    title: "SEO & Generative Engine Optimization (GEO)",
+    category: "Digital Growth & Search Engineering",
+    shortDescription: "AI Search & Traditional Search Engine Optimization.",
+    longDescription: "Dominate search rankings across both traditional search engines (Google, Bing) and next-generation AI generative engines (ChatGPT Search, Perplexity, Claude, Google AI Overviews, SearchGPT). We combine technical SEO audits, structured JSON-LD schema engineering, authority vector citation building, and GEO content optimization to make your brand the definitive source cited by AI models and search algorithms.",
+    icon: "travel_explore",
+    metaDescription: "Enterprise SEO & Generative Engine Optimization (GEO) services. Optimize your site for Google, ChatGPT Search, Perplexity, and AI Overviews with structured data & citation engineering.",
+    metaKeywords: "seo and geo, generative engine optimization, chatgpt search optimization, perplexity seo, technical seo audit, schema markup, ai overview optimization",
+    features: [
+      {
+        title: "Generative Engine Optimization (GEO)",
+        description: "Optimize entity citations, markdown structure, and factual density so AI LLMs (ChatGPT, Claude, Perplexity) select and cite your platform.",
+        icon: "psychology"
+      },
+      {
+        title: "Technical SEO & Core Web Vitals",
+        description: "Fix crawl budgets, rendering speed, dynamic canonicalization, sitemap structures, and achieve 95+ Google Lighthouse scores.",
+        icon: "speed"
+      },
+      {
+        title: "Structured Data & Schema Markup",
+        description: "Embed rich JSON-LD microdata, organization schemas, product graphs, and FAQ metadata for instant SERP rich snippets.",
+        icon: "code"
+      },
+      {
+        title: "Local & International GEO-Targeting",
+        description: "Multi-region hreflang implementation, GEO-fencing localization, and geo-targeted landing page orchestration.",
+        icon: "public"
+      }
+    ],
+    technologies: [
+      { name: "Schema.org / JSON-LD", icon: "code" },
+      { name: "Google Search Console & GA4", icon: "insights" },
+      { name: "Perplexity & ChatGPT APIs", icon: "psychology" },
+      { name: "Ahrefs & SEMrush", icon: "search" },
+      { name: "Screaming Frog Crawler", icon: "bug_report" },
+      { name: "PageSpeed Insights", icon: "bolt" }
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Comprehensive SEO & GEO Audit",
+        description: "Deep analysis of technical bottlenecks, crawl errors, and brand citation presence across search algorithms and AI models."
+      },
+      {
+        step: "02",
+        title: "Schema & Content Infrastructure",
+        description: "Implementing automated JSON-LD schemas, content entity graphs, and Core Web Vitals performance acceleration."
+      },
+      {
+        step: "03",
+        title: "Continuous Authority & Rank Tracking",
+        description: "Tracking rankings across Google SERPs and AI search queries with continuous algorithmic tuning."
+      }
+    ]
+  },
+  {
+    slug: "performance-ads-marketing",
+    title: "Performance Ads & Targeted Marketing",
+    category: "Digital Growth & Search Engineering",
+    shortDescription: "Data-driven PPC, Meta/LinkedIn ads, and ROAS optimization.",
+    longDescription: "Maximize customer acquisition and return on ad spend (ROAS) through hyper-targeted performance marketing campaigns. We design, deploy, and manage multi-channel paid ad campaigns across Google Search/Display, Meta (Facebook & Instagram), LinkedIn B2B Ads, and programmatic networks. Engineered with conversion tracking server-side APIs (Conversions API), audience retargeting funnels, and real-time analytics dashboards.",
+    icon: "ads_click",
+    metaDescription: "Data-driven PPC, Google Ads, Meta Ads, and LinkedIn B2B marketing services. Maximize ROAS with server-side conversion tracking and automated bidding funnels.",
+    metaKeywords: "ppc ads management, google ads optimization, linkedin b2b ads, meta conversions api, performance marketing, retargeting funnels, roas optimization",
+    features: [
+      {
+        title: "Google Search & Shopping PPC",
+        description: "Precision keyword bidding, negative match engineering, responsive search ads, and high quality score campaign architectures.",
+        icon: "search"
+      },
+      {
+        title: "B2B LinkedIn & Meta Ads",
+        description: "Targeted account-based marketing (ABM), decision-maker audience profiles, and high-converting video/carousel creatives.",
+        icon: "campaign"
+      },
+      {
+        title: "Server-Side Conversion Tracking",
+        description: "Implement Meta Conversions API (CAPI) and Google Ads Server-Side Tagging to bypass ad-blockers and privacy restrictions.",
+        icon: "dns"
+      },
+      {
+        title: "Conversion Rate Optimization (CRO)",
+        description: "A/B test dynamic landing page variations, copy hooks, and CTA funnels to maximize lead submission percentages.",
+        icon: "trending_up"
+      }
+    ],
+    technologies: [
+      { name: "Google Ads / SA360", icon: "search" },
+      { name: "Meta Ads Manager / CAPI", icon: "share" },
+      { name: "LinkedIn Campaign Manager", icon: "work" },
+      { name: "Google Tag Manager Server-Side", icon: "label" },
+      { name: "GA4 / Mixpanel", icon: "analytics" },
+      { name: "PostHog Analytics", icon: "insights" }
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Audience & Competitor Analysis",
+        description: "Mapping target buyer personas, high-intent keywords, and competitor ad positioning strategies."
+      },
+      {
+        step: "02",
+        title: "Campaign Architecture & Tagging",
+        description: "Deploying campaign structures, high-converting ad creatives, and bulletproof server-side tracking tags."
+      },
+      {
+        step: "03",
+        title: "Algorithmic Bid Tuning & Scale",
+        description: "Daily bid adjustments, budget re-allocation to top ROAS channels, and rapid creative iteration cycles."
+      }
+    ]
+  },
+  {
+    slug: "growth-analytics-geo-targeting",
+    title: "Growth Engineering & GEO Targeting",
+    category: "Digital Growth & Search Engineering",
+    shortDescription: "Location-aware funnels, geo-fencing & growth telemetry.",
+    longDescription: "Drive localized enterprise growth and global expansion with precision geo-targeting and custom growth telemetry. We engineer location-aware dynamic content systems, IP-based routing, hyper-local ad funnels, and end-to-end user path analytics. Deliver hyper-relevant localized user experiences while gaining full visibility into customer acquisition funnels.",
+    icon: "location_on",
+    metaDescription: "Enterprise growth engineering and GEO targeting services. Hyper-local ad funnels, location-aware dynamic web apps, IP routing, and growth telemetry.",
+    metaKeywords: "growth engineering, geo targeting, local seo, geo fencing ads, location based personalization, growth analytics, ip geofencing",
+    features: [
+      {
+        title: "Dynamic GEO Personalization",
+        description: "Serve localized landing content, currency conversion, contact numbers, and region-specific testimonials based on visitor IP coordinates.",
+        icon: "my_location"
+      },
+      {
+        title: "Geo-Fenced Paid Ad Funnels",
+        description: "Target high-value conference venues, business parks, and geographic corridors with surgical mobile ad campaigns.",
+        icon: "pin_drop"
+      },
+      {
+        title: "Multi-Region SEO & Hreflang",
+        description: "Flawless multi-lingual and multi-region search optimization with localized canonical tagging.",
+        icon: "language"
+      },
+      {
+        title: "Custom Growth Telemetry",
+        description: "Implement custom event pipelines, product analytics, and revenue attribution models.",
+        icon: "show_chart"
+      }
+    ],
+    technologies: [
+      { name: "MaxMind GeoIP / Cloudflare Edge", icon: "cloud" },
+      { name: "Segment / RudderStack CDP", icon: "hub" },
+      { name: "Google Analytics 4 / BigQuery", icon: "database" },
+      { name: "Hreflang / i18n Next.js Router", icon: "translate" },
+      { name: "PostHog Analytics", icon: "analytics" },
+      { name: "Geo-Fencing Ad Networks", icon: "radar" }
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Regional Market Mapping",
+        description: "Identifying high-value geographic segments and defining localized user experience requirements."
+      },
+      {
+        step: "02",
+        title: "Edge GEO & Telemetry Deployment",
+        description: "Implementing Cloudflare edge location header routing, IP lookup hooks, and telemetry pipelines."
+      },
+      {
+        step: "03",
+        title: "Campaign Launch & Funnel Optimization",
+        description: "Running geo-targeted acquisition pushes and refining regional conversion funnels based on real-time data."
+      }
+    ]
   }
 ];
 

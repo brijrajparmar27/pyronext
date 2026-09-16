@@ -173,7 +173,7 @@ export default async function ServicePage({
             <h2>Ready to architect your platform?</h2>
             <p>
               Collaborate with our senior engineering team to craft modern enterprise solutions. 
-              Let's build a secure, high-performance, and scalable digital ecosystem.
+              Let&apos;s build a secure, high-performance, and scalable digital ecosystem.
             </p>
           </div>
           <Link href="/connect" className="btn">
