@@ -95,12 +95,14 @@ export default function ScheduleMeetingWidget() {
           align-items: center;
           justify-content: center;
           opacity: 0;
+          visibility: hidden;
           pointer-events: none;
-          transition: opacity 0.3s ease;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .cal-overlay.is-open {
           opacity: 1;
+          visibility: visible;
           pointer-events: auto;
         }
 
@@ -196,25 +198,25 @@ export default function ScheduleMeetingWidget() {
       </button>
 
       {/* Modal Popup Overlay */}
-      <div
-        className={`cal-overlay ${isOpen ? "is-open" : ""}`}
-        onClick={handleClose}
-      >
+      {isOpen && (
         <div
-          className="cal-modal"
-          onClick={(e) => e.stopPropagation()}
+          className="cal-overlay is-open"
+          onClick={handleClose}
         >
-          {/* Modal Header */}
-          <div className="cal-header">
-            <h3>Schedule a Call</h3>
-            <button className="cal-close-btn" onClick={handleClose} aria-label="Close scheduler">
-              <span className="material-symbols-outlined">close</span>
-            </button>
-          </div>
+          <div
+            className="cal-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="cal-header">
+              <h3>Schedule a Call</h3>
+              <button className="cal-close-btn" onClick={handleClose} aria-label="Close scheduler">
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
 
-          {/* Cal.com Iframe Content */}
-          <div className="cal-content">
-            {isOpen && (
+            {/* Cal.com Iframe Content */}
+            <div className="cal-content">
               <Cal
                 namespace="30min"
                 calLink="pyronite-tech/30min"
@@ -227,10 +229,10 @@ export default function ScheduleMeetingWidget() {
                   email: "",
                 }}
               />
-            )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

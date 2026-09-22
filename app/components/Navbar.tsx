@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { services } from "../data/services";
 import * as gtag from "../utils/gtag";
 
@@ -14,11 +14,34 @@ const navLinks = [
   { href: "/connect", label: "Connect" },
 ];
 
+const PRIMARY_ROUTES = [
+  "/",
+  "/solutions",
+  "/blogs",
+  "/hire-liferay-developers",
+  "/connect",
+  "/services",
+  "/standard",
+  "/philosophy",
+];
+
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Pre-warm router cache on mount so header navigation is instantaneous
+  useEffect(() => {
+    PRIMARY_ROUTES.forEach((route) => {
+      router.prefetch(route);
+    });
+  }, [router]);
 
   const handleToggle = () => {
     const nextState = !isOpen;
@@ -30,6 +53,8 @@ export default function Navbar() {
     <nav className={`navbar ${isOpen ? "is-open" : ""}`}>
       <Link
         href="/"
+        prefetch={true}
+        onMouseEnter={() => router.prefetch("/")}
         className="brand"
         onClick={() => {
           setIsOpen(false);
@@ -62,6 +87,8 @@ export default function Navbar() {
               <div className="mega-column-left">
                 <Link
                   href="/"
+                  prefetch={true}
+                  onMouseEnter={() => router.prefetch("/")}
                   className={`dropdown-card ${pathname === "/" ? "active" : ""}`}
                   onClick={() => {
                     setIsOpen(false);
@@ -80,6 +107,8 @@ export default function Navbar() {
 
                 <Link
                   href="/standard"
+                  prefetch={true}
+                  onMouseEnter={() => router.prefetch("/standard")}
                   className={`dropdown-card ${pathname === "/standard" ? "active" : ""}`}
                   onClick={() => {
                     setIsOpen(false);
@@ -98,6 +127,8 @@ export default function Navbar() {
 
                 <Link
                   href="/philosophy"
+                  prefetch={true}
+                  onMouseEnter={() => router.prefetch("/philosophy")}
                   className={`dropdown-card ${pathname === "/philosophy" ? "active" : ""}`}
                   onClick={() => {
                     setIsOpen(false);
@@ -175,18 +206,27 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Services Dropdown */}
+        {/* Services Dropdown - Link to /services with dropdown */}
         <div className="nav-item-dropdown">
-          <span className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}>
+          <Link
+            href="/services"
+            prefetch={true}
+            onMouseEnter={() => router.prefetch("/services")}
+            className={`nav-dropdown-trigger ${pathname.startsWith("/services") ? "active" : ""}`}
+            onClick={() => gtag.event("nav_click", { label: "Services", device: "desktop" })}
+            style={{ textDecoration: "none" }}
+          >
             Services
             <span className="material-symbols-outlined dropdown-arrow">keyboard_arrow_down</span>
-          </span>
+          </Link>
           <div className="dropdown-menu">
             <div className="dropdown-grid">
               {services.map((service) => (
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
+                  prefetch={false}
+                  onMouseEnter={() => router.prefetch(`/services/${service.slug}`)}
                   className={`dropdown-item ${pathname === `/services/${service.slug}` ? "active" : ""}`}
                   onClick={() => gtag.event("nav_click", { label: `Service: ${service.title}`, device: "desktop" })}
                 >
@@ -206,6 +246,9 @@ export default function Navbar() {
           <Link
             key={link.href}
             href={link.href}
+            prefetch={true}
+            onMouseEnter={() => router.prefetch(link.href)}
+            onTouchStart={() => router.prefetch(link.href)}
             className={pathname.startsWith(link.href) ? "active" : ""}
             onClick={() => gtag.event("nav_click", { label: link.label, device: "desktop" })}
           >
@@ -218,11 +261,12 @@ export default function Navbar() {
         <span className="material-symbols-outlined">{isOpen ? "close" : "menu"}</span>
       </button>
 
-      <div className={`mobile-overlay ${isOpen ? "active" : ""}`} onClick={() => setIsOpen(false)}>
-        <button className="mobile-close" onClick={() => setIsOpen(false)}>
-          <span className="material-symbols-outlined">close</span>
-        </button>
-        <div className="mobile-nav" onClick={(e) => e.stopPropagation()}>
+      {isOpen && (
+        <div className="mobile-overlay active" onClick={() => setIsOpen(false)}>
+          <button className="mobile-close" onClick={() => setIsOpen(false)}>
+            <span className="material-symbols-outlined">close</span>
+          </button>
+          <div className="mobile-nav" onClick={(e) => e.stopPropagation()}>
           {/* Mobile Company Collapsible */}
           <div className="mobile-services-collapsible">
             <button
@@ -240,6 +284,7 @@ export default function Navbar() {
             <div className={`mobile-services-list ${mobileCompanyOpen ? "expanded" : ""}`}>
               <Link
                 href="/"
+                prefetch={true}
                 onClick={() => {
                   setIsOpen(false);
                   gtag.event("nav_click", { label: "Company: About Us", device: "mobile" });
@@ -251,6 +296,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/standard"
+                prefetch={true}
                 onClick={() => {
                   setIsOpen(false);
                   gtag.event("nav_click", { label: "Company: Standards", device: "mobile" });
@@ -262,6 +308,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/philosophy"
+                prefetch={true}
                 onClick={() => {
                   setIsOpen(false);
                   gtag.event("nav_click", { label: "Company: Philosophy", device: "mobile" });
@@ -293,6 +340,7 @@ export default function Navbar() {
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
+                  prefetch={false}
                   onClick={() => {
                     setIsOpen(false);
                     gtag.event("nav_click", { label: `Service: ${service.title}`, device: "mobile" });
@@ -311,6 +359,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              prefetch={true}
               onClick={() => {
                 setIsOpen(false);
                 gtag.event("nav_click", { label: link.label, device: "mobile" });
@@ -321,8 +370,9 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

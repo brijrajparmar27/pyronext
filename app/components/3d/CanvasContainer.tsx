@@ -20,8 +20,14 @@ export default function CanvasContainer() {
     >
       <Canvas
         camera={{ position: [0, 0, 10], fov: 45 }}
-        gl={{ antialias: false, alpha: false }}
-        dpr={[1, 2]}
+        gl={{
+          antialias: false,
+          alpha: false,
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
+        }}
+        dpr={[1, 1.5]}
       >
         <Suspense fallback={null}>
           <Scene />

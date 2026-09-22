@@ -8,6 +8,7 @@ import CanvasContainer from "./components/3d/CanvasContainer";
 import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
 import ScheduleMeetingWidget from "./components/ScheduleMeetingWidget";
 import GSAPScrollTrigger from "./components/GSAPScrollTrigger";
+import ScrollReveal from "./components/ScrollReveal";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -103,6 +104,7 @@ export default function RootLayout({
       <body>
         <GoogleAnalyticsTracker />
         <GSAPScrollTrigger />
+        <ScrollReveal />
         <ScheduleMeetingWidget />
         <CanvasContainer />
         <Navbar />

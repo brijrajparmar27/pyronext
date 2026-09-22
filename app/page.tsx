@@ -56,10 +56,9 @@ export default function Home() {
         }
         .workflow-card {
           background: var(--bg-surface);
-          backdrop-filter: blur(10px);
           border: 1px solid var(--border-light);
           padding: 2rem 1.75rem;
-          transition: all 0.3s ease;
+          transition: border-color 0.3s ease, background 0.3s ease;
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
@@ -95,10 +94,9 @@ export default function Home() {
         }
         .engagement-card {
           background: var(--bg-surface);
-          backdrop-filter: blur(10px);
           border: 1px solid var(--border-light);
           padding: 2.5rem 2rem;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;
           flex-direction: column;
           gap: 1.5rem;

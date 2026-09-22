@@ -110,6 +110,10 @@ img {
   font-weight: 600;
   letter-spacing: 2px;
   color: var(--text-muted);
+  position: relative;
+  z-index: 10005;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .nav-links a:hover,
@@ -142,6 +146,9 @@ img {
   align-items: center;
   gap: 0.25rem;
   transition: color 0.3s ease;
+  position: relative;
+  z-index: 10005;
+  pointer-events: auto;
 }
 
 .nav-item-dropdown:hover .nav-dropdown-trigger,
@@ -162,7 +169,7 @@ img {
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(15px);
+  transform: translateX(-50%) translateY(10px);
   background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-light);
@@ -170,7 +177,8 @@ img {
   padding: 1.25rem 1.5rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+  pointer-events: none !important;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1001;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
 }
@@ -178,6 +186,7 @@ img {
 .nav-item-dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto !important;
   transform: translateX(-50%) translateY(0);
 }
 
@@ -186,7 +195,7 @@ img {
   position: absolute !important;
   top: 100% !important;
   left: 50% !important;
-  transform: translateX(-50%) translateY(15px) !important;
+  transform: translateX(-50%) translateY(10px) !important;
   width: 980px !important;
   background: rgba(12, 12, 12, 0.98) !important;
   backdrop-filter: blur(25px) !important;
@@ -195,7 +204,8 @@ img {
   padding: 2.5rem !important;
   opacity: 0 !important;
   visibility: hidden !important;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   z-index: 10000 !important;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9) !important;
 }
@@ -203,6 +213,7 @@ img {
 .navbar .nav-links .nav-item-dropdown:hover .mega-dropdown {
   opacity: 1 !important;
   visibility: visible !important;
+  pointer-events: auto !important;
   transform: translateX(-50%) translateY(0) !important;
 }
 
@@ -917,7 +928,7 @@ textarea.form-control {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .reveal.active {
@@ -1203,15 +1214,23 @@ textarea.form-control {
   align-items: flex-start;
   justify-content: center;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
   overflow-y: auto;
   padding-top: 120px;
   padding-bottom: 80px;
 }
 
+@media (min-width: 1025px) {
+  .mobile-overlay {
+    display: none !important;
+  }
+}
+
 .mobile-overlay.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 

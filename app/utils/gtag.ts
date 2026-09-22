@@ -12,10 +12,14 @@ declare global {
 
 // Log the pageview with a specific URL
 export const pageview = (url: string) => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("config", GA_TRACKING_ID, {
-      page_path: url,
-    });
+  try {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("config", GA_TRACKING_ID, {
+        page_path: url,
+      });
+    }
+  } catch (e) {
+    // Non-blocking
   }
 };
 
@@ -34,12 +38,16 @@ export const event = (
     [key: string]: unknown;
   } = {}
 ) => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", action, {
-      event_category,
-      event_label,
-      value,
-      ...rest,
-    });
+  try {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", action, {
+        event_category,
+        event_label,
+        value,
+        ...rest,
+      });
+    }
+  } catch (e) {
+    // Non-blocking
   }
 };
