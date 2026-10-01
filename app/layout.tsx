@@ -10,6 +10,7 @@ import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
 import ScheduleMeetingWidget from "./components/ScheduleMeetingWidget";
 import GSAPScrollTrigger from "./components/GSAPScrollTrigger";
 import ScrollReveal from "./components/ScrollReveal";
+import { organizationSchema, websiteSchema } from "./utils/schema";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -100,6 +101,14 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
         />
       </head>
       <body>

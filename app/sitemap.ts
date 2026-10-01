@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import blogsData from "./data/blogs.json";
 import type { BlogPost } from "./data/types";
 import { services } from "./data/services";
+import { solutions } from "./data/solutions";
 
 const BASE_URL = "https://pyronite.in";
 const blogs = blogsData as BlogPost[];
@@ -31,6 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/solutions`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/faq`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${BASE_URL}/hire-liferay-developers`,
@@ -72,5 +85,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...blogRoutes, ...serviceRoutes];
+  const solutionRoutes: MetadataRoute.Sitemap = solutions.map((solution) => ({
+    url: `${BASE_URL}/solutions/${solution.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...serviceRoutes, ...solutionRoutes];
 }

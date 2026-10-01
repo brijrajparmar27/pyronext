@@ -3,6 +3,7 @@ import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
 import blogsData from "../data/blogs.json";
 import type { BlogPost } from "../data/types";
+import { breadcrumbSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Engineering Blogs & Insights",
@@ -36,8 +37,17 @@ export const metadata: Metadata = {
 const blogs = blogsData as BlogPost[];
 
 export default function BlogsPage() {
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Blogs", url: "/blogs" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <style>{`
         .blog-card {
           display: flex;

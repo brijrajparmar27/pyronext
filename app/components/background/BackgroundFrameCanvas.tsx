@@ -65,6 +65,8 @@ export default function BackgroundFrameCanvas() {
           getFrameUrl: getHeroFrameUrl,
           maxDpr: 2,
           lerpFactor: 0.12,
+          zoom: 1.02,
+          focalY: 0.28, // stronger upward bias from dead-center (0.5)
           onProgress: (loaded, total) => {
             const ratio = loaded / total;
             setLoadProgress(ratio);

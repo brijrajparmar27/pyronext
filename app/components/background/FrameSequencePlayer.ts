@@ -19,6 +19,21 @@ export interface FrameSequenceOptions {
   maxDpr?: number;
   /** How quickly the rendered frame chases the scroll-driven target (0..1) */
   lerpFactor?: number;
+  /**
+   * Extra zoom beyond the minimum "object-fit: cover" scale (1 = exact
+   * cover, no pan room; >1 = zoomed in slightly, freeing up pan room on
+   * both axes so focalX/focalY can bias the crop even on aspect ratios
+   * that would otherwise already fill one axis exactly). Default 1.08.
+   */
+  zoom?: number;
+  /** Horizontal focal point of the crop, 0 (left) – 1 (right). Default 0.5 (center). */
+  focalX?: number;
+  /**
+   * Vertical focal point of the crop, 0 (top) – 1 (bottom). Default 0.5
+   * (center). Lower values bias the visible window upward (reveal more of
+   * the top of the source frame, crop more off the bottom).
+   */
+  focalY?: number;
   onProgress?: (loaded: number, total: number) => void;
   /** Fires once the first frame has painted (callers that want an early paint) */
   onReady?: () => void;
@@ -33,6 +48,10 @@ export class FrameSequencePlayer {
   private getFrameUrl: (index: number) => string;
   private maxDpr: number;
   private lerpFactor: number;
+
+  private zoom: number;
+  private focalX: number;
+  private focalY: number;
 
   private frames: (HTMLImageElement | undefined)[] = [];
   private loadedCount = 0;
@@ -55,6 +74,9 @@ export class FrameSequencePlayer {
     this.getFrameUrl = opts.getFrameUrl;
     this.maxDpr = opts.maxDpr ?? 2;
     this.lerpFactor = opts.lerpFactor ?? 0.12;
+    this.zoom = Math.max(1, opts.zoom ?? 1.08);
+    this.focalX = opts.focalX ?? 0.5;
+    this.focalY = opts.focalY ?? 0.5;
     this.onProgress = opts.onProgress;
     this.onReady = opts.onReady;
     this.onError = opts.onError;
@@ -200,25 +222,22 @@ export class FrameSequencePlayer {
     if (!img) return;
 
     const { width, height } = this.canvas;
-    const canvasRatio = width / height;
-    const imgRatio = img.naturalWidth / img.naturalHeight;
 
-    let sx = 0;
-    let sy = 0;
-    let sw = img.naturalWidth;
-    let sh = img.naturalHeight;
-
-    // object-fit: cover — crop the source so the frame always fills the
-    // canvas without stretching, regardless of viewport aspect ratio.
-    if (imgRatio > canvasRatio) {
-      sw = sh * canvasRatio;
-      sx = (img.naturalWidth - sw) / 2;
-    } else {
-      sh = sw / canvasRatio;
-      sy = (img.naturalHeight - sh) / 2;
-    }
+    // object-fit: cover (+ focal point) — scale the whole frame up just
+    // enough to fill the canvas on both axes (optionally a little further,
+    // via `zoom`, to free up pan room), then position it so focalX/focalY
+    // choose which part of that overscan is visible — drawImage naturally
+    // clips anything drawn outside the canvas, so no manual source-rect
+    // math is needed.
+    const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight) * this.zoom;
+    const drawWidth = img.naturalWidth * scale;
+    const drawHeight = img.naturalHeight * scale;
+    const slackX = drawWidth - width;
+    const slackY = drawHeight - height;
+    const dx = -slackX * this.focalX;
+    const dy = -slackY * this.focalY;
 
     this.ctx.clearRect(0, 0, width, height);
-    this.ctx.drawImage(img, sx, sy, sw, sh, 0, 0, width, height);
+    this.ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, dx, dy, drawWidth, drawHeight);
   }
 }

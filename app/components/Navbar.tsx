@@ -10,6 +10,7 @@ import * as gtag from "../utils/gtag";
 const navLinks = [
   { href: "/solutions", label: "Solutions" },
   { href: "/blogs", label: "Blogs" },
+  { href: "/faq", label: "FAQ" },
   { href: "/hire-liferay-developers", label: "Build Your Team" },
   { href: "/connect", label: "Connect" },
 ];
@@ -18,6 +19,7 @@ const PRIMARY_ROUTES = [
   "/",
   "/solutions",
   "/blogs",
+  "/faq",
   "/hire-liferay-developers",
   "/connect",
   "/services",

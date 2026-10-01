@@ -20,10 +20,14 @@ export default function ScrollytellingHero() {
         <span className="pyro-hero-scrollcue-line" />
       </div>
 
-      {HERO_CHECKPOINTS.map((cp) => (
+      {HERO_CHECKPOINTS.map((cp, i) => (
         <div key={cp.id} className="pyro-hero-checkpoint gsap-reveal">
           <span className="pyro-hero-eyebrow">{cp.eyebrow}</span>
-          <h2 className="pyro-hero-heading" dangerouslySetInnerHTML={{ __html: cp.heading }} />
+          {i === 0 ? (
+            <h1 className="pyro-hero-heading" dangerouslySetInnerHTML={{ __html: cp.heading }} />
+          ) : (
+            <h2 className="pyro-hero-heading" dangerouslySetInnerHTML={{ __html: cp.heading }} />
+          )}
           <p className="pyro-hero-sub">{cp.sub}</p>
           {cp.cta && (
             <a

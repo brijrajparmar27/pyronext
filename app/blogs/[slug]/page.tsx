@@ -5,7 +5,9 @@ import Link from "next/link";
 import ScrollReveal from "../../components/ScrollReveal";
 import BlogRenderer from "../../components/BlogRenderer";
 import blogsData from "../../data/blogs.json";
-import type { BlogPost } from "../../data/types";
+import type { BlogPost, ContentBlock } from "../../data/types";
+import { breadcrumbSchema, faqSchema, ORG_ID, SITE_LOGO, SITE_URL, WEBSITE_ID } from "../../utils/schema";
+import { extractFaqFromBlocks } from "../../utils/faq";
 
 const blogs = blogsData as BlogPost[];
 
@@ -58,29 +60,37 @@ export default async function BlogPostPage({
 
   if (!post) return notFound();
 
+  const firstImage = post.content.find(
+    (b): b is Extract<ContentBlock, { type: "image" }> => b.type === "image"
+  );
+  const postUrl = `${SITE_URL}/blogs/${post.slug}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "TechArticle",
     headline: post.title,
     description: post.metaDescription,
+    image: firstImage ? `${SITE_URL}${firstImage.src}` : SITE_LOGO,
     datePublished: post.dateISO,
-    author: {
-      "@type": "Organization",
-      name: post.author,
-      url: "https://pyronite.codealchemy.tech",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Pyronite",
-      url: "https://pyronite.codealchemy.tech",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://pyronite.codealchemy.tech/logo.png",
-      },
-    },
+    dateModified: post.dateISO,
+    proficiencyLevel: "Expert",
+    dependencies: post.tags.join(", "),
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
     keywords: post.tags.join(", "),
-    url: `https://pyronite.codealchemy.tech/blogs/${post.slug}`,
+    url: postUrl,
+    mainEntityOfPage: postUrl,
+    isPartOf: { "@id": WEBSITE_ID },
   };
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Blogs", url: "/blogs" },
+    { name: post.title, url: `/blogs/${post.slug}` },
+  ]);
+
+  const faqItems = extractFaqFromBlocks(post.content);
+  const faq = faqItems.length > 0 ? faqSchema(faqItems) : null;
 
   return (
     <>
@@ -88,6 +98,16 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
+      {faq && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+        />
+      )}
       <ScrollReveal />
       <section className="section" style={{ paddingTop: "4rem" }}>
         <div className="blog-container">

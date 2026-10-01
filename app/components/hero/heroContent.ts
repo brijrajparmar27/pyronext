@@ -19,9 +19,9 @@ export interface HeroCheckpoint {
 export const HERO_CHECKPOINTS: HeroCheckpoint[] = [
   {
     id: "neural-genesis",
-    eyebrow: "00 / NEURAL GENESIS — AI",
-    heading: "Where <span>Artificial Intelligence</span><br />Becomes Infrastructure",
-    sub: "Pyronite architects self-learning, self-healing cores at the center of modern enterprise systems.",
+    eyebrow: "00 / NEURAL GENESIS — AI × LIFERAY DXP",
+    heading: "Engineering<br />The Next Era Of<br /><span>Intelligent Systems</span>",
+    sub: "Pyronite architects self-learning, self-healing digital experience platforms at the center of modern enterprise systems.",
   },
   {
     id: "future-internet",
