@@ -4,7 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CanvasContainer from "./components/3d/CanvasContainer";
+import BackgroundFrameCanvas from "./components/background/BackgroundFrameCanvas";
+import ParticlesBackdrop from "./components/background/ParticlesBackdrop";
 import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
 import ScheduleMeetingWidget from "./components/ScheduleMeetingWidget";
 import GSAPScrollTrigger from "./components/GSAPScrollTrigger";
@@ -106,7 +107,8 @@ export default function RootLayout({
         <GSAPScrollTrigger />
         <ScrollReveal />
         <ScheduleMeetingWidget />
-        <CanvasContainer />
+        <BackgroundFrameCanvas />
+        <ParticlesBackdrop />
         <Navbar />
         <main
           style={{

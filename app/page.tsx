@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "./components/ScrollReveal";
+import ScrollytellingHero from "./components/hero/ScrollytellingHero";
 import CapabilitiesSection from "./components/CapabilitiesSection";
 import TechSpectrum from "./components/TechSpectrum";
 import AnimatedCounter from "./components/AnimatedCounter";
@@ -48,6 +49,16 @@ export default function Home() {
   return (
     <>
       <style>{`
+        /* Glass panel — frosted legibility card used over the live
+           scroll-scrubbed video background (Hero + Industry Footprint zone) */
+        .glass-panel {
+          background: rgba(8, 11, 16, 0.45);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 2.5rem;
+        }
+
         /* Workflow Section */
         .workflow-grid {
           display: grid;
@@ -130,6 +141,9 @@ export default function Home() {
           }
         }
         @media (max-width: 768px) {
+          .glass-panel {
+            padding: 1.75rem;
+          }
           .workflow-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
@@ -141,39 +155,31 @@ export default function Home() {
       `}</style>
       <ScrollReveal />
 
-      {/* Hero Section */}
-      <section className="hero container gsap-reveal">
-        <div className="hero-content">
-          <div>
-            <h1>
-              Architecting <br />
-              Enterprise <span>Liferay</span> &amp; <br />
-              Open-Source Systems
-            </h1>
-          </div>
-          <div className="hero-desc">
-            <p>
-              Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends. We forge complex enterprise portals and scalable web infrastructure from the ground up.
-            </p>
-            <span className="meta">Enterprise Liferay &amp; Open-Source Architecture</span>
-          </div>
-        </div>
-      </section>
+      {/* #scrollytelling-zone: the scroll range BackgroundFrameCanvas scrubs the
+          video-frame background across (see app/components/background). Spans
+          the hero and the footprint section right after it; everything below
+          this zone sits on opaque card/section backgrounds that already hide
+          the (by-then static) backdrop on their own. */}
+      <div id="scrollytelling-zone">
+        {/* Immersive Scrollytelling Hero — AI / Future Internet / Cloud / Neural Data */}
+        <ScrollytellingHero />
 
-      {/* Industry Footprint Context */}
-      <section className="section border-top gsap-reveal" style={{ paddingBottom: "2rem", paddingTop: "3.5rem" }}>
-        <div className="container reveal">
-          <div style={{ maxWidth: "800px" }}>
-            <span className="label">{"// REGULATED INDUSTRIES"}</span>
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "1.5rem" }}>
-              Enterprise Footprint Across Regulated Industries
-            </h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.8 }}>
-              We engineer resilient solutions, scalable web portals, and secure architectures for Global Logistics, Gov-Tech Platforms, and High-Throughput E-Commerce ecosystems across APAC and EMEA regions.
-            </p>
+        {/* Industry Footprint Context */}
+        <section id="footprint-section" className="section border-top gsap-reveal" style={{ paddingBottom: "2rem", paddingTop: "3.5rem" }}>
+          <div className="container reveal">
+            <div className="glass-panel" style={{ maxWidth: "800px" }}>
+              <span className="label">{"// REGULATED INDUSTRIES"}</span>
+              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "1.5rem" }}>
+                Enterprise Footprint Across Regulated Industries
+              </h2>
+              <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.8 }}>
+                We engineer resilient solutions, scalable web portals, and secure architectures for Global Logistics, Gov-Tech Platforms, and High-Throughput E-Commerce ecosystems across APAC and EMEA regions.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
+
 
       {/* Partner Logo Marquee */}
       <section className="marquee-wrapper border-top">
@@ -200,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* One Platform Section */}
-      <section className="section border-top gsap-reveal">
+      <section id="bridging-governance-section" className="section border-top gsap-reveal">
         <div className="container reveal">
           <div className="philosophy-grid" style={{ alignItems: "center" }}>
             <div className="philosophy-text">
@@ -224,6 +230,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Hand-off point: the video backdrop finishes fading out right as this
+          section's top is reached (see BackgroundFrameCanvas's darken/canvas-
+          fade tweens, scrubbed across #footprint-section → #bridging-governance-section).
+          Placing the sentinel immediately after means ParticlesBackdrop (the
+          ambient R3F ring/particle scene) starts fading in just a little
+          further into the scroll — right after the video stops, not several
+          sections later — see app/components/background/ParticlesBackdrop.tsx */}
+      <div id="particles-zone-start" aria-hidden="true" />
 
       {/* Services Showcase Section */}
       <section className="section border-top gsap-reveal">

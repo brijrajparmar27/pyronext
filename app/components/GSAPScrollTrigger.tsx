@@ -99,6 +99,24 @@ export default function GSAPScrollTrigger() {
           }
         );
       });
+
+      // 4. Hero "scroll to initiate" cue — pinned bottom-left, fades out as
+      // soon as the user starts scrolling (fixed-position element, so the
+      // fade is scrubbed off raw document scroll position rather than the
+      // element's own — unreliable — bounding box).
+      const scrollCue = document.querySelector(".pyro-hero-scrollcue");
+      if (scrollCue) {
+        gsap.to(scrollCue, {
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "+=400",
+            scrub: true,
+          },
+        });
+      }
     });
 
     // Cleanup scroll triggers and timelines on route change or unmount
