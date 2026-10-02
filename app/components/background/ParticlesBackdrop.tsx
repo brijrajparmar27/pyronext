@@ -42,6 +42,22 @@ export default function ParticlesBackdrop() {
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
 
+    // This component lives in the root layout and is never unmounted
+    // across client-side navigation, so `mounted`/`visible` can leak from
+    // whatever the previous route last set them to. Non-home routes have
+    // no sentinel and reveal the scene immediately (handled below); the
+    // home route is scroll-gated and must start hidden again here -
+    // otherwise navigating back to "/" client-side (no full reload) carries
+    // over a stale `visible: true` from a sentinel-less page and flashes
+    // the particle scene in on top of the video hero instead of waiting
+    // for the user to actually scroll down to its zone (only a hard
+    // refresh resets React state, which is why this only showed up on
+    // client-side navigation back to home, not after a reload).
+    if (document.getElementById("particles-zone-start")) {
+      setMounted(false);
+      setVisible(false);
+    }
+
     mm.add(
       { isMotionSafe: "(prefers-reduced-motion: no-preference)" },
       (context) => {
