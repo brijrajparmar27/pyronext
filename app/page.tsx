@@ -67,7 +67,9 @@ export default function Home() {
         }
         .workflow-card {
           background: var(--bg-surface);
-          border: 1px solid var(--border-light);
+          border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           padding: 2rem 1.75rem;
           transition: border-color 0.3s ease, background 0.3s ease;
           display: flex;
@@ -105,7 +107,9 @@ export default function Home() {
         }
         .engagement-card {
           background: var(--bg-surface);
-          border: 1px solid var(--border-light);
+          border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           padding: 2.5rem 2rem;
           transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;

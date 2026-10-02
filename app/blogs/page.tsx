@@ -55,15 +55,17 @@ export default function BlogsPage() {
           justify-content: space-between;
           height: 100%;
           padding: 2rem;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid var(--border-light, rgba(255, 255, 255, 0.08));
+          background: var(--bg-surface, rgba(8, 11, 16, 0.45));
+          border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
           cursor: pointer;
         }
         .blog-card:hover {
           transform: translateY(-4px);
           border-color: var(--primary) !important;
-          background-color: rgba(255, 255, 255, 0.04) !important;
+          background-color: var(--bg-panel, rgba(8, 11, 16, 0.6)) !important;
         }
       `}</style>
       <ScrollReveal />

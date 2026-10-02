@@ -1718,8 +1718,9 @@ textarea.form-control {
 }
 
 .tech-micro-card {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
   padding: 1.25rem;
   display: flex;
   align-items: center;
@@ -1731,7 +1732,7 @@ textarea.form-control {
   transform: scale(1.03);
   border-color: var(--primary);
   box-shadow: 0 0 15px rgba(236, 91, 19, 0.15);
-  background: rgba(236, 91, 19, 0.02);
+  background: rgba(236, 91, 19, 0.06);
 }
 
 .tech-micro-card .tech-icon {

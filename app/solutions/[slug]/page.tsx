@@ -152,10 +152,6 @@ export default async function SolutionPage({
               <div
                 key={i}
                 className="service-feature-card gsap-stagger-item"
-                style={{
-                  borderColor: "rgba(255, 255, 255, 0.05)",
-                  background: "rgba(255, 255, 255, 0.01)"
-                }}
               >
                 <span
                   className="material-symbols-outlined feature-icon"

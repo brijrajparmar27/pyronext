@@ -89,8 +89,10 @@ export default function TechSpectrum() {
         }
         .tech-tab-btn {
           background: var(--bg-surface);
-          border: 1px solid var(--border-light);
+          border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
           border-left: 3px solid transparent;
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           color: var(--text-muted);
           padding: 1.5rem 2rem;
           text-align: left;
@@ -102,16 +104,16 @@ export default function TechSpectrum() {
         }
         .tech-tab-btn:hover {
           color: #fff;
-          border-color: var(--border-light);
-          background: rgba(255, 255, 255, 0.02);
+          border-color: var(--glass-border, rgba(255, 255, 255, 0.08));
+          background: rgba(255, 255, 255, 0.04);
         }
         .tech-tab-btn.active {
           background: var(--bg-panel);
           color: #fff;
           border-left-color: var(--primary);
-          border-top-color: var(--border-light);
-          border-right-color: var(--border-light);
-          border-bottom-color: var(--border-light);
+          border-top-color: var(--glass-border, rgba(255, 255, 255, 0.08));
+          border-right-color: var(--glass-border, rgba(255, 255, 255, 0.08));
+          border-bottom-color: var(--glass-border, rgba(255, 255, 255, 0.08));
         }
         .tech-tab-btn .tab-index {
           font-family: var(--font-mono);
@@ -127,7 +129,9 @@ export default function TechSpectrum() {
 
         .tech-content-pane {
           background: var(--bg-surface);
-          border: 1px solid var(--border-light);
+          border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           padding: 4rem;
           min-height: 400px;
           display: flex;
@@ -157,8 +161,10 @@ export default function TechSpectrum() {
         }
 
         .tech-micro-card {
-          background: rgba(255, 255, 255, 0.01);
-          border: 1px solid var(--border-light);
+          background: var(--bg-surface);
+          border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           padding: 1.25rem;
           display: flex;
           align-items: center;
@@ -170,7 +176,7 @@ export default function TechSpectrum() {
           transform: scale(1.03);
           border-color: var(--primary);
           box-shadow: 0 0 15px rgba(236, 91, 19, 0.15);
-          background: rgba(236, 91, 19, 0.02);
+          background: rgba(236, 91, 19, 0.06);
         }
 
         .tech-micro-card .tech-icon {
