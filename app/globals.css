@@ -4,14 +4,83 @@
 :root {
   --primary: #ec5b13;
   --bg-base: #0a0a0a;
-  --bg-surface: #111111;
-  --bg-panel: #1a1a1a;
+  --bg-surface: rgba(8, 11, 16, 0.45);
+  --bg-panel: rgba(8, 11, 16, 0.6);
   --border-light: #2a2a2a;
   --text-primary: #f5f5f5;
   --text-muted: #a1a1a1;
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --nav-height: 80px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/*
+ * Frosted-glass card treatment: matches the .glass-panel hero/footprint
+ * card exactly (rgba(8,11,16,0.45) + blur) so every card/box across the
+ * site reads as the same glass material, keeping the moving background
+ * (video/particles) visible through it instead of a solid opaque panel.
+ * The matching soft hairline border is applied in a rule at the end of
+ * this file (after each card's own `border: 1px solid var(--border-light)`
+ * declaration) so it wins the cascade on base state while still letting
+ * every card's own `:hover`/`.active`/`.highlighted` orange border
+ * variants (higher specificity) take over as normal.
+ */
+.card,
+.philosophy-quote,
+.philosophy-image,
+.project-row:hover,
+.code-block,
+.footer,
+.cap-tag,
+.cap-readout,
+.marquee-wrapper,
+.blog-container,
+.table-wrapper,
+.tech-tab-btn,
+.tech-content-pane,
+.workflow-card,
+.engagement-card,
+.service-hero-visual,
+.service-feature-card,
+.service-tech-card,
+.service-process-card,
+.service-cta-block,
+.services-home-card,
+.filter-tab,
+.service-directory-card {
+  /* Only declare the unprefixed property: Lightning CSS's vendor
+   * auto-prefixer adds `-webkit-backdrop-filter` automatically. Manually
+   * including both here triggers a dedup bug that silently drops the
+   * unprefixed `backdrop-filter` declaration from the compiled output,
+   * leaving only `-webkit-backdrop-filter` (which Firefox ignores). */
+  backdrop-filter: blur(14px);
+}
+
+/*
+ * Utility classes for one-off inline-styled boxes (card-like <div>/
+ * <section> elements that set `background: var(--bg-surface)` directly
+ * via the `style` prop instead of a CSS class). CSS cannot target inline
+ * style values, so those elements never picked up the backdrop-filter
+ * rule above and rendered as a plain flat tint with no visible glass/
+ * blur - these classes give them the same frosted-glass treatment.
+ * Apply alongside any existing className; a more specific inline `style`
+ * border (e.g. borderTop/borderLeft accents) still overrides this.
+ *
+ * - .glass-surface: full-bleed sections that only ever had a background
+ *   tint (no border) - adds blur without introducing new edges.
+ * - .glass-card: bounded card/box elements that already draw a full
+ *   1px border - adds blur and matches the border to the glass hairline.
+ */
+.glass-surface {
+  background: var(--bg-surface);
+  backdrop-filter: blur(14px);
+}
+
+.glass-card {
+  background: var(--bg-surface);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
 }
 
 * {
@@ -2401,4 +2470,49 @@ textarea.form-control {
   .carousel-nav-btn.next {
     right: 10px;
   }
+}
+
+/*
+ * Glass-card hairline border — placed at the end of the stylesheet so it
+ * wins the cascade over each card's own base `border: 1px solid
+ * var(--border-light)` declaration (same specificity, later source order),
+ * while every card's own `:hover` / `.active` / `.highlighted` orange
+ * border variant (higher specificity) still correctly takes over on top
+ * of this, exactly as before.
+ */
+.card,
+.philosophy-image,
+.code-block,
+.footer,
+.cap-tag,
+.blog-container,
+.table-wrapper,
+.tech-content-pane,
+.workflow-card,
+.engagement-card,
+.service-hero-visual,
+.service-feature-card,
+.service-tech-card,
+.service-process-card,
+.services-home-card,
+.filter-tab,
+.service-directory-card {
+  border-color: var(--glass-border);
+}
+
+/*
+ * .cap-readout, .service-cta-block, and .philosophy-quote keep a
+ * permanent orange left-accent border (border-left: 2-4px solid
+ * var(--primary)); .tech-tab-btn keeps a transparent left border that
+ * only turns orange via .active — all four are deliberate design
+ * accents, so only their top/right/bottom edges get the glass hairline
+ * here (a no-op for .philosophy-quote, which has no other border sides).
+ */
+.cap-readout,
+.service-cta-block,
+.tech-tab-btn,
+.philosophy-quote {
+  border-top-color: var(--glass-border);
+  border-right-color: var(--glass-border);
+  border-bottom-color: var(--glass-border);
 }

@@ -112,7 +112,7 @@ export default function StandardPage() {
           <span className="label">[SECTION_03]</span>
         </div>
 
-        <div className="reveal" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-light)", padding: "4rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
+        <div className="reveal glass-card" style={{ padding: "4rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
           <div>
             <h3 style={{ fontSize: "2.5rem", textTransform: "uppercase", marginBottom: "2rem" }}>
               OSGi <br /><span style={{ color: "var(--primary)" }}>Modularization</span>

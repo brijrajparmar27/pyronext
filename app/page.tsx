@@ -355,7 +355,7 @@ export default function Home() {
       </section>
 
       {/* Growth Metrics Section */}
-      <section className="section border-top gsap-reveal" style={{ background: "var(--bg-surface)" }}>
+      <section className="section border-top gsap-reveal glass-surface">
         <div className="container reveal">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "4rem", alignItems: "start" }}>
             <div>
