@@ -1,0 +1,53 @@
+# Pyronite Tech
+
+> Pyronite Tech (a subsidiary of CodeAlchemy) is an enterprise software engineering studio that architects Liferay DXP platforms, open-source microservices, React/Next.js applications, AI/MCP integrations, and cloud-native infrastructure for regulated industries (finance, healthcare, telecom, manufacturing). Based in India, serving global enterprise clients.
+
+This file follows the llms.txt convention (https://llmstxt.org/) to help AI assistants and answer engines accurately summarize and cite Pyronite Tech.
+
+## Company
+
+- Website: https://pyronite.in
+- Contact: business@pyronite.in
+- LinkedIn: https://in.linkedin.com/company/pyronite-tech
+- Parent company: CodeAlchemy (https://codealchemy.tech/)
+
+## Core Services
+
+- [Enterprise Development](https://pyronite.in/services/enterprise-development): Integration patterns, robust architecture, secure APIs, legacy system modernization.
+- [Liferay Migration & Upgrade](https://pyronite.in/services/liferay-migration-upgrade): Liferay 6.2/7.x to DXP 7.4 upgrades, zero-loss database migrations, theme refactoring.
+- [Web Development](https://pyronite.in/services/web-development): Static site generation, responsive engineering, SEO/speed optimization, API-first platforms.
+- [AI & MCP](https://pyronite.in/services/ai-mcp): Custom MCP server development, retrieval-augmented generation (RAG), LLM agent automation, AI security guardrails.
+- [DevOps](https://pyronite.in/services/devops): CI/CD pipeline automation, infrastructure as code, Kubernetes orchestration, observability.
+- [Microservice Portal Development](https://pyronite.in/services/microservice-portal-development): Micro-frontends, message brokers, API gateways, database-per-service architecture.
+- [React/Next.js Development](https://pyronite.in/services/react-nextjs): React Server Components, streaming/suspense, state management, client-side performance tuning.
+- [Python Development](https://pyronite.in/services/python): FastAPI async APIs, data processing pipelines, web scraping, automation.
+- [E-Commerce Solutions](https://pyronite.in/services/e-commerce): Headless commerce frontends, payment gateway integration, catalog search, order automation.
+- [Architecture & QA](https://pyronite.in/services/architecture-qa): System architecture audits, end-to-end automated testing, performance/load testing, security scans.
+- [SEO & Generative Engine Optimization (GEO)](https://pyronite.in/services/seo-geo-optimization): Technical SEO, structured data/schema markup, GEO-targeting, AI answer-engine optimization.
+- [Performance Ads & Targeted Marketing](https://pyronite.in/services/performance-ads-marketing): Google/LinkedIn/Meta ads, conversion tracking, CRO.
+- [Growth Engineering & GEO Targeting](https://pyronite.in/services/growth-analytics-geo-targeting): Dynamic geo-personalization, multi-region SEO, growth telemetry.
+
+## Enterprise Solutions
+
+- [Customer Portals](https://pyronite.in/solutions/customer-portal): Unified SSO, self-service support hubs, document management for B2B and healthcare clients.
+- [Employee Intranets](https://pyronite.in/solutions/employee-intranet): Personalized content delivery, collaborative workspaces, corporate search.
+- [Partner & Supplier Portals](https://pyronite.in/solutions/partner-portal): Lead/deal registration, supplier inventory tracking, distributor KPIs.
+- [Headless Commerce](https://pyronite.in/solutions/headless-commerce): Next.js storefronts, B2B price matrices, decoupled checkout pipelines.
+
+## Engineering Blog
+
+- [Liferay AI Hub: Complete Guide to Enterprise AI Agents](https://pyronite.in/blogs/liferay-ai-hub-complete-setup-guide)
+- [Demystifying LDP: Unified Data Architecture in Liferay DXP](https://pyronite.in/blogs/demystifying-ldp-unified-data-architecture-liferay-dxp)
+- [The Architectural Trap: Why Enterprise Modernization Stalls Before It Starts](https://pyronite.in/blogs/architectural-trap-enterprise-modernization)
+- [HTTP QUERY Method (RFC 10008) Meets Liferay DXP](https://pyronite.in/blogs/http-query-method-rfc-10008-liferay-dxp-headless)
+- [SharePoint to Liferay DXP: Migration & Coexistence Guide](https://pyronite.in/blogs/sharepoint-to-liferay-dxp-ai-ready-portals)
+- [Supercharging Liferay DXP Q1 2026 with AI: MCP Integration using Antigravity](https://pyronite.in/blogs/liferay-dxp-mcp-ai-integration)
+- [Unlocking Enterprise Speed: Headless Portals with Next.js and Liferay DXP](https://pyronite.in/blogs/unlocking-enterprise-speed-nextjs-liferay-dxp)
+
+## Other Pages
+
+- [Services Directory](https://pyronite.in/services)
+- [Solutions Directory](https://pyronite.in/solutions)
+- [Blog Index](https://pyronite.in/blogs)
+- [FAQ & Glossary](https://pyronite.in/faq): Definitions and direct answers on Liferay DXP, Java enterprise architecture, headless commerce, microservices, and AI/MCP integration.
+- [Contact](https://pyronite.in/connect)
