@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import ScrollReveal from "../../components/ScrollReveal";
 import { services } from "../../data/services";
+import { breadcrumbSchema, howToSchema, ORG_ID } from "../../utils/schema";
 
 // Pre-generate all service pages at build time
 export function generateStaticParams() {
@@ -58,19 +59,31 @@ export default async function ServicePage({
     "@type": "Service",
     "name": service.title,
     "description": service.shortDescription,
-    "provider": {
-      "@type": "Organization",
-      "name": "Pyronite Tech",
-      "url": "https://pyronite.in"
-    },
+    "provider": { "@id": ORG_ID },
     "category": service.category
   };
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: service.title, url: `/services/${service.slug}` },
+  ]);
+
+  const howTo = howToSchema(`${service.title} Delivery Process`, service.process);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }}
       />
       <ScrollReveal />
 

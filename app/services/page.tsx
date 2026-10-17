@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
+import { breadcrumbSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Services & Capabilities | Pyronite Tech",
@@ -40,11 +41,20 @@ export default function ServicesPage() {
     "url": "https://pyronite.in/services"
   };
 
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
       />
       <ServicesClient />
     </>

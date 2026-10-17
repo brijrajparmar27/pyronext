@@ -159,9 +159,8 @@ export default function HireDevelopersPage() {
           ].map((m, i) => (
             <div
               key={i}
+              className="glass-card"
               style={{
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-light)",
                 padding: "2.5rem 2rem",
                 borderTop: "3px solid var(--primary)",
               }}
@@ -213,9 +212,8 @@ export default function HireDevelopersPage() {
           {roles.map((role) => (
             <div
               key={role.code}
+              className="glass-card"
               style={{
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-light)",
                 padding: "3rem 2.5rem",
                 display: "flex",
                 flexDirection: "column",
@@ -296,9 +294,8 @@ export default function HireDevelopersPage() {
           {models.map((model) => (
             <div
               key={model.name}
+              className="glass-card"
               style={{
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-light)",
                 padding: "3.5rem 2.5rem",
                 display: "flex",
                 flexDirection: "column",
@@ -399,9 +396,8 @@ export default function HireDevelopersPage() {
           {processSteps.map((p) => (
             <div
               key={p.step}
+              className="glass-card"
               style={{
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-light)",
                 padding: "2.5rem 2rem",
                 display: "flex",
                 flexDirection: "column",
@@ -431,10 +427,8 @@ export default function HireDevelopersPage() {
 
         {/* Call To Action Banner */}
         <section
-          className="reveal"
+          className="reveal glass-card"
           style={{
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border-light)",
             borderLeft: "4px solid var(--primary)",
             padding: "4rem 3rem",
             display: "flex",

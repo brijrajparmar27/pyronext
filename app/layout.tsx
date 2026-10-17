@@ -4,11 +4,13 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CanvasContainer from "./components/3d/CanvasContainer";
+import BackgroundFrameCanvas from "./components/background/BackgroundFrameCanvas";
+import ParticlesBackdrop from "./components/background/ParticlesBackdrop";
 import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
 import ScheduleMeetingWidget from "./components/ScheduleMeetingWidget";
 import GSAPScrollTrigger from "./components/GSAPScrollTrigger";
 import ScrollReveal from "./components/ScrollReveal";
+import { organizationSchema, websiteSchema } from "./utils/schema";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -100,13 +102,22 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
+        />
       </head>
       <body>
         <GoogleAnalyticsTracker />
         <GSAPScrollTrigger />
         <ScrollReveal />
         <ScheduleMeetingWidget />
-        <CanvasContainer />
+        <BackgroundFrameCanvas />
+        <ParticlesBackdrop />
         <Navbar />
         <main
           style={{

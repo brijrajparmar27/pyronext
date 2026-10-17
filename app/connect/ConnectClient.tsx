@@ -85,8 +85,7 @@ export default function ConnectClient() {
                   PYRONITE TECHNOLOGIES<br />
                   Sun Central Place, D-112<br />
                   Bopal Cross Road, Bhagwatikrupa Society<br />
-                  Ahmedabad, Gujarat 380058<br />
-                  +91 820-0618261
+                  Ahmedabad, Gujarat 380058
                 </p>
               </div>
               <div>

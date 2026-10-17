@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
 import SolutionsClient from "./SolutionsClient";
 import { solutions } from "../data/solutions";
+import { breadcrumbSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Enterprise Solutions | Customer Portals, Intranets & Headless Commerce",
@@ -36,8 +37,17 @@ export const metadata: Metadata = {
 };
 
 export default function SolutionsPage() {
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Solutions", url: "/solutions" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <ScrollReveal />
       <div className="container service-layout" style={{ paddingTop: "3.5rem" }}>
         {/* Hero Section */}

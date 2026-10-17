@@ -66,15 +66,13 @@ export default function ServicesClient() {
 
           {/* Controls: Search & Category Filter */}
           <div
+            className="glass-card"
             style={{
               display: "flex",
               flexDirection: "column",
               gap: "1.5rem",
               marginBottom: "3rem",
-              background: "var(--bg-surface)",
-              border: "1px solid var(--border-light)",
               padding: "1.5rem",
-              backdropFilter: "blur(10px)",
             }}
           >
             {/* Search Input */}
@@ -341,11 +339,11 @@ export default function ServicesClient() {
             </div>
           ) : (
             <div
+              className="glass-surface"
               style={{
                 textAlign: "center",
                 padding: "5rem 2rem",
                 border: "1px dashed var(--border-light)",
-                background: "var(--bg-surface)",
                 marginBottom: "5rem",
               }}
             >
@@ -374,9 +372,8 @@ export default function ServicesClient() {
 
           {/* Bottom CTA Block */}
           <section
+            className="glass-card"
             style={{
-              background: "var(--bg-surface)",
-              border: "1px solid var(--border-light)",
               padding: "3rem 2.5rem",
               display: "flex",
               justifyContent: "space-between",

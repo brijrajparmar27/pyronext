@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import ScrollReveal from "../../components/ScrollReveal";
 import { solutions } from "../../data/solutions";
+import { breadcrumbSchema, ORG_ID } from "../../utils/schema";
 
 // Pre-generate all solutions pages at build time
 export function generateStaticParams() {
@@ -58,19 +59,25 @@ export default async function SolutionPage({
     "@type": "WebPage",
     "name": solution.title,
     "description": solution.shortDescription,
-    "provider": {
-      "@type": "Organization",
-      "name": "Pyronite Tech",
-      "url": "https://pyronite.in"
-    },
+    "provider": { "@id": ORG_ID },
     "genre": solution.category
   };
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Solutions", url: "/solutions" },
+    { name: solution.title, url: `/solutions/${solution.slug}` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
       />
       <ScrollReveal />
 
@@ -145,10 +152,6 @@ export default async function SolutionPage({
               <div
                 key={i}
                 className="service-feature-card gsap-stagger-item"
-                style={{
-                  borderColor: "rgba(255, 255, 255, 0.05)",
-                  background: "rgba(255, 255, 255, 0.01)"
-                }}
               >
                 <span
                   className="material-symbols-outlined feature-icon"
