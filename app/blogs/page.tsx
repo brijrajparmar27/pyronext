@@ -34,7 +34,9 @@ export const metadata: Metadata = {
   },
 };
 
-const blogs = blogsData as BlogPost[];
+const blogs = (blogsData as BlogPost[]).sort(
+  (a, b) => new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime()
+);
 
 export default function BlogsPage() {
   const breadcrumbs = breadcrumbSchema([

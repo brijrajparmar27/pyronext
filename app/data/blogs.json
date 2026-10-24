@@ -3025,5 +3025,181 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "cve-2026-91403-java-jsse-emudhra-certificate-vulnerability",
+    "title": "CVE-2026-91403: Java JSSE Certificate-Trust Vulnerability — eMudhra Intermediate CA Explained",
+    "date": "October 24, 2026",
+    "dateISO": "2026-10-24",
+    "category": "Java Security",
+    "readTime": "12 min read",
+    "author": "Pyronite Engineering Team",
+    "label": "SECURITY ALERT / Java",
+    "excerpt": "Oracle released an out-of-band fix for CVE-2026-91403 (CVSS 9.1), a JSSE/TLS trust vulnerability in Java SE, GraalVM, and OpenJDK. Eight compromised eMudhra intermediate CAs put every JVM client at risk of man-in-the-middle attacks. Learn the root cause, affected versions, and how to verify and harden your local JDK.",
+    "metaDescription": "CVE-2026-91403 (CVSS 9.1) deep dive: eMudhra compromised intermediate CAs in the Java JSSE trust store. Affected versions, MITM attack flow, local JDK verification, and remediation steps for Oracle Java SE, GraalVM, and OpenJDK.",
+    "metaKeywords": "CVE-2026-91403, Java vulnerability, JSSE, TLS, eMudhra, intermediate CA, certificate trust, OpenJDK, GraalVM, Oracle Java SE, MITM, cacerts, CVSS 9.1",
+    "tags": ["Java", "Security", "JSSE", "TLS", "CVE-2026-91403", "Certificates", "OpenJDK", "GraalVM"],
+    "content": [
+      {
+        "type": "image",
+        "src": "/blogs/cve-2026-91403-java-jsse-emudhra-certificate-vulnerability/hero_banner.svg",
+        "alt": "CVE-2026-91403 hero banner — Java JSSE certificate-trust vulnerability, CVSS 9.1 Critical",
+        "caption": "Fig 1. CVE-2026-91403 — Oracle Java SE, GraalVM & OpenJDK JSSE certificate-trust vulnerability (CVSS 9.1)."
+      },
+      {
+        "type": "paragraph",
+        "html": "On <strong>October 21, 2026</strong>, Oracle issued an out-of-band Security Alert for <strong>CVE-2026-91403</strong> — a critical (CVSS 9.1) vulnerability in the <strong>JSSE</strong> component, Java&rsquo;s TLS/SSL implementation. Unlike most Java CVEs, this one is not about deserialization, sandbox escapes, or reflection. It is about <strong>trust</strong>: eight intermediate CA certificates issued by <strong>eMudhra</strong> (an Indian certificate authority) were shipped inside the JDK&rsquo;s <code>cacerts</code> trust store, and their private keys were generated with insufficient strength. A man-in-the-middle attacker can exploit this over the network, with no authentication, to impersonate any website to a Java client."
+      },
+      {
+        "type": "paragraph",
+        "html": "Because the vulnerable trust anchor lives in the JDK itself, <em>every</em> application running on an affected JVM is exposed — web clients, CI/CD dependency downloaders, Liferay DXP connectors, Spring Boot services, Scala build tools, and more. This blog walks through the root cause, an MITM attack flow, affected versions, and a hands-on verification of your local JDK, with remediation steps."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "1. Vulnerability at a Glance"
+      },
+      {
+        "type": "table",
+        "headers": ["Field", "Detail"],
+        "rows": [
+          ["CVE ID", "<strong>CVE-2026-91403</strong>"],
+          ["Published", "2026-10-21 (out-of-band, day after the October 2026 CPU)"],
+          ["Component", "<strong>JSSE</strong> (javax.net.ssl — Java&rsquo;s TLS/SSL stack)"],
+          ["Products", "Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition (OpenJDK upstream too)"],
+          ["CVSS v3.1", "<strong>9.1 — Critical</strong> · Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"],
+          ["Attack vector", "Network · unauthenticated · no user interaction · remotely exploitable"],
+          ["Impact", "Unauthorized creation/deletion/modification of critical data via MITM impersonation of TLS hosts"],
+          ["Fix", "Distrust impacted eMudhra intermediate CAs; update to a fixed JDK build · <a href=\"https://ops.java/emudhra\">ops.java/emudhra</a>"],
+          ["Oracle advisory", "<a href=\"https://www.oracle.com/security-alerts/alert-cve-2026-91403.html\">Security Alert CVE-2026-91403</a>"],
+          ["OpenJDK advisory", "<a href=\"https://openjdk.org/groups/vulnerability/advisories/2026-10-21\">OpenJDK Vulnerability Advisory 2026/10/21</a>"]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "2. Root Cause — eMudhra and Weak Intermediate CAs"
+      },
+      {
+        "type": "paragraph",
+        "html": "The JDK ships a default trust store (<code>cacerts</code>) containing root CA certificates that Java trusts by default. Among them were root CAs belonging to <strong>eMudhra Technologies Limited</strong>. Those roots had signed a set of <strong>intermediate CA certificates</strong> using private keys that were cryptographically weak."
+      },
+      {
+        "type": "paragraph",
+        "html": "In a normal TLS handshake, the client validates a server certificate by walking signatures up through intermediate CAs to a trusted root. Because the eMudhra <em>roots</i> are trusted in <code>cacerts</code>, any certificate chain that terminates at them is accepted — including chains built from <em>compromised intermediate</em> CAs. An attacker who obtained (or can abuse) the weak intermediate key can issue a certificate for <em>any hostname</em> (for example <code>*.yourbank.com</code>), chain it to the trusted eMudhra root, and present it to a Java TLS client. The client builds the chain, reaches a trusted root, and <strong>accepts the forged certificate</strong>."
+      },
+      {
+        "type": "image",
+        "src": "/blogs/cve-2026-91403-java-jsse-emudhra-certificate-vulnerability/certificate_chain.svg",
+        "alt": "Certificate chain diagram — trusted root CA, compromised intermediate CA, forged leaf certificate",
+        "caption": "Fig 2. Trust flow: the eMudhra root is trusted in cacerts; the compromised intermediate signs a forged leaf that the Java client accepts."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "3. Attack Flow — Man-in-the-Middle in Practice"
+      },
+      {
+        "type": "paragraph",
+        "html": "The attacker needs only network position between the Java client and its TLS target (public Wi-Fi, compromised router, ISP, or any BGP/ADB-level interception). No credentials, no phishing, no user action:"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "The Java client initiates a TLS handshake to <code>https://target.com</code>.",
+          "The attacker intercepts the connection and presents a forged leaf certificate for <code>target.com</code>, signed by the weak eMudhra intermediate CA.",
+          "The JSSE client builds the chain: forged leaf → compromised intermediate → trusted eMudhra root (in <code>cacerts</code>).",
+          "Chain validation succeeds because the root is trusted. The client completes the TLS handshake with the attacker.",
+          "The attacker can now read, modify, or relay all traffic — credentials, session tokens, dependency artifacts — while the victim sees a valid green lock equivalent."
+        ]
+      },
+      {
+        "type": "image",
+        "src": "/blogs/cve-2026-91403-java-jsse-emudhra-certificate-vulnerability/attack_flow.svg",
+        "alt": "MITM attack flow — victim Java client, attacker presenting forged cert, legitimate target bypassed",
+        "caption": "Fig 3. MITM attack flow: the victim trusts the eMudhra root; the attacker&rsquo;s forged chain validates, and traffic is intercepted."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "4. Affected Versions"
+      },
+      {
+        "type": "paragraph",
+        "html": "Per the Oracle and OpenJDK advisories, the following supported releases are affected (and earlier builds within each line):"
+      },
+      {
+        "type": "image",
+        "src": "/blogs/cve-2026-91403-java-jsse-emudhra-certificate-vulnerability/affected_versions.svg",
+        "alt": "Affected versions matrix — Oracle Java SE, GraalVM, OpenJDK",
+        "caption": "Fig 4. Affected and patched versions for CVE-2026-91403, including local system verification."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "5. Local System Verification"
+      },
+      {
+        "type": "paragraph",
+        "html": "We verified the vulnerability conditions on the local workstation used to author this post. The local JDK is <strong>Oracle Java SE 21.0.11 LTS</strong>, installed at <code>C:\\Program Files\\Java\\jdk-21.0.11</code>. Because 21.0.11 is earlier than the last vulnerable line (21.0.13), it falls under the advisory&rsquo;s <em>&ldquo;and earlier&rdquo;</em> clause and is affected."
+      },
+      {
+        "type": "code",
+        "lang": "bash",
+        "code": "# 1) Confirm the local JDK version\njava -version\n# Expected: java version \"21.0.11\" 2026-04-21 LTS\n\n# 2) Locate the default trust store\nls \"$JAVA_HOME/lib/security/cacerts\" 2>/dev/null || ls \"$JAVA_HOME/jre/lib/security/cacerts\"\n\n# 3) List eMudhra-related entries in cacerts (password: changeit)\nkeytool -list -v -keystore \"$JAVA_HOME/lib/security/cacerts\" -storepass changeit 2>/dev/null | grep -i -A3 emudhra\n\n# 4) Check whether any eMudhra intermediate (weak) CA is trusted\nkeytool -list -v -keystore \"$JAVA_HOME/lib/security/cacerts\" -storepass changeit 2>/dev/null | grep -i emudhra | wc -l"
+      },
+      {
+        "type": "paragraph",
+        "html": "Output confirmed three eMudhra <em>root</em> CAs present in the local <code>cacerts</code> (emSign Root CA - G1, emSign Root CA - G2, emSign ECC Root CA - G3). These are the trust anchors that the compromised intermediates chain to — which is exactly why the local build is vulnerable until patched or the intermediates are distrusted."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "6. Remediation & Mitigation"
+      },
+      {
+        "type": "paragraph",
+        "html": "Apply mitigations in this order. The fix is an out-of-band release outside the normal CPU cycle, so do not wait for the next quarterly patch."
+      },
+      {
+        "type": "image",
+        "src": "/blogs/cve-2026-91403-java-jsse-emudhra-certificate-vulnerability/mitigation.svg",
+        "alt": "Remediation steps — update JDK, distrust eMudhra intermediates, verify trust store, harden TLS",
+        "caption": "Fig 5. Recommended remediation sequence for CVE-2026-91403."
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "<strong>Update the JDK immediately.</strong> Move to a fixed build newer than the vulnerable releases (past 21.0.13 / 25.0.5 / 27.0.1). Oracle Java SE, GraalVM, and OpenJDK fixes were issued 2026-10-21.",
+          "<strong>Distrust eMudhra intermediates (interim).</strong> If you cannot upgrade right away, remove or disable trust for the compromised eMudhra intermediate CAs from <code>cacerts</code>. See <a href=\"https://ops.java/emudhra\">ops.java/emudhra</a>.",
+          "<strong>Verify your local trust store.</strong> Run the keytool commands in Section 5 and confirm no eMudhra intermediate CA remains trusted.",
+          "<strong>Harden TLS configuration.</strong> Enable certificate pinning where practical, restrict outbound TLS destinations, and monitor for unexpected CA issuance. Treat JSSE as part of your network-security perimeter."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "7. References"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Oracle — <a href=\"https://www.oracle.com/security-alerts/alert-cve-2026-91403.html\">Security Alert Advisory - CVE-2026-91403</a> (2026-10-21)",
+          "Oracle — <a href=\"https://www.oracle.com/security-alerts/cve-2026-91403verbose.html\">Text Form of Security Alert CVE-2026-91403 Risk Matrices</a>",
+          "OpenJDK — <a href=\"https://openjdk.org/groups/vulnerability/advisories/2026-10-21\">OpenJDK Vulnerability Advisory: 2026/10/21</a>",
+          "CVE Record — <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-91403\">CVE-2026-91403</a>",
+          "eMudhra remediation reference — <a href=\"https://ops.java/emudhra\">ops.java/emudhra</a>",
+          "Red Hat — <a href=\"https://access.redhat.com/security/cve/cve-2026-91403\">CVE-2026-91403</a>",
+          "Scala/VirtusLab advisory — <a href=\"https://www.scala-lang.org/blog/jdk-certificate-vulnerability.html\">Security advisory: update your JDK (CVE-2026-91403)</a>"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "html": "<em>© 2026 Pyronite Technologies LLP. This post is for defensive and educational purposes. Do not reproduce the attack against systems you do not own or have written authorization to test.</em>"
+      }
+    ]
   }
 ]

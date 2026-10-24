@@ -75,8 +75,8 @@ export default function BlogRenderer({ blocks }: Props) {
               <div
                 key={index}
                 style={{
+                  width: "80%",
                   margin: "2.5rem auto",
-                  maxWidth: "720px",
                   border: "1px solid var(--border-light)",
                   padding: 5,
                   background: "#000",
