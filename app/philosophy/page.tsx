@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "../components/ScrollReveal";
 import AnimatedCounter from "../components/AnimatedCounter";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, webPageSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Philosophy",
@@ -33,8 +35,23 @@ export const metadata: Metadata = {
 };
 
 export default function PhilosophyPage() {
+  const jsonLd = webPageSchema({
+    type: "AboutPage",
+    name: "Philosophy | Pyronite Tech",
+    description:
+      "Explore Pyronite's philosophy on architectural precision and purpose-driven engineering.",
+    url: "/philosophy",
+  });
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Philosophy", url: "/philosophy" },
+  ]);
+
   return (
     <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
       <ScrollReveal />
       <main className="section reveal" style={{ paddingTop: "6rem" }}>
         <div className="container">

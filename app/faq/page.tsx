@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
+import JsonLd from "../components/JsonLd";
 import { breadcrumbSchema, faqSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
@@ -124,11 +125,8 @@ export default function FaqPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-      />
+      <JsonLd data={faq} />
+      <JsonLd data={breadcrumbs} />
       <ScrollReveal />
       <main className="section reveal" style={{ paddingTop: "6rem" }}>
         <div className="container">

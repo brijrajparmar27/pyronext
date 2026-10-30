@@ -8,6 +8,8 @@ import AnimatedCounter from "./components/AnimatedCounter";
 import ServicesCarousel from "./components/ServicesCarousel";
 import { services } from "./data/services";
 import TrackedLink from "./components/TrackedLink";
+import JsonLd from "./components/JsonLd";
+import { itemListSchema, webPageSchema } from "./utils/schema";
 
 export const metadata: Metadata = {
   title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
@@ -46,8 +48,29 @@ const partners = [
 ];
 
 export default function Home() {
+  const jsonLd = webPageSchema({
+    type: "CollectionPage",
+    name: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
+    description:
+      "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
+    url: "/",
+  });
+
+  const servicesList = itemListSchema(
+    "Pyronite Core Services",
+    "Enterprise Liferay DXP, open-source microservices, and headless engineering services offered by Pyronite Tech.",
+    "/",
+    services.map((service) => ({
+      name: service.title,
+      url: `/services/${service.slug}`,
+      description: service.shortDescription,
+    }))
+  );
+
   return (
     <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={servicesList} />
       <style>{`
         /* Glass panel — frosted legibility card used over the live
            scroll-scrubbed video background (Hero + Industry Footprint zone) */

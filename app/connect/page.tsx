@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ConnectClient from "./ConnectClient";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, webPageSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Connect",
@@ -29,5 +31,24 @@ export const metadata: Metadata = {
 };
 
 export default function ConnectPage() {
-  return <ConnectClient />;
+  const jsonLd = webPageSchema({
+    type: "ContactPage",
+    name: "Connect | Pyronite Tech",
+    description:
+      "Connect with Pyronite Tech to architect your complex enterprise Liferay & open-source systems.",
+    url: "/connect",
+  });
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Connect", url: "/connect" },
+  ]);
+
+  return (
+    <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
+      <ConnectClient />
+    </>
+  );
 }

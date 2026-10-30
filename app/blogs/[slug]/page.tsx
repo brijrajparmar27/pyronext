@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "../../components/ScrollReveal";
 import BlogRenderer from "../../components/BlogRenderer";
+import JsonLd from "../../components/JsonLd";
 import blogsData from "../../data/blogs.json";
 import type { BlogPost, ContentBlock } from "../../data/types";
 import { breadcrumbSchema, faqSchema, ORG_ID, SITE_LOGO, SITE_URL, WEBSITE_ID } from "../../utils/schema";
@@ -25,8 +26,6 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogs.find((b) => b.slug === slug);
   if (!post) return {};
-  const heroImage = post.content.find((block) => block.type === "image");
-  const socialImage = heroImage?.src ?? "/logo.png";
   return {
     title: post.title,
     description: post.metaDescription,
@@ -39,15 +38,16 @@ export async function generateMetadata({
       title: post.title,
       description: post.metaDescription,
       publishedTime: post.dateISO,
+      modifiedTime: post.updatedISO ?? post.dateISO,
       authors: [post.author],
       tags: post.tags,
-      images: [{ url: socialImage, alt: heroImage?.alt ?? "Pyronite" }],
+      // images omitted: app/blogs/[slug]/opengraph-image.tsx generates a
+      // branded, title-legible social card per post via next/og.
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.metaDescription,
-      images: [socialImage],
     },
   };
 }
@@ -96,20 +96,9 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-      />
-      {faq && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
-        />
-      )}
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
+      {faq && <JsonLd data={faq} />}
       <ScrollReveal />
       <section className="section" style={{ paddingTop: "4rem" }}>
         <div className="blog-container">

@@ -1,13 +1,53 @@
 import type { Metadata } from "next";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, webPageSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Pyronite",
-  description: "Terms and conditions for Pyronite - Specialized Liferay DXP & Portal Solutions.",
+  title: "Terms & Conditions | Pyronite Tech",
+  description:
+    "Terms and conditions governing use of the Pyronite Tech website and our Liferay DXP, enterprise portal, and open-source consulting services.",
+  keywords: [
+    "Pyronite Terms and Conditions",
+    "Pyronite Legal",
+    "Liferay DXP Consulting Terms",
+    "Pyronite Tech Services Agreement",
+  ],
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    url: "/terms",
+    title: "Terms & Conditions | Pyronite Tech",
+    description:
+      "Terms and conditions governing use of the Pyronite Tech website and our Liferay DXP, enterprise portal, and open-source consulting services.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms & Conditions | Pyronite Tech",
+    description:
+      "Terms and conditions governing use of the Pyronite Tech website and our Liferay DXP, enterprise portal, and open-source consulting services.",
+  },
 };
 
 export default function TermsPage() {
+  const jsonLd = webPageSchema({
+    type: "WebPage",
+    name: "Terms & Conditions | Pyronite Tech",
+    description:
+      "Terms and conditions governing use of the Pyronite Tech website and our Liferay DXP, enterprise portal, and open-source consulting services.",
+    url: "/terms",
+  });
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Terms & Conditions", url: "/terms" },
+  ]);
+
   return (
-    <main className="container" style={{ paddingTop: "150px", paddingBottom: "8rem", minHeight: "100vh" }}>
+    <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
+      <main className="container" style={{ paddingTop: "150px", paddingBottom: "8rem", minHeight: "100vh" }}>
       <div className="blog-container" style={{ margin: "0 auto" }}>
         <div className="blog-header">
           <span className="label">LEGAL</span>
@@ -96,5 +136,6 @@ export default function TermsPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

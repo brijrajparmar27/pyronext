@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import JsonLd from "../components/JsonLd";
 import blogsData from "../data/blogs.json";
 import type { BlogPost } from "../data/types";
-import { breadcrumbSchema } from "../utils/schema";
+import { breadcrumbSchema, blogSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Engineering Blogs & Insights",
@@ -44,12 +45,20 @@ export default function BlogsPage() {
     { name: "Blogs", url: "/blogs" },
   ]);
 
+  const blog = blogSchema(
+    blogs.map((post) => ({
+      title: post.title,
+      slug: post.slug,
+      dateISO: post.dateISO,
+      updatedISO: post.updatedISO,
+      description: post.metaDescription,
+    }))
+  );
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-      />
+      <JsonLd data={blog} />
+      <JsonLd data={breadcrumbs} />
       <style>{`
         .blog-card {
           display: flex;

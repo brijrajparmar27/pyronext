@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
-import { breadcrumbSchema } from "../utils/schema";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, itemListSchema } from "../utils/schema";
+import { services } from "../data/services";
 
 export const metadata: Metadata = {
   title: "Services & Capabilities | Pyronite Tech",
@@ -33,13 +35,16 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Pyronite Technical Services",
-    "description": "Full directory of enterprise system engineering, Liferay DXP, AI, and digital growth services provided by Pyronite Tech.",
-    "url": "https://pyronite.in/services"
-  };
+  const jsonLd = itemListSchema(
+    "Pyronite Technical Services",
+    "Full directory of enterprise system engineering, Liferay DXP, AI, and digital growth services provided by Pyronite Tech.",
+    "/services",
+    services.map((service) => ({
+      name: service.title,
+      url: `/services/${service.slug}`,
+      description: service.shortDescription,
+    }))
+  );
 
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: "/" },
@@ -48,14 +53,8 @@ export default function ServicesPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-      />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
       <ServicesClient />
     </>
   );

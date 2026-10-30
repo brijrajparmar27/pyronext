@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -10,6 +10,7 @@ import GoogleAnalyticsTracker from "./components/GoogleAnalyticsTracker";
 import ScheduleMeetingWidget from "./components/ScheduleMeetingWidget";
 import GSAPScrollTrigger from "./components/GSAPScrollTrigger";
 import ScrollReveal from "./components/ScrollReveal";
+import JsonLd from "./components/JsonLd";
 import { organizationSchema, websiteSchema } from "./utils/schema";
 
 const spaceGrotesk = Space_Grotesk({
@@ -68,25 +69,27 @@ export const metadata: Metadata = {
     description:
       "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
     siteName: "Pyronite Tech",
-    images: [
-      {
-        url: `${BASE_URL}/logo.png`,
-        width: 512,
-        height: 512,
-        alt: "Pyronite Tech Logo",
-      },
-    ],
+    // Image intentionally omitted: app/opengraph-image.tsx (and
+    // twitter-image.tsx) generate a branded 1200x630 card per route via
+    // next/og, which Next.js wires up automatically as long as no page
+    // in the tree declares its own openGraph/twitter `images`.
   },
   twitter: {
     card: "summary_large_image",
     title: "Pyronite Tech | Architecting Enterprise Liferay & Open-Source Systems",
     description:
       "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
-    images: [`${BASE_URL}/logo.png`],
   },
   alternates: {
     canonical: BASE_URL,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0a0a0a",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -98,18 +101,13 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/logo.png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
-        />
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
       </head>
       <body>
         <GoogleAnalyticsTracker />

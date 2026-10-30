@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, webPageSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "The Standard",
@@ -30,8 +32,23 @@ export const metadata: Metadata = {
 };
 
 export default function StandardPage() {
+  const jsonLd = webPageSchema({
+    type: "WebPage",
+    name: "The Standard | Pyronite Tech",
+    description:
+      "Discover Pyronite's engineering standards and enterprise Liferay & open-source expertise.",
+    url: "/standard",
+  });
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "The Standard", url: "/standard" },
+  ]);
+
   return (
     <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
       <ScrollReveal />
       <section className="section reveal" style={{ paddingTop: "6rem" }}>
         <div className="container">

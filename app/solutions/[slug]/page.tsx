@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ScrollReveal from "../../components/ScrollReveal";
+import JsonLd from "../../components/JsonLd";
 import { solutions } from "../../data/solutions";
 import { breadcrumbSchema, ORG_ID } from "../../utils/schema";
 
@@ -30,13 +31,11 @@ export async function generateMetadata({
       url: `/solutions/${solution.slug}`,
       title: `${solution.title} | Pyronite Tech`,
       description: solution.metaDescription,
-      images: [{ url: "/logo.png", alt: "Pyronite" }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${solution.title} | Pyronite Tech`,
       description: solution.metaDescription,
-      images: ["/logo.png"],
     },
   };
 }
@@ -71,14 +70,8 @@ export default async function SolutionPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-      />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
       <ScrollReveal />
 
       <div className="container service-layout">

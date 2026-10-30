@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
 import SolutionsClient from "./SolutionsClient";
+import JsonLd from "../components/JsonLd";
 import { solutions } from "../data/solutions";
-import { breadcrumbSchema } from "../utils/schema";
+import { breadcrumbSchema, itemListSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Enterprise Solutions | Customer Portals, Intranets & Headless Commerce",
@@ -25,14 +26,12 @@ export const metadata: Metadata = {
     title: "Enterprise Solutions | Pyronite Tech",
     description:
       "Centralized customer portals, connected employee workspaces, and B2B supplier integration networks built on Liferay DXP and Next.js.",
-    images: [{ url: "/logo.png", alt: "Pyronite" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Enterprise Solutions | Pyronite Tech",
     description:
       "Centralized customer portals, connected employee workspaces, and B2B supplier integration networks built on Liferay DXP and Next.js.",
-    images: ["/logo.png"],
   },
 };
 
@@ -42,12 +41,21 @@ export default function SolutionsPage() {
     { name: "Solutions", url: "/solutions" },
   ]);
 
+  const jsonLd = itemListSchema(
+    "Pyronite Enterprise Solutions",
+    "Full directory of enterprise portal, intranet, and headless commerce solutions built by Pyronite Tech on Liferay DXP and Next.js.",
+    "/solutions",
+    solutions.map((solution) => ({
+      name: solution.title,
+      url: `/solutions/${solution.slug}`,
+      description: solution.shortDescription,
+    }))
+  );
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-      />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
       <ScrollReveal />
       <div className="container service-layout" style={{ paddingTop: "3.5rem" }}>
         {/* Hero Section */}

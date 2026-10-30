@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
 import AnimatedCounter from "../components/AnimatedCounter";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, itemListSchema, webPageSchema } from "../utils/schema";
 
 export const metadata: Metadata = {
   title: "Hire Liferay Developers | Certified DXP Engineers",
@@ -23,14 +25,12 @@ export const metadata: Metadata = {
     title: "Hire Dedicated Liferay DXP Developers | Pyronite Tech",
     description:
       "Commission certified senior Liferay DXP and headless engineers. Scale your enterprise squads with 48-hour onboarding.",
-    images: [{ url: "/logo.png", alt: "Pyronite" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hire Dedicated Liferay DXP Developers | Pyronite Tech",
     description:
       "Commission certified senior Liferay DXP and headless engineers. Scale your enterprise squads with 48-hour onboarding.",
-    images: ["/logo.png"],
   },
 };
 
@@ -116,8 +116,31 @@ export default function HireDevelopersPage() {
     },
   ];
 
+  const jsonLd = webPageSchema({
+    type: "CollectionPage",
+    name: "Hire Dedicated Liferay DXP Developers | Pyronite Tech",
+    description:
+      "Commission certified senior Liferay DXP and headless engineers. Scale your enterprise squads with 48-hour onboarding.",
+    url: "/hire-liferay-developers",
+  });
+
+  const rolesList = itemListSchema(
+    "Specialist Liferay Engineering Roles",
+    "Certified Liferay DXP engineering roles available for staff augmentation or dedicated squads.",
+    "/hire-liferay-developers",
+    roles.map((role) => ({ name: role.title, url: "/hire-liferay-developers", description: role.desc }))
+  );
+
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Hire Liferay Developers", url: "/hire-liferay-developers" },
+  ]);
+
   return (
     <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={rolesList} />
+      <JsonLd data={breadcrumbs} />
       <ScrollReveal />
       <main className="section reveal" style={{ paddingTop: "6.5rem" }}>
         <div className="container">
