@@ -216,10 +216,6 @@
   color: var(--intro-muted);
 }
 
-.motionToggle {
-  display: none;
-}
-
 @keyframes floatOutcome {
   50% { transform: translateY(-10px); }
 }
@@ -230,40 +226,13 @@
   }
 
   .outcomes li {
-    animation: floatOutcome 6s ease-in-out infinite;
+    animation: floatOutcome 6s ease-in-out;
   }
 
+  /* The staggered offsets keep the visible motion within five seconds. */
   .outcomes li:nth-child(1) { animation-delay: -1s; }
   .outcomes li:nth-child(2) { animation-delay: -3s; }
   .outcomes li:nth-child(3) { animation-delay: -2s; }
-
-  .orbit:has(.motionToggle input:checked) .outcomes li {
-    animation-play-state: paused;
-  }
-
-  .motionToggle {
-    position: absolute;
-    inset: auto auto 0 50%;
-    translate: -50% 0;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    min-height: 44px;
-    padding-inline: 0.5rem;
-    color: var(--intro-muted);
-    font: 500 0.7rem/1.5 var(--font-mono);
-    white-space: nowrap;
-    cursor: pointer;
-  }
-
-  .motionToggle input {
-    accent-color: var(--primary);
-    cursor: inherit;
-  }
-
-  .motionToggle:has(input:focus-visible) {
-    outline: 2px solid var(--intro-accent);
-  }
 }
 
 .section {

@@ -44,10 +44,6 @@ export default function IntroHero() {
                 <li key={title}><strong>{title}</strong><span>{detail}</span></li>
               ))}
             </ul>
-            <label className={styles.motionToggle}>
-              <input type="checkbox" />
-              Pause animation
-            </label>
           </div>
       </div>
     </header>
