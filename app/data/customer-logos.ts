@@ -1,0 +1,15 @@
+export const customerLogos = [
+  { src: "/Aadhar.png", alt: "Aadhaar", height: 58 },
+  { src: "/ETDS.svg", alt: "ETDS", height: 74 },
+  { src: "/Federal.svg", alt: "Federal", height: 38 },
+  { src: "/HDB-Financial.png", alt: "HDB Financial", height: 48 },
+  { src: "/Hp-Calwin.png", alt: "HP Calwin", height: 50 },
+  { src: "/iLocalBox.svg", alt: "iLocalBox", height: 42 },
+  { src: "/Infosys.png", alt: "Infosys", height: 52 },
+  { src: "/Jio.png", alt: "Jio", height: 56 },
+  { src: "/Lenovo.png", alt: "Lenovo", height: 48 },
+  { src: "/Samsung.png", alt: "Samsung", height: 48 },
+  { src: "/SBI_Life.webp", alt: "SBI Life", height: 48 },
+  { src: "/Sompo.svg", alt: "Sompo", height: 44 },
+  { src: "/Tapestry.svg", alt: "Tapestry", height: 46 },
+];

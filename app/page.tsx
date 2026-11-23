@@ -6,6 +6,7 @@ import CapabilitiesSection from "./components/CapabilitiesSection";
 import TechSpectrum from "./components/TechSpectrum";
 import AnimatedCounter from "./components/AnimatedCounter";
 import ServicesCarousel from "./components/ServicesCarousel";
+import { customerLogos } from "./data/customer-logos";
 import { services } from "./data/services";
 import TrackedLink from "./components/TrackedLink";
 import JsonLd from "./components/JsonLd";
@@ -30,22 +31,6 @@ export const metadata: Metadata = {
       "Sculpt your corporate ecosystem with production-ready Liferay DXP platforms, robust microservices integration, and high-performance headless frontends.",
   },
 };
-
-const partners = [
-  { src: "/Aadhar.png", alt: "Aadhar", height: 58 },
-  { src: "/ETDS.svg", alt: "ETDS", height: 74 },
-  { src: "/Federal.svg", alt: "Federal", height: 38 },
-  { src: "/HDB-Financial.png", alt: "HDB Financial", height: 48 },
-  { src: "/Hp-Calwin.png", alt: "HP Calwin", height: 50 },
-  { src: "/iLocalBox.svg", alt: "iLocalBox", height: 42 },
-  { src: "/Infosys.png", alt: "Infosys", height: 52 },
-  { src: "/Jio.png", alt: "Jio", height: 56 },
-  { src: "/Lenovo.png", alt: "Lenovo", height: 48 },
-  { src: "/Samsung.png", alt: "Samsung", height: 48 },
-  { src: "/SBI_Life.webp", alt: "SBI Life", height: 48 },
-  { src: "/Sompo.svg", alt: "Sompo", height: 44 },
-  { src: "/Tapestry.svg", alt: "Tapestry", height: 46 },
-];
 
 export default function Home() {
   const jsonLd = webPageSchema({
@@ -212,7 +197,7 @@ export default function Home() {
       <section className="marquee-wrapper border-top">
         <div className="marquee-container">
           <div className="marquee-content">
-            {[...partners, ...partners].map((p, i) => (
+            {[...customerLogos, ...customerLogos].map((p, i) => (
               <div key={i} className="marquee-item">
                 <Image
                   alt={p.alt}

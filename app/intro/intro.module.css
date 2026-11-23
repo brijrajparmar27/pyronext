@@ -1,0 +1,322 @@
+.page {
+  --intro-accent: #ff8a4c;
+  --intro-muted: #b6b6b6;
+  --intro-line: #303033;
+  --intro-panel: #151518;
+  background: #0c0c0e;
+}
+
+.page :is(a, button):focus-visible {
+  outline: 2px solid var(--intro-accent);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(100% - 2.5rem, 76rem);
+  margin-inline: auto;
+}
+
+.hero {
+  padding-top: clamp(2.5rem, 6vw, 6rem);
+  background:
+    radial-gradient(ellipse at 90% 15%, #3c2017 0%, transparent 58%),
+    #101013;
+  border-bottom: 1px solid var(--intro-line);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.heroCopy h1 {
+  margin-block: 0.6rem 1rem;
+  font-size: clamp(2.9rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.heroCopy h1 span,
+.eyebrow {
+  color: var(--intro-accent);
+}
+
+.heroTagline {
+  max-width: 22ch;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.eyebrow,
+.photoCaption,
+.sectionNav > p {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 65ch;
+  color: var(--intro-muted);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.4rem;
+  margin-top: 1.4rem;
+}
+
+.primaryButton,
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  font-weight: 700;
+}
+
+.primaryButton {
+  padding: 0.7rem 1.2rem;
+  background: var(--intro-accent);
+  color: #141012;
+}
+
+.primaryButton:hover {
+  background: #ffac80;
+}
+
+.textLink {
+  color: var(--intro-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.24em;
+}
+
+.textLink:hover {
+  color: var(--text-primary);
+}
+
+.heroPhoto {
+  position: relative;
+  display: flex;
+  align-items: end;
+  isolation: isolate;
+  min-height: 260px;
+  aspect-ratio: 5 / 4;
+  padding: 1.1rem;
+  border: 1px solid #5b3a2d;
+  border-top: 3px solid var(--intro-accent);
+  background: var(--intro-panel);
+}
+
+.heroPhoto img {
+  z-index: -2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroPhoto::after {
+  position: absolute;
+  z-index: -1;
+  inset: 30% 0 0;
+  background: linear-gradient(transparent, rgb(9 9 10 / 92%));
+  content: "";
+}
+
+.photoCaption {
+  color: #fff;
+}
+
+.sectionNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 1.5rem;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  border-top: 1px solid var(--intro-line);
+}
+
+.sectionNav > p {
+  padding-block: 0.6rem;
+  color: var(--intro-muted);
+}
+
+.sectionNav ul,
+.resourceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 clamp(0.9rem, 3vw, 2rem);
+}
+
+.sectionNav a,
+.resourceLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+.sectionNav a:hover,
+.resourceLinks a:hover {
+  color: var(--intro-accent);
+}
+
+.section {
+  padding-block: clamp(2.8rem, 7vw, 5.5rem);
+  scroll-margin-top: var(--nav-height);
+}
+
+.section + .section {
+  border-top: 1px solid var(--intro-line);
+}
+
+.sectionHeading h2 {
+  margin-block: 0.35rem 0.7rem;
+  font-size: clamp(2rem, 4.5vw, 3.65rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+}
+
+.logoGrid,
+.cardGrid,
+.engagementGrid {
+  display: grid;
+  gap: 0.75rem;
+  margin-block: 1.75rem 0;
+}
+
+.logoGrid {
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+}
+
+.logoTile {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.35rem;
+  min-width: 0;
+  min-height: 6rem;
+  padding: 0.65rem;
+  background: #f0efee;
+  color: #323033;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.logoMark {
+  position: relative;
+  width: min(100%, 100px);
+  height: 2.4rem;
+}
+
+.logoMark img {
+  object-fit: contain;
+}
+
+.cardGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 0.6rem;
+}
+
+.cardLink,
+.engagementGrid li {
+  min-height: 100%;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--intro-line);
+  background: var(--intro-panel);
+}
+
+.cardLink {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(0.65rem, 2vw, 1.15rem);
+}
+
+.cardLink:hover {
+  border-color: var(--intro-accent);
+  background: #211815;
+}
+
+.cardIcon,
+.cardArrow {
+  color: var(--intro-accent);
+}
+
+.cardLink h3,
+.engagementGrid h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cardLink p,
+.engagementGrid li p {
+  margin-top: 0.28rem;
+  color: var(--intro-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.engagementGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.engagementGrid h3 {
+  margin-top: 0.75rem;
+}
+
+.contactSection {
+  padding-bottom: 0;
+}
+
+.contactPanel {
+  padding: clamp(1.4rem, 5vw, 3.5rem);
+  border: 1px solid #5b3a2d;
+  border-left: 3px solid var(--intro-accent);
+  background: linear-gradient(130deg, #281b17, var(--intro-panel) 75%);
+}
+
+.resourceLinks {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--intro-line);
+  color: var(--intro-muted);
+}
+
+@media (max-width: 760px) {
+  .heroGrid,
+  .cardGrid,
+  .engagementGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroPhoto {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 520px) {
+  .sectionNav {
+    display: block;
+    padding-bottom: 0.4rem;
+  }
+
+  .sectionNav > p {
+    padding-bottom: 0;
+  }
+}
