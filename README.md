@@ -48,3 +48,5 @@ A GitHub Actions workflow (`submit-sitemap.yml`) can re-submit the **live produc
 Without the secret the workflow logs a warning and skips submission; robots.txt and the sitemap still work. Submission requests discovery, **not immediate recrawling, indexing, or a ranking guarantee**. Google retired the old unauthenticated sitemap ping endpoint; do not use it. For changed blog content, set the optional `updatedISO` field to the actual update date; otherwise the sitemap uses the publication `dateISO`. For a new indexable static page, also add its route to `app/sitemap.ts`. Never advertise a false `lastmod`.
 
 The business-card landing page is intentionally unlisted. Keep it out of navigation, internal discovery links, and the sitemap, but allow crawling so search engines can see its `noindex` directives. This does not restrict direct access. Keep the production path stable after printing and test the QR code on the deployed site before sending a card to print.
+
+The business-card customer grid has its own logo list (`app/intro/customer-logos.ts`) and assets (`public/intro-logos`) so its full-color marks can be updated without changing the homepage marquee.

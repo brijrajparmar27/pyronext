@@ -8,6 +8,7 @@ const featuredSlugs = new Set([
   "devops",
   "react-nextjs",
   "seo-geo-optimization",
+  "civil-infrastructure-3d-modeling",
 ]);
 
 export default function ServicesSection() {
@@ -16,7 +17,7 @@ export default function ServicesSection() {
       id="services"
       label="02 / Our services"
       title="What we do"
-      description="From Liferay upgrades and React builds to AI integrations, cloud operations, and search optimization, we help teams build new platforms and improve the ones they already run."
+      description="We build and modernize digital platforms, integrate AI, and turn civil infrastructure designs into interactive 3D models and simulations."
       directoryHref="/services"
       directoryLabel="View all services"
       items={services.filter(({ slug }) => featuredSlugs.has(slug))}

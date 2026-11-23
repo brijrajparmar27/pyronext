@@ -770,6 +770,61 @@ export const services: Service[] = [
         description: "Running geo-targeted acquisition pushes and refining regional conversion funnels based on real-time data."
       }
     ]
+  },
+  {
+    slug: "civil-infrastructure-3d-modeling",
+    title: "Civil Infrastructure 3D Modeling & Simulation",
+    category: "Infrastructure Visualization",
+    shortDescription: "Turn civil engineering designs into site-scale 3D models, walkthroughs, and construction simulations.",
+    longDescription: "We build a coordinated 3D representation of your civil infrastructure project from CAD drawings, BIM files, and available survey or terrain data. See how roads, bridges, utilities, and surrounding terrain fit together, explore the design in an interactive walkthrough, and visualize the order of construction using your project schedule.",
+    icon: "view_in_ar",
+    metaDescription: "Turn civil infrastructure designs into coordinated 3D models, interactive walkthroughs, and construction sequencing simulations with Pyronite.",
+    metaKeywords: "civil infrastructure 3D modeling, civil engineering visualization, BIM visualization, CAD to 3D, construction sequencing simulation, infrastructure walkthroughs",
+    features: [
+      {
+        title: "Design-to-3D Modeling",
+        description: "Convert supplied drawings and BIM files into a coordinated model of the proposed assets and surrounding site.",
+        icon: "architecture"
+      },
+      {
+        title: "Terrain & Site Context",
+        description: "Combine available survey data, existing conditions, and proposed works to show the project in context.",
+        icon: "terrain"
+      },
+      {
+        title: "Interactive Walkthroughs",
+        description: "Let reviewers navigate the model and inspect design details from viewpoints that are hard to convey in drawings.",
+        icon: "explore"
+      },
+      {
+        title: "Construction Sequencing",
+        description: "Link model elements to supplied schedule milestones to visualize how the site changes through each phase.",
+        icon: "timeline"
+      }
+    ],
+    technologies: [
+      { name: "CAD & BIM Design Data", icon: "architecture" },
+      { name: "Survey & Terrain Data", icon: "terrain" },
+      { name: "Interactive 3D Visualization", icon: "view_in_ar" },
+      { name: "Schedule-Linked Simulation", icon: "event" }
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Review Design Inputs",
+        description: "Confirm the drawing revisions, site data, level of detail, and scenarios the project team needs to review."
+      },
+      {
+        step: "02",
+        title: "Build the Coordinated Model",
+        description: "Model the proposed assets, place them in site context, and review the result with the design team."
+      },
+      {
+        step: "03",
+        title: "Simulate and Deliver",
+        description: "Create walkthroughs and schedule-based scenarios, then deliver the agreed model and visualization files."
+      }
+    ]
   }
 ];
 

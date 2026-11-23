@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { customerLogos } from "../data/customer-logos";
+import { introCustomerLogos } from "./customer-logos";
 import SectionHeading from "./SectionHeading";
 import styles from "./intro.module.css";
 
@@ -14,12 +14,12 @@ export default function CustomersSection() {
           description="Our work spans financial services, government technology, logistics, and commerce across Asia-Pacific, Europe, the Middle East, and Africa."
         />
         <ul className={styles.logoGrid} aria-label="Featured customers and partners">
-          {customerLogos.map(({ src, alt }) => (
-            <li className={styles.logoTile} key={src}>
+          {introCustomerLogos.map(({ file, name }) => (
+            <li className={styles.logoTile} key={file}>
               <div className={styles.logoMark}>
-                <Image src={src} alt="" fill sizes="100px" />
+                <Image src={`/intro-logos/${file}`} alt="" fill sizes="100px" />
               </div>
-              <span>{alt}</span>
+              <span>{name}</span>
             </li>
           ))}
         </ul>
