@@ -23,7 +23,7 @@ export default function CatalogSection({
   const headingId = `${id}-heading`;
 
   return (
-    <section id={id} className={styles.section} aria-labelledby={headingId}>
+    <section id={id} className={`${styles.section} ${styles.existingSection}`} aria-labelledby={headingId}>
       <div className={styles.container}>
         <SectionHeading id={headingId} label={label} title={title} description={description} />
         <ul className={styles.cardGrid}>

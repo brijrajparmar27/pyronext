@@ -1,11 +1,11 @@
-import Link from "next/link";
 import SectionHeading from "./SectionHeading";
 import styles from "./intro.module.css";
 
-const engagements = [
-  { title: "Extend your team", description: "Bring in software, AI, data, or cloud engineers to work alongside your team." },
-  { title: "Build with a dedicated squad", description: "Work with a cross-functional team that can take a project from design through delivery." },
-  { title: "Deliver a defined project", description: "Agree on the scope and milestones up front for a new build, integration, or modernization." },
+const steps = [
+  { title: "Understand", description: "Define the problem, users, workflows, and constraints before committing to a solution." },
+  { title: "Architect", description: "Map the data, integrations, roles, and permissions. Agree on what to test and how to operate the system." },
+  { title: "Build & test", description: "Build in small increments and validate with realistic data, actual integrations, and feedback from users." },
+  { title: "Improve", description: "Review what works in practice. Refine performance, usability, and operational fit as we learn." },
 ];
 
 export default function ApproachSection() {
@@ -14,24 +14,19 @@ export default function ApproachSection() {
       <div className={styles.container}>
         <SectionHeading
           id="approach-heading"
-          label="04 / Our approach"
-          title="How we work with you"
-          description="We start with the problem, not a preferred stack. We choose tools that fit your team and systems, then use open interfaces and automated checks to keep the result maintainable."
+          label="Engineering method"
+          title={<>From a clear scope<br /><em>to a system you can test.</em></>}
+          description="We test assumptions early, work with real integrations, and design for the team that will operate the system."
         />
-        <ul className={styles.engagementGrid} aria-label="Ways to work with Pyronite">
-          {engagements.map(({ title, description }, index) => (
-            <li key={title}>
-              <span className={styles.eyebrow} aria-hidden="true">0{index + 1}</span>
+        <ol className={styles.stackGrid} aria-label="Engineering steps">
+          {steps.map(({ title, description }, index) => (
+            <li className={styles.panel} key={title}>
+              <p className={styles.eyebrow} aria-hidden="true">Step 0{index + 1}</p>
               <h3>{title}</h3>
               <p>{description}</p>
             </li>
           ))}
-        </ul>
-        <div className={styles.actions}>
-          <Link className={styles.textLink} href="/connect">Talk about your project <span aria-hidden="true">&rarr;</span></Link>
-          <Link className={styles.textLink} href="/standard">Engineering standards <span aria-hidden="true">&rarr;</span></Link>
-          <Link className={styles.textLink} href="/philosophy">Our philosophy <span aria-hidden="true">&rarr;</span></Link>
-        </div>
+        </ol>
       </div>
     </section>
   );

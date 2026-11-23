@@ -5,15 +5,15 @@ import styles from "./intro.module.css";
 
 export default function CustomersSection() {
   return (
-    <section id="customers" className={styles.section} aria-labelledby="customers-heading">
+    <section id="customers" className={`${styles.section} ${styles.existingSection}`} aria-labelledby="customers-heading">
       <div className={styles.container}>
         <SectionHeading
           id="customers-heading"
-          label="01 / Our customers"
+          label="01 / Industry experience"
           title="Who we work with"
           description="Our work spans financial services, government technology, logistics, and commerce across Asia-Pacific, Europe, the Middle East, and Africa."
         />
-        <ul className={styles.logoGrid} aria-label="Featured customers and partners">
+        <ul className={styles.logoGrid} aria-label="Organizations represented in the portfolio" aria-describedby="logo-context">
           {introCustomerLogos.map(({ file, name }) => (
             <li className={styles.logoTile} key={file}>
               <div className={styles.logoMark}>
@@ -23,6 +23,7 @@ export default function CustomersSection() {
             </li>
           ))}
         </ul>
+        <p className={styles.logoNote} id="logo-context">Logos are shown for context and do not imply a direct contract or endorsement.</p>
       </div>
     </section>
   );

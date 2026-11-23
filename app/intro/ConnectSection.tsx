@@ -1,4 +1,3 @@
-import Link from "next/link";
 import TrackedLink from "../components/TrackedLink";
 import SectionHeading from "./SectionHeading";
 import styles from "./intro.module.css";
@@ -10,19 +9,15 @@ export default function ConnectSection() {
         <div className={styles.contactPanel}>
           <SectionHeading
             id="contact-heading"
-            label="05 / Connect"
-            title="Let's talk about your project."
-            description="Whether you're exploring an AI use case, building a product, or bringing a design to life in 3D, tell us what you want to achieve. We'll help you work out where to start."
+            label="Start a conversation"
+            title={<>Have a complex idea?<br /><em>Let&apos;s make it real.</em></>}
+            description="Whether it's an enterprise portal, an AI workflow, a new digital product, or an interactive experience, bring the challenge. We'll discuss a practical starting point."
           />
           <div className={styles.actions}>
             <TrackedLink href="/connect" className={styles.primaryButton} eventLabel="Intro Connect: Contact Pyronite">
-              Contact us <span aria-hidden="true">&rarr;</span>
+              Discuss your project <span aria-hidden="true">&rarr;</span>
             </TrackedLink>
-            <a className={styles.textLink} href="mailto:business@pyronite.in">business@pyronite.in</a>
-          </div>
-          <div className={styles.resourceLinks}>
-            <Link href="/blogs">Engineering blog <span aria-hidden="true">&rarr;</span></Link>
-            <Link href="/faq">FAQ <span aria-hidden="true">&rarr;</span></Link>
+            <a className={styles.secondaryButton} href="mailto:business@pyronite.in">Email Pyronite</a>
           </div>
         </div>
       </div>

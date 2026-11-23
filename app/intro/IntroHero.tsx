@@ -1,55 +1,50 @@
 import Image from "next/image";
-import TrackedLink from "../components/TrackedLink";
 import styles from "./intro.module.css";
 
-const sections = [
-  { id: "customers", label: "Customers" },
-  { id: "services", label: "Services" },
-  { id: "solutions", label: "Solutions" },
-  { id: "approach", label: "How we work" },
+const outcomes = [
+  { title: "Enterprise systems", detail: "Platforms / Cloud" },
+  { title: "AI intelligence", detail: "Agents / RAG / MCP" },
+  { title: "Digital experiences", detail: "Web / Spatial 3D" },
 ];
 
 export default function IntroHero() {
   return (
     <header className={styles.hero}>
-      <div className={styles.container}>
-        <div className={styles.heroGrid}>
+      <div className={`${styles.container} ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>AI &middot; Software &middot; Simulation</p>
-            <h1>Meet <span>Pyronite.</span></h1>
-            <p className={styles.heroTagline}>We build intelligent products and the systems behind them.</p>
+            <p className={styles.eyebrow}>Introducing Pyronite / Engineering Studio</p>
+            <h1>Ideas are easy.<br />Building them is <span>our craft.</span></h1>
             <p className={styles.lead}>
-              From AI assistants and custom software to cloud infrastructure and interactive 3D
-              simulations, we choose the right tools for what you need to build.
+              We turn complex business challenges into intelligent, working systems&mdash;from enterprise
+              platforms and AI-driven workflows to immersive digital experiences.
             </p>
             <div className={styles.actions}>
-              <TrackedLink href="/connect" className={styles.primaryButton} eventLabel="Intro Hero: Contact Pyronite">
-                Contact us <span aria-hidden="true">&rarr;</span>
-              </TrackedLink>
-              <a className={styles.textLink} href="#services">
-                Explore our services <span aria-hidden="true">&darr;</span>
-              </a>
+              <a href="#work" className={styles.primaryButton}>Explore our work <span aria-hidden="true">&rarr;</span></a>
+              <a href="#about" className={styles.secondaryButton}>Discover Pyronite <span aria-hidden="true">&darr;</span></a>
             </div>
           </div>
-          <div className={styles.heroBanner}>
-            <Image
-              src="/intro-tech-banner.svg"
-              alt=""
-              fill
-              sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1320px) 40vw, 480px"
-              loading="eager"
-              fetchPriority="high"
-            />
+          <div className={styles.orbit}>
+            <svg viewBox="0 0 480 420" className={styles.orbitLines} aria-hidden="true">
+              <circle cx="240" cy="210" r="177" className={styles.orbitOuter} />
+              <circle cx="240" cy="210" r="144" strokeDasharray="2 7" />
+              <circle cx="240" cy="210" r="105" />
+              <ellipse cx="240" cy="210" rx="190" ry="76" transform="rotate(-32 240 210)" />
+              <ellipse cx="240" cy="210" rx="187" ry="68" transform="rotate(58 240 210)" />
+              <path d="M92 101h55l93 109 88-65h74M240 210l-91 109H92" />
+              <circle cx="147" cy="101" r="4" className={styles.orbitNode} />
+              <circle cx="328" cy="145" r="4" className={styles.orbitNode} />
+              <circle cx="149" cy="319" r="4" className={styles.orbitNode} />
+            </svg>
+            <div className={styles.orbitCore}>
+              <Image src="/logo.png" width={60} height={60} alt="" loading="eager" />
+              <span>Pyronite / Core</span>
+            </div>
+            <ul className={styles.outcomes} aria-label="Engineering disciplines">
+              {outcomes.map(({ title, detail }) => (
+                <li key={title}><strong>{title}</strong><span>{detail}</span></li>
+              ))}
+            </ul>
           </div>
-        </div>
-        <nav className={styles.sectionNav} aria-label="On this page">
-          <p>On this page</p>
-          <ul>
-            {sections.map(({ id, label }) => (
-              <li key={id}><a href={`#${id}`}>{label}</a></li>
-            ))}
-          </ul>
-        </nav>
       </div>
     </header>
   );
