@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="760" viewBox="0 0 960 760">
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#101c29"/>
+      <stop offset=".58" stop-color="#0b1019"/>
+      <stop offset="1" stop-color="#160f16"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop stop-color="#ff773e" stop-opacity=".36"/>
+      <stop offset=".5" stop-color="#d6431d" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#d6431d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ambient">
+      <stop stop-color="#4398ad" stop-opacity=".23"/>
+      <stop offset="1" stop-color="#4398ad" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="trace" x2="1" y2="1">
+      <stop stop-color="#78d8ea"/>
+      <stop offset=".5" stop-color="#537a96"/>
+      <stop offset="1" stop-color="#c4644b"/>
+    </linearGradient>
+    <linearGradient id="top" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#512a30"/>
+      <stop offset=".5" stop-color="#271d2a"/>
+      <stop offset="1" stop-color="#181f2b"/>
+    </linearGradient>
+    <linearGradient id="ember" x2="1" y2="1">
+      <stop stop-color="#ffdf94"/>
+      <stop offset=".45" stop-color="#ff8f54"/>
+      <stop offset="1" stop-color="#ec543e"/>
+    </linearGradient>
+    <linearGradient id="edge" x2="1" y2="1">
+      <stop stop-color="#c96949"/>
+      <stop offset="1" stop-color="#332941"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#54889e" stroke-opacity=".14"/>
+    </pattern>
+    <pattern id="die" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M16 0H0V16" fill="none" stroke="#ffc3a0" stroke-opacity=".18"/>
+      <circle cx="4" cy="4" r="1.2" fill="#ffc394" fill-opacity=".72"/>
+    </pattern>
+    <clipPath id="chip-face">
+      <path d="M480 204 674 317 480 430 286 317Z"/>
+    </clipPath>
+    <filter id="glow" x="-.5" y="-.5" width="2" height="2">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+  <path fill="url(#background)" d="M0 0h960v760H0z"/>
+  <path fill="url(#grid)" d="M0 0h960v760H0z"/>
+  <ellipse cx="288" cy="235" rx="340" ry="285" fill="url(#ambient)"/>
+  <ellipse cx="515" cy="367" rx="414" ry="310" fill="url(#halo)"/>
+  <g fill="none" stroke="#78b8cf" opacity=".22">
+    <circle cx="480" cy="341" r="245" stroke-dasharray="2 8"/>
+    <circle cx="480" cy="341" r="295" stroke-dasharray="22 10 2 10"/>
+    <path d="M480 36v610M175 341h610" stroke-dasharray="2 10"/>
+  </g>
+  <g fill="none" stroke="url(#trace)" stroke-linejoin="round">
+    <path d="M49 246h78l86 50h53l48 28m-249 12h72l82 47h45l57 33m-230 74h113l77 45h63l65 37m28-265-69-41v-35L233 153H126m390 126 86-52v-43l97-56h107m-220 226 56-32h77l79-46h106m-266 131 68-39h119l39-23h40m-242 143 53-30h97l71-41h38m-340 114 66 38h101l38-22h77" stroke-width="2.1" opacity=".64"/>
+    <path d="M90 208h144l43 25v30l65 38m-218 112h79l65 38m483-219h-54l-95 55m245 201h-68l-64 37h-74m-145 89h156l42 24h107" stroke-dasharray="4 7" opacity=".58"/>
+  </g>
+  <g fill="#8bdaf0">
+    <circle cx="49" cy="246" r="4"/><circle cx="65" cy="336" r="3"/>
+    <circle cx="91" cy="490" r="4"/><circle cx="126" cy="153" r="3"/>
+    <circle cx="806" cy="128" r="4"/><circle cx="905" cy="276" r="3"/>
+  </g>
+  <g fill="#ff9a67">
+    <circle cx="904" cy="345" r="4"/><circle cx="921" cy="447" r="3"/>
+    <circle cx="867" cy="547" r="4"/><circle cx="807" cy="638" r="3"/>
+  </g>
+  <path d="M480 251 735 397v30L480 574 225 427v-30Z" fill="#0b121c" stroke="#374859" stroke-width="2"/>
+  <path d="M225 397 480 544 735 397M480 544v30" fill="none" stroke="#526778"/>
+  <path d="M480 240 729 383 480 528 231 383Z" fill="#1a2433" fill-opacity=".86" stroke="#56758a" stroke-width="1.5"/>
+  <path d="M480 211 700 338v26L480 491 260 364v-26Z" fill="#24222e" stroke="#90695f"/>
+  <path d="M260 338 480 466 700 338 480 211Z" fill="#222b3c" stroke="#8abccc"/>
+  <path d="M260 339 480 466 700 339M480 466v25" fill="none" stroke="#b37c6c" stroke-width="1.5"/>
+  <g fill="none" stroke="#94d3df" stroke-width="1.5" opacity=".65">
+    <path d="m274 341 42-24m-26 33 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24m-25 34 42-24"/>
+    <path d="m686 341-42-24m26 33-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24m25 34-42-24"/>
+  </g>
+  <path d="M480 204 674 317v26L480 455 286 343v-26Z" fill="#242232" stroke="url(#edge)" stroke-width="2"/>
+  <path d="M286 317 480 430 674 317 480 204Z" fill="url(#top)" stroke="url(#ember)" stroke-width="2"/>
+  <g clip-path="url(#chip-face)">
+    <path d="M280 195h400v250H280z" fill="url(#die)" transform="matrix(1 .58 -1 .58 318 -168)"/>
+  </g>
+  <path d="M480 238 616 317 480 396 344 317Z" fill="none" stroke="#ffc39f" stroke-opacity=".45" stroke-dasharray="3 5"/>
+  <path d="M480 253 592 317 480 382 368 317Z" fill="#e97348" opacity=".46" filter="url(#glow)"/>
+  <path d="M480 261 576 317 480 374 384 317Z" fill="#392031" stroke="url(#ember)" stroke-width="2.5"/>
+  <path d="M480 274 554 317 480 361 406 317Z" fill="#f9834f" fill-opacity=".23" stroke="#ffb982" stroke-opacity=".65"/>
+  <path d="m445 327 35-41 36 40-36 21Z" fill="url(#ember)" stroke="#ffcc99" stroke-width="1.4"/>
+  <path d="m480 286 1 36-36 5 35 20 1-25 35 4" fill="none" stroke="#602d34" stroke-width="1.1" opacity=".7"/>
+  <g fill="none" stroke="#7eaabd" opacity=".72">
+    <path d="M39 98V72h84m714 0h84v26M39 642v26h84m714 0h84v-26"/>
+    <path d="M43 115h17m857 0h-17M43 625h17m857 0h-17"/>
+  </g>
+  <g fill="#8ba9b9" font-family="monospace" font-size="12" letter-spacing="3">
+    <text x="50" y="100">PYRONITE / SYSTEMS</text>
+    <text x="910" y="100" text-anchor="end">01 / CONNECTED CORE</text>
+    <text x="910" y="654" text-anchor="end">DESIGN &gt; BUILD &gt; SIMULATE</text>
+  </g>
+</svg>

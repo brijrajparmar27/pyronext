@@ -50,3 +50,5 @@ Without the secret the workflow logs a warning and skips submission; robots.txt 
 The business-card landing page is intentionally unlisted. Keep it out of navigation, internal discovery links, and the sitemap, but allow crawling so search engines can see its `noindex` directives. This does not restrict direct access. Keep the production path stable after printing and test the QR code on the deployed site before sending a card to print.
 
 The business-card customer grid has its own logo list (`app/intro/customer-logos.ts`) and assets (`public/intro-logos`) so its full-color marks can be updated without changing the homepage marquee.
+
+The business-card overview is platform-neutral. Its featured service copy lives in `app/intro/ServicesSection.tsx` and links to the existing service catalog for technical details. Its banner (`public/intro-tech-banner.svg`) is static so the page does not need WebGL.

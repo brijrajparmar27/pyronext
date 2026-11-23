@@ -12,7 +12,7 @@ export default function ConnectSection() {
             id="contact-heading"
             label="05 / Connect"
             title="Let's talk about your project."
-            description="Tell us what you're building, upgrading, or looking to improve. We'll help you work out where to start."
+            description="Whether you're exploring an AI use case, building a product, or bringing a design to life in 3D, tell us what you want to achieve. We'll help you work out where to start."
           />
           <div className={styles.actions}>
             <TrackedLink href="/connect" className={styles.primaryButton} eventLabel="Intro Connect: Contact Pyronite">

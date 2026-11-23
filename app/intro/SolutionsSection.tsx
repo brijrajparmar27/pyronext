@@ -7,7 +7,7 @@ export default function SolutionsSection() {
       id="solutions"
       label="03 / Our solutions"
       title="What you can build with us"
-      description="Give customers, employees, and partners one place to do what they came to do, whether that's managing an account, sharing information, or placing an order."
+      description="Build focused digital experiences for customers, employees, and partners, from self-service hubs and internal workspaces to supplier networks and headless storefronts."
       directoryHref="/solutions"
       directoryLabel="View all solutions"
       items={solutions}

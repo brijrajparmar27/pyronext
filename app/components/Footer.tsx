@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { services } from "../data/services";
 import * as gtag from "../utils/gtag";
 
 export default function Footer() {
+  const isIntro = usePathname() === "/intro";
+
   return (
     <footer className="footer" style={{ marginTop: "4rem" }}>
       <div className="container">
@@ -33,7 +36,9 @@ export default function Footer() {
               </div>
             </Link>
             <p style={{ textTransform: "none", marginTop: "1rem", lineHeight: "1.6" }}>
-              Architecting Enterprise Liferay & Open-Source Systems driving digital transformation.
+              {isIntro
+                ? "Engineering across AI, software, cloud, and 3D simulation."
+                : "Architecting Enterprise Liferay & Open-Source Systems driving digital transformation."}
             </p>
             <div style={{ marginTop: "2rem" }}>
               <h4>A Subsidiary Of</h4>

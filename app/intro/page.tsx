@@ -10,7 +10,7 @@ import styles from "./intro.module.css";
 export const metadata: Metadata = {
   title: "Meet Pyronite",
   description:
-    "Meet the team behind Pyronite Tech. Explore our enterprise customers, Liferay DXP and open-source services, and ways to work with us.",
+    "Meet Pyronite Tech and explore our work across AI and automation, full-stack software, cloud infrastructure, and 3D modeling and simulation.",
   robots: { index: false, follow: false },
   alternates: null,
   openGraph: null,

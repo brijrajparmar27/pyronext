@@ -3,9 +3,9 @@ import SectionHeading from "./SectionHeading";
 import styles from "./intro.module.css";
 
 const engagements = [
-  { title: "Extend your team", description: "Bring in Liferay, Java, or React specialists to work alongside your engineers." },
+  { title: "Extend your team", description: "Bring in software, AI, data, or cloud engineers to work alongside your team." },
   { title: "Build with a dedicated squad", description: "Work with a cross-functional team that can take a project from design through delivery." },
-  { title: "Deliver a defined project", description: "Agree on the scope and milestones up front for an upgrade, migration, or modernization." },
+  { title: "Deliver a defined project", description: "Agree on the scope and milestones up front for a new build, integration, or modernization." },
 ];
 
 export default function ApproachSection() {
@@ -16,7 +16,7 @@ export default function ApproachSection() {
           id="approach-heading"
           label="04 / Our approach"
           title="How we work with you"
-          description="We start with what the platform needs to do, then design around open APIs, modular components, and automated checks so it can evolve without a full rebuild."
+          description="We start with the problem, not a preferred stack. We choose tools that fit your team and systems, then use open interfaces and automated checks to keep the result maintainable."
         />
         <ul className={styles.engagementGrid} aria-label="Ways to work with Pyronite">
           {engagements.map(({ title, description }, index) => (
@@ -28,7 +28,7 @@ export default function ApproachSection() {
           ))}
         </ul>
         <div className={styles.actions}>
-          <Link className={styles.textLink} href="/hire-liferay-developers">Build your team <span aria-hidden="true">&rarr;</span></Link>
+          <Link className={styles.textLink} href="/connect">Talk about your project <span aria-hidden="true">&rarr;</span></Link>
           <Link className={styles.textLink} href="/standard">Engineering standards <span aria-hidden="true">&rarr;</span></Link>
           <Link className={styles.textLink} href="/philosophy">Our philosophy <span aria-hidden="true">&rarr;</span></Link>
         </div>

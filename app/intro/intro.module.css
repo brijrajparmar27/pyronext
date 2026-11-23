@@ -19,7 +19,8 @@
 .hero {
   padding-top: clamp(2.5rem, 6vw, 6rem);
   background:
-    radial-gradient(ellipse at 90% 15%, #3c2017 0%, transparent 58%),
+    radial-gradient(ellipse at 86% 22%, #1c2837 0%, transparent 58%),
+    radial-gradient(ellipse at 60% 100%, #2e1818 0%, transparent 56%),
     #101013;
   border-bottom: 1px solid var(--intro-line);
 }
@@ -45,7 +46,7 @@
 }
 
 .heroTagline {
-  max-width: 22ch;
+  max-width: 25ch;
   font-size: clamp(1.3rem, 3vw, 2rem);
   font-weight: 600;
   line-height: 1.2;
@@ -53,7 +54,6 @@
 }
 
 .eyebrow,
-.photoCaption,
 .sectionNav > p {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -106,35 +106,17 @@
   color: var(--text-primary);
 }
 
-.heroPhoto {
+.heroBanner {
   position: relative;
-  display: flex;
-  align-items: end;
-  isolation: isolate;
-  min-height: 260px;
-  aspect-ratio: 5 / 4;
-  padding: 1.1rem;
-  border: 1px solid #5b3a2d;
-  border-top: 3px solid var(--intro-accent);
-  background: var(--intro-panel);
+  aspect-ratio: 960 / 760;
+  border: 1px solid #3b4658;
+  border-top-color: var(--intro-accent);
+  background: #101c29;
+  box-shadow: 0 24px 70px rgb(3 7 12 / 45%);
 }
 
-.heroPhoto img {
-  z-index: -2;
+.heroBanner img {
   object-fit: cover;
-  object-position: center;
-}
-
-.heroPhoto::after {
-  position: absolute;
-  z-index: -1;
-  inset: 30% 0 0;
-  background: linear-gradient(transparent, rgb(9 9 10 / 92%));
-  content: "";
-}
-
-.photoCaption {
-  color: #fff;
 }
 
 .sectionNav {
@@ -304,9 +286,8 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .heroPhoto {
-    min-height: 0;
-    aspect-ratio: 16 / 9;
+  .heroBanner {
+    aspect-ratio: 3 / 2;
   }
 }
 

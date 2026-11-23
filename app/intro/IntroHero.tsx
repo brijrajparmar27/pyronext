@@ -15,12 +15,12 @@ export default function IntroHero() {
       <div className={styles.container}>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>Enterprise engineering &middot; Liferay DXP</p>
+            <p className={styles.eyebrow}>AI &middot; Software &middot; Simulation</p>
             <h1>Meet <span>Pyronite.</span></h1>
-            <p className={styles.heroTagline}>We build and modernize enterprise digital platforms.</p>
+            <p className={styles.heroTagline}>We build intelligent products and the systems behind them.</p>
             <p className={styles.lead}>
-              We bring together Liferay DXP, Next.js, and open-source engineering to build portals,
-              modernize legacy systems, and connect the applications your business relies on.
+              From AI assistants and custom software to cloud infrastructure and interactive 3D
+              simulations, we choose the right tools for what you need to build.
             </p>
             <div className={styles.actions}>
               <TrackedLink href="/connect" className={styles.primaryButton} eventLabel="Intro Hero: Contact Pyronite">
@@ -31,16 +31,15 @@ export default function IntroHero() {
               </a>
             </div>
           </div>
-          <div className={styles.heroPhoto}>
+          <div className={styles.heroBanner}>
             <Image
-              src="/liferay-summit.jpg"
+              src="/intro-tech-banner.svg"
               alt=""
               fill
               sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1320px) 40vw, 480px"
               loading="eager"
               fetchPriority="high"
             />
-            <div className={styles.photoCaption}>Liferay community summit</div>
           </div>
         </div>
         <nav className={styles.sectionNav} aria-label="On this page">
